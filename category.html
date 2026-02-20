@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja" data-page="category">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>カテゴリ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="topbar has-header-crab">
+      <a class="back" id="back_to_index" href="#">←</a>
+      <div class="titles">
+        <div class="t" id="cat_title">カテゴリ</div>
+        <div class="s" id="cat_sub">Categories</div>
+      </div>
+      <img src="icon.png" alt="Crab mascot" class="header-crab header-crab--m" />
+    </div>
+
+    <div class="screen">
+      <div class="list">
+
+        <div id="main_dynamic"></div>
+
+        <a class="btn" id="kitchen_link" href="#">
+          <div class="cat">
+            <div class="icon">🍳</div>
+            <div><div class="jp">キッチン</div><div class="en">Kitchen</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a class="btn" id="vanity_link" href="#">
+          <div class="cat">
+            <div class="icon">🪥</div>
+            <div><div class="jp">洗面</div><div class="en">Vanity</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a class="btn" id="bath_link" href="#">
+          <div class="cat">
+            <div class="icon">🛁</div>
+            <div><div class="jp">バスルーム</div><div class="en">Bath</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a class="btn" id="toilet_link" href="#">
+          <div class="cat">
+            <div class="icon">🚽</div>
+            <div><div class="jp">トイレ</div><div class="en">Toilet</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a class="btn" id="closet_link" href="#">
+          <div class="cat">
+            <div class="icon">👕</div>
+            <div><div class="jp">クローゼット</div><div class="en">Closet</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a class="btn" id="entrance_link" href="#">
+          <div class="cat">
+            <div class="icon">🚪</div>
+            <div><div class="jp">玄関</div><div class="en">Entrance</div></div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+:root{
+  --nav:#0b3a5a;
+  --bg:#f3f4f6;
+  --card:#fff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --shadow:0 10px 24px rgba(0,0,0,.08);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.app{
+  max-width:420px;
+  margin:18px auto 40px;
+  background:var(--bg);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.topbar{
+  background:var(--nav);
+  color:#fff;
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.back,
+.back-spacer{
+  min-width:40px;
+  height:34px;
+}
+
+.back{
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.titles .t{
+  font-weight:900;
+  font-size:16px;
+  line-height:1.2;
+}
+
+.titles .s{
+  font-size:12px;
+  opacity:.9;
+  margin-top:2px;
+}
+
+.screen{
+  padding:14px;
+  min-height:680px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:10px;
+}
+
+.btn{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 14px;
+  box-shadow:0 8px 16px rgba(0,0,0,.05);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.btn .jp{
+  font-weight:900;
+  font-size:16px;
+}
+
+.btn .en{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:800;
+  margin-top:4px;
+}
+
+.chev{
+  color:#94a3b8;
+  font-weight:900;
+  font-size:20px;
+}
+
+.roomBtn{align-items:center}
+
+.roomIcon,
+.icon{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:#eef2f7;
+  border:1px solid #e7ebf3;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  flex:0 0 auto;
+}
+
+.roomMid{
+  flex:1;
+  min-width:0;
+}
+
+.roomTop{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.roomTop .jp{white-space:nowrap}
+
+.roomTag{
+  font-size:11px;
+  color:#0f172a;
+  background:#eef2ff;
+  border:1px solid #e0e7ff;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.roomRight{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
+.cat{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.cat > div{min-width:0}
+
+.galleryWrap{
+  margin-top:10px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+  position:relative;
+}
+
+.scroller{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  height:460px;
+  -webkit-overflow-scrolling:touch;
+  background:#000;
+}
+
+.slide{
+  flex:0 0 100%;
+  scroll-snap-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide div{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:32px;
+  font-weight:900;
+  background:#333;
+}
+
+.counter{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  background:rgba(17,24,39,.65);
+  color:#fff;
+  font-weight:900;
+  font-size:12px;
+  padding:7px 10px;
+  border-radius:999px;
+}
+
+.note{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:800;
+}
+
+/* Disable iOS tap flash */
+a{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* ===== Page 1 visual customizations ===== */
+html[data-page="index"] .btn.roomBtn{
+  background:#F5ECF4;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+html[data-page="index"] .roomIcon,
+html[data-page="index"] .roomTag{
+  background:#fff;
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.10);
+  opacity:0;
+  transition:opacity .14s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+
+html[data-page="index"] .btn.roomBtn.is-pressing,
+html[data-page="index"] .btn.roomBtn:active{
+  transform:translateY(-3px) scale(1.004);
+  filter:brightness(.968);
+  box-shadow:0 16px 32px rgba(0,0,0,.18), inset 0 1px 2px rgba(255,255,255,.30);
+}
+
+html[data-page="index"] .btn.roomBtn.is-pressing::after,
+html[data-page="index"] .btn.roomBtn:active::after{
+  opacity:1;
+}
+
+
+/* ===== Page 2 card color + press (match page 1) ===== */
+html[data-page="category"] .list .btn{
+  background:#F5ECF4;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+  position:relative;
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+html[data-page="category"] .list .btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.10);
+  opacity:0;
+  transition:opacity .14s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+
+html[data-page="category"] .list .btn.is-pressing,
+html[data-page="category"] .list .btn:active{
+  transform:translateY(-3px) scale(1.004);
+  filter:brightness(.968);
+  box-shadow:0 16px 32px rgba(0,0,0,.18), inset 0 1px 2px rgba(255,255,255,.30);
+}
+
+html[data-page="category"] .list .btn.is-pressing::after,
+html[data-page="category"] .list .btn:active::after{
+  opacity:1;
+}
+
+/* Classic bold number style (index only) */
+html[data-page="index"] .roomTop .jp .antique-num{
+  font-family:"Cormorant Garamond","Times New Roman","Noto Serif JP",serif;
+  font-weight:800;
+  font-style:italic;
+  letter-spacing:.01em;
+  -webkit-text-stroke:.2px currentColor;
+  text-rendering:optimizeLegibility;
+}
+
+/* ===== Header crab (page 1 & 2) ===== */
+.topbar.has-header-crab{position:relative}
+
+.topbar.has-header-crab .titles{
+  padding-right:84px;
+}
+
+.header-crab{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:82px;
+  height:68px;
+  object-fit:cover;
+  object-position:50% 46%;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  z-index:3;
+}
+
+/* Category grouped note text */
+html[data-page="category"] .group-note-jp{
+  margin-top:6px;
+  font-size:12px;
+  line-height:1.25;
+  font-weight:800;
+  color:#475569;
+}
+
+html[data-page="category"] .group-note-en{
+  margin-top:3px;
+  font-size:11px;
+  line-height:1.25;
+  font-weight:700;
+  color:#64748b;
+}
