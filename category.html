@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ja" data-page="category">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>カテゴリ</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,800;1,600;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- 1ページ目と同じ形のヘッダー -->
+    <div class="topbar has-header-crab">
+      <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
+
+      <div class="titles">
+        <div id="cat_title" class="t">お部屋｜カテゴリ</div>
+        <div id="cat_sub" class="s">Categories</div>
+      </div>
+
+      <!-- カニ画像（今は触らない：表示/サイズ調整は後で） -->
+      <img src="icon.png" alt="Crab mascot" class="header-crab header-crab--m" />
+    </div>
+
+    <main class="screen">
+
+      <!-- app.js が部屋ごとのメインルームカードを差し込む -->
+      <div id="main_dynamic" class="list"></div>
+
+      <div class="list">
+
+        <a id="kitchen_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">🍳</div>
+            <div>
+              <div class="jp">キッチン</div>
+              <div class="en">Kitchen</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a id="vanity_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">🪥</div>
+            <div>
+              <div class="jp">洗面</div>
+              <div class="en">Vanity</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a id="bath_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">🛁</div>
+            <div>
+              <div class="jp">バスルーム</div>
+              <div class="en">Bath</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a id="toilet_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">🚽</div>
+            <div>
+              <div class="jp">トイレ</div>
+              <div class="en">Toilet</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a id="closet_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">👕</div>
+            <div>
+              <div class="jp">クローゼット</div>
+              <div class="en">Closet</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+        <a id="entrance_link" class="btn" href="#">
+          <div class="cat">
+            <div class="icon">🚪</div>
+            <div>
+              <div class="jp">玄関</div>
+              <div class="en">Entrance</div>
+            </div>
+          </div>
+          <div class="chev">›</div>
+        </a>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>
