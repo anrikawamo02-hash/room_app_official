@@ -12,7 +12,7 @@ body {
 .app-header {
   width: 100%;
   height: 90px;
-  background: #87CEEB;
+  background: #DDEEFF;
 }
 
 .main-content {
@@ -22,7 +22,7 @@ body {
 .app-header {
   width: 100%;
   height: 90px;
-  background: #87CEEB;
+  background: #DDEEFF;
 
   display: flex;
   justify-content: center;
