@@ -1,1 +1,20 @@
-hello
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  font-family: sans-serif;
+}
+
+.app-header {
+  width: 100%;
+  height: 90px;
+  background: white;
+}
+
+.main-content {
+  padding: 24px;
+}
