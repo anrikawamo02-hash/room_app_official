@@ -32,6 +32,7 @@ body {
 .header-text {
   text-align: center;
   width: 100%;
+  align-items: center;
 }
 
 .header-ja {
