@@ -38,7 +38,7 @@ body {
 }
 
 .header-ja {
-  font-size: 24px;
+  font-size: 22px;
   color: #2f2f2f;
 }
 
@@ -47,7 +47,6 @@ body {
   color: #8c8c8c;
   margin-top: 1px;
   letter-spacing: 1px;
-  transform: translateX(-1px);
 }
 .header-ja,
 .header-en {
