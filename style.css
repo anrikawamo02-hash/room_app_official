@@ -35,8 +35,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  transform: translateX(-3px);
 }
 
 .header-ja {
