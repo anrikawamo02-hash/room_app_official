@@ -32,7 +32,12 @@ body {
 .header-text {
   text-align: center;
   width: 100%;
+  
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  
+  transform: translateX(-3px);
 }
 
 .header-ja {
