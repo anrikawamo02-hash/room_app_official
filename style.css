@@ -86,3 +86,6 @@ body {
   margin-top: 2px;
   letter-spacing: 1px;
 }
+.room-card {
+  text-decoration: none;
+}
