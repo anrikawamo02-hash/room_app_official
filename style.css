@@ -13,6 +13,12 @@ body {
   width: 100%;
   height: 90px;
   background: #DDEEFF;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
 }
 
 .main-content {
@@ -27,6 +33,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  position: relative;
 }
 
 .header-text {
@@ -52,4 +60,10 @@ body {
 .header-ja,
 .header-en {
   margin: 0;
+}
+.header-crab {
+  width: 70px;
+
+  position: absolute;
+  right: 16px;
 }
