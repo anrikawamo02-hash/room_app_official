@@ -11,7 +11,7 @@ body {
 
 .app-header {
   width: 100%;
-  height: 90px;
+  height: 82px;
   background: #DDEEFF;
 
   display: flex;
@@ -23,18 +23,6 @@ body {
 
 .main-content {
   padding: 24px;
-}
-
-.app-header {
-  width: 100%;
-  height: 90px;
-  background: #DDEEFF;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  position: relative;
 }
 
 .header-text {
