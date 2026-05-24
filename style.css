@@ -58,7 +58,7 @@ body {
 .card {
   display: flex;
   width: 90%;
-  margin: 16px auto;
+  margin: 10px auto;
   background: #f6dede;
   padding: 30px;
   border-radius: 18px;
