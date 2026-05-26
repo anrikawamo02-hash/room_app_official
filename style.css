@@ -97,8 +97,9 @@ body {
 .room-tag {
   background: white;
     padding: 2px 14px;
-  border-radius: 16px;
-  font-size: 12px;
+  border-radius: 14px;
+  font-size: 10px;
+  line-height: 1;
   color: #555;
   font-family: "Academy Engraved LET";
 }
