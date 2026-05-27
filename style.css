@@ -108,5 +108,5 @@ align-items: center;
 justify-content: center;
 }
 .card + .card {
-  margin-top: 10px;
+  margin-top: 15px;
 }
