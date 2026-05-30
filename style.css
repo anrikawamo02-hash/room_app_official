@@ -185,3 +185,34 @@ justify-content: center;
   font-size: 10px;
   transform: translateX(-10px);
 }
+/* 14枚カード用：ヘッダー下の左右飾りアイコン */
+.category-top-floating-icons {
+  display: none;
+}
+
+/* category-list-14 があるページだけ表示 */
+.main-content:has(.category-list-14) .category-top-floating-icons {
+  display: block;
+  position: absolute;
+  top: 92px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.main-content:has(.category-list-14) .top-floating-icon {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.main-content:has(.category-list-14) .top-floating-left {
+  left: 82px;
+}
+
+.main-content:has(.category-list-14) .top-floating-right {
+  right: 82px;
+}
