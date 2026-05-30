@@ -204,8 +204,8 @@ justify-content: center;
 
 .main-content:has(.category-list-14:not([hidden])) .top-floating-icon {
   position: absolute;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
