@@ -191,7 +191,7 @@ justify-content: center;
 }
 
 /* category-list-14 があるページだけ表示 */
-.main-content:has(.category-list-14) .category-top-floating-icons {
+.main-content:has(.category-list-14:not([hidden])) .category-top-floating-icons {
   display: block;
   position: absolute;
   top: 92px;
@@ -202,17 +202,17 @@ justify-content: center;
   pointer-events: none;
 }
 
-.main-content:has(.category-list-14) .top-floating-icon {
+.main-content:has(.category-list-14:not([hidden])) .top-floating-icon {
   position: absolute;
   width: 34px;
   height: 34px;
   object-fit: contain;
 }
 
-.main-content:has(.category-list-14) .top-floating-left {
+.main-content:has(.category-list-14:not([hidden])) .top-floating-left {
   left: 82px;
 }
 
-.main-content:has(.category-list-14) .top-floating-right {
+.main-content:has(.category-list-14:not([hidden])) .top-floating-right {
   right: 82px;
 }
