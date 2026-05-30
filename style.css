@@ -173,7 +173,7 @@ justify-content: center;
 .category-icon-small {
   width: 38px;
   height: 38px;
-  margin-left: -6px;
+  margin-left: -8px;
   flex-shrink: 0;
 }
 
