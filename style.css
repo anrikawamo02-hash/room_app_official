@@ -183,4 +183,5 @@ justify-content: center;
 
 .category-card-small .room-en {
   font-size: 10px;
+  transform: translateX(-10px);
 }
