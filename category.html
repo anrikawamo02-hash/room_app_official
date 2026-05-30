@@ -250,5 +250,20 @@
 
 </main>
 
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const room = params.get("room");
+
+  const list7 = document.querySelector(".category-list-7");
+  const list14 = document.querySelector(".category-list-14");
+
+  if (room === "12") {
+    list7.hidden = true;
+    list14.hidden = false;
+  } else {
+    list7.hidden = false;
+    list14.hidden = true;
+  }
+</script>
 </body>
 </html>
