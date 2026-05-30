@@ -173,6 +173,8 @@ justify-content: center;
 .category-icon-small {
   width: 38px;
   height: 38px;
+  margin-left: -6px;
+  flex-shrink: 0;
 }
 
 .category-card-small .room-ja {
