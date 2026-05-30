@@ -214,5 +214,5 @@ justify-content: center;
 }
 
 .main-content:has(.category-list-14:not([hidden])) .top-floating-right {
-  right: 82px;
+  right: 98px;
 }
