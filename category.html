@@ -261,13 +261,48 @@
   const list7 = document.querySelector(".category-list-7");
   const list14 = document.querySelector(".category-list-14");
 
-  if (room === "12") {
+  const fourteenRooms = ["12", "56", "78", "910_54", "910_32"];
+
+  if (fourteenRooms.includes(room)) {
+
     list7.hidden = true;
+
     list14.hidden = false;
+
   } else {
+
     list7.hidden = false;
+
     list14.hidden = true;
+
   }
+
+  const roomPlateIcons = {
+
+    "12": ["images/room-plate-1.png", "images/room-plate-2.png"],
+
+    "56": ["images/room-plate-5.png", "images/room-plate-6.png"],
+
+    "78": ["images/room-plate-7.png", "images/room-plate-8.png"],
+
+    "910_54": ["images/room-plate-9.png", "images/room-plate-10.png"],
+
+    "910_32": ["images/room-plate-9.png", "images/room-plate-10.png"]
+
+  };
+
+  const icons = roomPlateIcons[room];
+
+  const leftIcon = document.querySelector(".top-floating-left");
+
+  const rightIcon = document.querySelector(".top-floating-right");
+
+  if (icons && leftIcon && rightIcon) {
+
+    leftIcon.src = icons[0];
+
+    rightIcon.src = icons[1];
+     }
 </script>
 </body>
 </html>
