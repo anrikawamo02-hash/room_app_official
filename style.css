@@ -216,3 +216,20 @@ justify-content: center;
 .main-content:has(.category-list-14:not([hidden])) .top-floating-right {
   right: 112px;
 }
+@keyframes roomPlateFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.main-content:has(.category-list-14:not([hidden])) .top-floating-icon {
+  animation: roomPlateFloat 3.2s ease-in-out infinite;
+}
