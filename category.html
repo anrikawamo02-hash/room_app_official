@@ -303,6 +303,51 @@
 
     rightIcon.src = icons[1];
      }
+    const categoryKeys = [
+  "main",
+  "kitchen",
+  "vanity",
+  "bath",
+  "toilet",
+  "closet",
+  "entrance"
+];
+
+document.querySelectorAll(".category-list-7 .room-card").forEach((card, index) => {
+  const cat = categoryKeys[index];
+
+  if (room && cat) {
+    card.href = `swipe.html?room=${room}&unit=${room}&cat=${cat}`;
+  }
+});
+
+const roomUnits = {
+  "12": ["1", "2"],
+  "56": ["5", "6"],
+  "78": ["7", "8"],
+  "910_54": ["9", "10"],
+  "910_32": ["9", "10"]
+};
+
+const units = roomUnits[room];
+
+if (units) {
+  document.querySelectorAll(".category-column-left .room-card").forEach((card, index) => {
+    const cat = categoryKeys[index];
+
+    if (cat) {
+      card.href = `swipe.html?room=${room}&unit=${units[0]}&cat=${cat}`;
+    }
+  });
+
+  document.querySelectorAll(".category-column-right .room-card").forEach((card, index) => {
+    const cat = categoryKeys[index];
+
+    if (cat) {
+      card.href = `swipe.html?room=${room}&unit=${units[1]}&cat=${cat}`;
+    }
+  });
+}
 </script>
 </body>
 </html>
