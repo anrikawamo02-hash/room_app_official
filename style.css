@@ -233,3 +233,55 @@ justify-content: center;
 .main-content:has(.category-list-14:not([hidden])) .top-floating-icon {
   animation: roomPlateFloat 3.2s ease-in-out infinite;
 }
+/* 3ページ目：写真スワイプ表示 */
+.swipe-view {
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  box-sizing: border-box;
+}
+
+.photo-counter {
+  font-size: 16px;
+  line-height: 1;
+  margin: 10px 0 6px 12px;
+  color: #333;
+}
+
+.scroller {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 0 10px 24px;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.slide-empty {
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+}
