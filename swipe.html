@@ -33,7 +33,48 @@
       写真準備中
     </div>
 
-  </main>
+    </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("cat");
+
+    const categoryTitles = {
+      main: {
+        ja: "メインルーム",
+        en: "Main room"
+      },
+      kitchen: {
+        ja: "キッチン",
+        en: "Kitchen"
+      },
+      vanity: {
+        ja: "洗面",
+        en: "Vanity"
+      },
+      bath: {
+        ja: "バスルーム",
+        en: "Bath"
+      },
+      toilet: {
+        ja: "トイレ",
+        en: "Toilet"
+      },
+      closet: {
+        ja: "クローゼット",
+        en: "Closet"
+      },
+      entrance: {
+        ja: "玄関",
+        en: "Entrance"
+      }
+    };
+
+    const title = categoryTitles[cat] || categoryTitles.main;
+
+    document.querySelector(".header-ja").textContent = title.ja;
+    document.querySelector(".header-en").textContent = title.en;
+  </script>
 
 </body>
 
