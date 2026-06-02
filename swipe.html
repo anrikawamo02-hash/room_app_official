@@ -13,7 +13,7 @@
 
   <header class="app-header">
 
-    <a href="javascript:history.back()" class="header-back" aria-label="カテゴリーへ戻る">‹</a>
+    <a href="category.html" class="header-back" aria-label="カテゴリーへ戻る">‹</a>
 
     <div class="header-text">
 
@@ -38,6 +38,12 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const cat = params.get("cat");
+    const room = params.get("room");
+const backButton = document.querySelector(".header-back");
+
+if (room && backButton) {
+  backButton.href = `category.html?room=${room}`;
+}
 
     const categoryTitles = {
       main: {
