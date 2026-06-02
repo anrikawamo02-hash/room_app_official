@@ -29,11 +29,21 @@
 
   <main class="main-content">
 
-    <div class="swipe-placeholder">
-      写真準備中
+  <div class="swipe-view">
+
+    <div id="counter" class="photo-counter">0/0</div>
+
+    <div class="scroller">
+
+      <div class="slide">
+        <div class="slide-empty">写真準備中</div>
+      </div>
+
     </div>
 
-    </main>
+  </div>
+
+</main>
 
   <script>
     const params = new URLSearchParams(window.location.search);
