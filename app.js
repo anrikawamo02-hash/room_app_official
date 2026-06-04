@@ -72,16 +72,23 @@
 
     const slide = document.createElement('div');
     slide.className = 'slide';
-
+    const frame = document.createElement('div');
+frame.className = 'photo-frame';
     const img = document.createElement('img');
     img.src = imgPath;
     img.alt = `${cat} ${unit} ${num}`;
 
     img.addEventListener('load', () => {
-      loadedCount += 1;
-      finishedCount += 1;
-      updateCounter();
-    });
+  if (img.naturalWidth > img.naturalHeight) {
+    frame.classList.add('photo-frame-landscape');
+  } else {
+    frame.classList.add('photo-frame-portrait');
+  }
+
+  loadedCount += 1;
+  finishedCount += 1;
+  updateCounter();
+});
 
     img.addEventListener('error', () => {
       finishedCount += 1;
@@ -95,8 +102,9 @@
       updateCounter();
     });
 
-    slide.appendChild(img);
-    scroller.appendChild(slide);
+    frame.appendChild(img);
+slide.appendChild(frame);
+scroller.appendChild(slide);
   }
 
   scroller.addEventListener(
