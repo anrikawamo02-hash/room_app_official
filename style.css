@@ -294,3 +294,42 @@ justify-content: center;
   font-size: 18px;
   color: #333;
 }
+/* 横写真・縦写真の表示分け */
+.photo-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 横写真：黒背景フレームで高さをそろえる */
+.photo-frame-landscape {
+  width: 96%;
+  height: calc(100vh - 195px);
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.photo-frame-landscape img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+/* 縦写真：今の見た目を維持 */
+.photo-frame-portrait {
+  width: 100%;
+}
+
+.photo-frame-portrait img {
+  max-width: 96%;
+  max-height: calc(100vh - 195px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+}
