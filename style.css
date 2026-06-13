@@ -304,8 +304,8 @@ justify-content: center;
 
 /* 横写真：黒背景フレームで高さをそろえる */
 .photo-frame-landscape {
-  width: 96%;
-  height: calc(100vh - 215px);
+  width: 88%;
+  height: calc(100vh - 195px);
   background: #000;
   border-radius: 16px;
   overflow: hidden;
