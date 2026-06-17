@@ -99,6 +99,19 @@ if (room && backButton) {
 
     document.querySelector(".header-ja").textContent = title.ja;
     document.querySelector(".header-en").textContent = title.en;
+    const inspectCard = document.querySelector(".inspect-card");
+const inspectContent = document.querySelector(".inspect-content");
+const inspectArrow = document.querySelector(".inspect-card-arrow");
+
+inspectCard.addEventListener("click", () => {
+  inspectContent.classList.toggle("is-open");
+
+  if (inspectContent.classList.contains("is-open")) {
+    inspectArrow.textContent = "▲";
+  } else {
+    inspectArrow.textContent = "▼";
+  }
+});
   </script>
 　<script src="app.js"></script>
 </body>
