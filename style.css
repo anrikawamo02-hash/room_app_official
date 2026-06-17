@@ -336,3 +336,6 @@ justify-content: center;
 .inspect-content {
   display: none;
 }
+.inspect-content.is-open {
+  display: block;
+}
