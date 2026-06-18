@@ -517,6 +517,128 @@ Has the washing machine lint been removed, is the washing machine tray free of h
 if (cat === "bath") {
   document.querySelector(".inspect-card-ja").textContent = "バスルームインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Bath Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+温度は42度にセットしてあるか
+</label><br>
+<span class="inspect-en">
+Is the water temperature set to 42°C?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャンプー、コンディショナー、ボディーソープは十分に入っているか
+</label><br>
+<span class="inspect-en">
+Are the shampoo, conditioner, and body soap sufficiently filled?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャンプー、コンディショナー、ボディーソープのノズルは正面を向いているか
+</label><br>
+<span class="inspect-en">
+Are the shampoo, conditioner, and body soap nozzles facing forward?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャワー・蛇口の金属部分に水垢は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the metal parts of the shower and faucet free of water stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャワーヘッドは裏側を向いているか
+</label><br>
+<span class="inspect-en">
+Is the shower head facing backward?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡に汚れや指紋は残っていないか
+</label><br>
+<span class="inspect-en">
+Is the mirror free of stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+排水溝・浴槽の栓のゴミは回収されているか、髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Has debris been removed from the drain and bathtub stopper, and is there no hair remaining?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+浴槽にざらつきはないか
+</label><br>
+<span class="inspect-en">
+Is the bathtub free of roughness or residue?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+壁・床・浴槽・ドアに水滴、水垢、髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the walls, floor, bathtub, and door free of water droplets, water stains, and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+お風呂のドアを閉めて、外側に指紋は付いていないか確認
+</label><br>
+<span class="inspect-en">
+After closing the bathroom door, is the outside free of fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+バスマットは設置されているか
+</label><br>
+<span class="inspect-en">
+Is the bath mat properly placed?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗面器と椅子は所定の位置・向きになっているか
+</label><br>
+<span class="inspect-en">
+Are the wash basin and stool in their designated positions and directions?
+</span><br>
+</p>
+  `;
 }
 
 if (cat === "toilet") {
