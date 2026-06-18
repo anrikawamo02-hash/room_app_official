@@ -281,6 +281,10 @@ if (room && backButton) {
     const inspectCard = document.querySelector(".inspect-card");
 const inspectContent = document.querySelector(".inspect-content");
 const inspectArrow = document.querySelector(".inspect-card-arrow");
+if (cat === "kitchen") {
+  document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
+}
 
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
