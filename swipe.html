@@ -286,10 +286,14 @@ inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
 
   if (inspectContent.classList.contains("is-open")) {
-    inspectArrow.textContent = "▲";
-  } else {
-    inspectArrow.textContent = "▼";
-  }
+  inspectArrow.textContent = "▲";
+} else {
+  inspectArrow.textContent = "▼";
+
+  document.querySelectorAll(".inspect-check").forEach(check => {
+    check.checked = false;
+  });
+}
 });
   </script>
 　<script src="app.js"></script>
