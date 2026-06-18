@@ -410,6 +410,108 @@ Is there no dust on top of the microwave and refrigerator?
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
   document.querySelector(".inspect-card-en").textContent = "Vanity Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ハンドソープは十分に入っているか、正面を向いているか、ボトルはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Is there enough hand soap, is the bottle facing forward, and has it been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡に指紋や汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the mirror free of fingerprints and stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡裏の収納スペースにゴミや汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the storage space behind the mirror clean and free of trash?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ドライヤーのコードはきれいにまとめられているか
+</label><br>
+<span class="inspect-en">
+Is the hair dryer cord neatly wrapped?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+蛇口の金属部分に水垢や汚れは残っていないか、裏側も確認
+</label><br>
+<span class="inspect-en">
+Are the metal parts of the faucet free of water stains and dirt? Check the back side as well.
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗面台と排水溝はきれいに清掃されているか、水滴や髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the sink and drain clean and free of water droplets and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+下の収納棚の中に汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the lower storage cabinet clean inside?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+扉のドアノブはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Has the door knob been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗濯洗剤は補充されているか
+</label><br>
+<span class="inspect-en">
+Has the laundry detergent been refilled?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗濯機のゴミは取られているか・洗濯バンに髪の毛や埃が落ちていないか・網にゴミが詰まっていないか
+</label><br>
+<span class="inspect-en">
+Has the washing machine lint been removed, is the washing machine tray free of hair and dust, and is the filter free of debris?
+</span><br>
+</p>
+  `;
 }
 
 if (cat === "bath") {
