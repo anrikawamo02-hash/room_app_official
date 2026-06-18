@@ -285,7 +285,30 @@ if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
 }
+if (cat === "vanity") {
+  document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Vanity Inspection";
+}
 
+if (cat === "bath") {
+  document.querySelector(".inspect-card-ja").textContent = "バスルームインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Bath Inspection";
+}
+
+if (cat === "toilet") {
+  document.querySelector(".inspect-card-ja").textContent = "トイレインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Toilet Inspection";
+}
+
+if (cat === "closet") {
+  document.querySelector(".inspect-card-ja").textContent = "クローゼットインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Closet Inspection";
+}
+
+if (cat === "entrance") {
+  document.querySelector(".inspect-card-ja").textContent = "玄関インスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Entrance Inspection";
+}
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
 
