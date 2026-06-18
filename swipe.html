@@ -644,6 +644,98 @@ Are the wash basin and stool in their designated positions and directions?
 if (cat === "toilet") {
   document.querySelector(".inspect-card-ja").textContent = "トイレインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Toilet Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+便器は蓋と便座を上げて確認し、汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Has the toilet been checked with both the lid and seat raised, and is it free of stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+水を流すハンドル部分・ペーパーホルダーの棚に汚れや手垢は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the flush handle and toilet paper holder shelf free of stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+扉のドアノブはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Has the door knob been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+サニタリーボックスにゴミは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the sanitary box empty and free of trash?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+トイレの床に汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the toilet floor clean and free of stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備のトイレットペーパーは2ロール設置されているか
+</label><br>
+<span class="inspect-en">
+Are two spare toilet paper rolls provided?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+タオルは設置されているか
+</label><br>
+<span class="inspect-en">
+Is a towel properly provided?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+トイレットペーパーは三角折りされているか
+</label><br>
+<span class="inspect-en">
+Has the toilet paper been folded into a triangle?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+便器の周辺や裏側にゴミや汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Are there any stains or debris around or behind the toilet?
+</span><br>
+</p>
+  `;
 }
 
 if (cat === "closet") {
