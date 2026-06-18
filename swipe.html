@@ -284,6 +284,128 @@ const inspectArrow = document.querySelector(".inspect-card-arrow");
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+カトラリーは揃っているか
+</label><br>
+<span class="inspect-en">
+Are all cutlery items present?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+グラス・カップに使用感は残っていないか、一つずつ内側・ふちまで確認
+</label><br>
+<span class="inspect-en">
+Are the glasses and cups free of any signs of use, including the inside and rims?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+お皿・お箸・カトラリーに使用感は残っていないか、一つずつ内側・ふちまで確認
+</label><br>
+<span class="inspect-en">
+Are the dishes, chopsticks, and cutlery free of any signs of use?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+調理器具に使用感は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the cooking utensils free of any signs of use?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+冷蔵庫・レンジの中に汚れや跡は付いていないか
+</label><br>
+<span class="inspect-en">
+Are the refrigerator and microwave clean inside and free of stains or marks?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ケトルに使用感は残っていないか、中に水滴はないか
+</label><br>
+<span class="inspect-en">
+Is the kettle clean and free of water droplets inside?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シンクと排水溝はきれいに清掃されているか、ネットは交換されているか
+</label><br>
+<span class="inspect-en">
+Are the sink and drain clean, and has the drain net been replaced?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+スポンジは新しい物に交換されているか
+</label><br>
+<span class="inspect-en">
+Has the kitchen sponge been replaced with a new one?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+食器用洗剤は十分に入っているか
+</label><br>
+<span class="inspect-en">
+Is there enough dishwashing detergent?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+収納棚に水垢や手垢が付いていないか
+</label><br>
+<span class="inspect-en">
+Are the cabinets free of water stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+水栓・シンクは拭き上げられているか
+</label><br>
+<span class="inspect-en">
+Have the faucet and sink been properly wiped dry?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+レンジと冷蔵庫の上に埃は溜まっていないか
+</label><br>
+<span class="inspect-en">
+Is there no dust on top of the microwave and refrigerator?
+</span><br>
+</p>
+  `;
 }
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
