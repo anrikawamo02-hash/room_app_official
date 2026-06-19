@@ -848,6 +848,78 @@ Are the closet walls and shelves free of dirt and dust?
 if (cat === "entrance") {
   document.querySelector(".inspect-card-ja").textContent = "玄関インスペ表";
   document.querySelector(".inspect-card-en").textContent = "Entrance Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+スリッパの向きはそろっているか
+</label><br>
+<span class="inspect-en">
+Are the slippers facing the same direction?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+靴箱の中は汚れていないか
+</label><br>
+<span class="inspect-en">
+Is the inside of the shoe cabinet clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ドアノブに指紋は付いていないか
+</label><br>
+<span class="inspect-en">
+Is the door knob free of fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+リフレッシャーは十分に入っているか
+</label><br>
+<span class="inspect-en">
+Is there enough refresher spray?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関上棚に汚れはないか
+</label><br>
+<span class="inspect-en">
+Is the upper entrance shelf clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関棚の開閉部分に汚れはないか
+</label><br>
+<span class="inspect-en">
+Is the opening area of the entrance cabinet clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関の床にゴミや髪の毛はないか
+</label><br>
+<span class="inspect-en">
+Is the entrance floor free of trash and hair?
+</span><br>
+</p>
+  `;
 }
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
