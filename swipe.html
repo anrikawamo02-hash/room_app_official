@@ -741,6 +741,108 @@ Are there any stains or debris around or behind the toilet?
 if (cat === "closet") {
   document.querySelector(".inspect-card-ja").textContent = "クローゼットインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Closet Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備の布団はきちんと整えて収納しているか
+</label><br>
+<span class="inspect-en">
+Are the spare futons neatly stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+枕には枕カバーが付いているか
+</label><br>
+<span class="inspect-en">
+Are pillowcases properly attached to the spare pillows?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備の枚数は合っているか
+</label><br>
+<span class="inspect-en">
+Are the quantities of spare bedding correct?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ハンガーはピンチとハンガーが混ざってないか（向きは同じか、左右にきちんと分かれて配置されているか）
+</label><br>
+<span class="inspect-en">
+Are hangers and clip hangers separated and arranged neatly in the correct direction?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロン台はきちんと掛かっているか
+</label><br>
+<span class="inspect-en">
+Is the ironing board properly stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備のシーツ・デュベは整えてきちんと置いてあるか
+</label><br>
+<span class="inspect-en">
+Are the spare sheets and duvet covers neatly folded and stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロンの中に水は残っていないか
+</label><br>
+<span class="inspect-en">
+Is there no water remaining inside the iron?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロンのコードはきちんとまとめられているか
+</label><br>
+<span class="inspect-en">
+Is the iron cord neatly wrapped?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+床や上の棚にゴミや髪の毛は落ちていないか
+</label><br>
+<span class="inspect-en">
+Are the floor and upper shelves free of trash and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+クローゼット内の壁や棚に汚れ・埃は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the closet walls and shelves free of dirt and dust?
+</span><br>
+</p>
+  `;
 }
 
 if (cat === "entrance") {
