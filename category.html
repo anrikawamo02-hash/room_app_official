@@ -254,9 +254,21 @@
 
 </main>
 
+<script src="language.js"></script>
+
 <script>
   const params = new URLSearchParams(window.location.search);
   const room = params.get("room");
+  const languageCodes = {
+  ja: "JP",
+  en: "EN",
+  es: "ES",
+  ko: "KO",
+  zh: "ZH"
+};
+
+const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
+const t = translations[languageCodes[savedLanguage]];
 
   const list7 = document.querySelector(".category-list-7");
   const list14 = document.querySelector(".category-list-14");
