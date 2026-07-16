@@ -400,3 +400,31 @@ justify-content: center;
     margin-top:2px;
 
 }
+.language-menu {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    min-width: 132px;
+    padding: 6px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+    z-index: 20;
+}
+
+.language-option {
+    display: block;
+    width: 100%;
+    padding: 9px 10px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 13px;
+    color: #333333;
+    white-space: nowrap;
+}
+
+.language-option + .language-option {
+    margin-top: 2px;
+}
