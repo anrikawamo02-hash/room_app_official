@@ -183,7 +183,37 @@
 
 </a>
   </main>
+<script>
+  const languageButton = document.querySelector(".language-button");
+  const languageMenu = document.querySelector(".language-menu");
+  const languageCode = document.querySelector(".language-code");
+  const languageOptions = document.querySelectorAll(".language-option");
 
+  languageButton.addEventListener("click", () => {
+    const isOpen = !languageMenu.hidden;
+
+    languageMenu.hidden = isOpen;
+    languageButton.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  languageOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const languageCodes = {
+        ja: "JP",
+        en: "EN",
+        es: "ES",
+        ko: "KO",
+        zh: "ZH"
+      };
+
+      const selectedLanguage = option.dataset.lang;
+
+      languageCode.textContent = languageCodes[selectedLanguage];
+      languageMenu.hidden = true;
+      languageButton.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
 </body>
 
 </html>
