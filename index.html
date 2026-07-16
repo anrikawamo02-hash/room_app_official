@@ -13,10 +13,41 @@
 
   <header class="app-header">
 　<div class="language-selector">
-    <button class="language-button">
-        <span class="language-icon">🌐</span>
-        <span class="language-code">JP</span>
+
+  <button
+    type="button"
+    class="language-button"
+    aria-label="言語を選択"
+    aria-expanded="false"
+  >
+    <span class="language-icon">🌐</span>
+    <span class="language-code">JP</span>
+  </button>
+
+  <div class="language-menu" hidden>
+
+    <button type="button" class="language-option" data-lang="ja">
+      JP 日本語
     </button>
+
+    <button type="button" class="language-option" data-lang="en">
+      EN English
+    </button>
+
+    <button type="button" class="language-option" data-lang="es">
+      ES Español
+    </button>
+
+    <button type="button" class="language-option" data-lang="ko">
+      KO 한국어
+    </button>
+
+    <button type="button" class="language-option" data-lang="zh">
+      ZH 中文
+    </button>
+
+  </div>
+
 </div>
   <div class="header-text">
 
