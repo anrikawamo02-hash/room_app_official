@@ -200,6 +200,7 @@
 
   const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
 　const t = translations[languageCodes[savedLanguage]];
+document.querySelector(".header-ja").textContent = t.roomSelect;
   languageCode.textContent = languageCodes[savedLanguage];
 
   languageButton.addEventListener("click", () => {
