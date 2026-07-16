@@ -83,7 +83,7 @@
 
   <div class="room-text">
 
-    <div class="room-ja">3号室</div>
+    <div class="room-ja" id="room3-ja">3号室</div>
 
     <div class="room-en">Room 3</div>
 
@@ -200,9 +200,10 @@
 
   const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
 　const t = translations[languageCodes[savedLanguage]];
-document.querySelector(".header-ja").textContent = t.roomSelect;
-document.getElementById("room12-ja").textContent = t.room12;
-document.querySelector(".header-ja").classList.toggle("header-ja-es", savedLanguage === "es");
+　document.querySelector(".header-ja").textContent = t.roomSelect;
+　document.getElementById("room12-ja").textContent = t.room12;
+　document.getElementById("room3-ja").textContent = t.room3;
+　document.querySelector(".header-ja").classList.toggle("header-ja-es", savedLanguage === "es");
   languageCode.textContent = languageCodes[savedLanguage];
 
   languageButton.addEventListener("click", () => {
@@ -222,7 +223,8 @@ document.querySelector(".header-ja").classList.toggle("header-ja-es", savedLangu
 
 　　　　const t = translations[languageCodes[selectedLanguage]];
 　　　　document.querySelector(".header-ja").textContent = t.roomSelect;
-document.getElementById("room12-ja").textContent = t.room12;
+　　　　document.getElementById("room12-ja").textContent = t.room12;
+　　　　document.getElementById("room3-ja").textContent = t.room3;
 　　　　document.querySelector(".header-ja").classList.toggle("header-ja-es", selectedLanguage === "es");
       languageMenu.hidden = true;
       languageButton.setAttribute("aria-expanded", "false");
