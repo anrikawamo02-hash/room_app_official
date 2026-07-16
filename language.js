@@ -22,7 +22,15 @@ const translations = {
   room11: "Room 11"
   },
   ES: {
-    roomSelect: "SELECCIONAR HABITACIÓN"
+    roomSelect: "SELECCIONAR HABITACIÓN",
+    room12: "Habitaciones 1-2",
+    room3: "Habitación 3",
+    room4: "Habitación 4",
+    room56: "Habitaciones 5-6",
+    room78: "Habitaciones 7-8",
+    room910_54: "Habitaciones 9-10",
+    room910_32: "Habitaciones 9-10",
+    room11: "Habitación 11"
   },
   KO: {
     roomSelect: "객실 선택"
