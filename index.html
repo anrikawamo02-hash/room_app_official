@@ -183,6 +183,7 @@
 
 </a>
   </main>
+  <script src="language.js"></script>
 <script>
   const languageButton = document.querySelector(".language-button");
   const languageMenu = document.querySelector(".language-menu");
@@ -198,7 +199,7 @@
   };
 
   const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
-
+　const t = translations[languageCodes[savedLanguage]];
   languageCode.textContent = languageCodes[savedLanguage];
 
   languageButton.addEventListener("click", () => {
