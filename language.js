@@ -11,7 +11,15 @@ const translations = {
     room11: "11号室"
   },
   EN: {
-    roomSelect: "ROOM SELECT"
+  roomSelect: "ROOM SELECT",
+  room12: "Rooms 1-2",
+  room3: "Room 3",
+  room4: "Room 4",
+  room56: "Rooms 5-6",
+  room78: "Rooms 7-8",
+  room910_54: "Rooms 9-10",
+  room910_32: "Rooms 9-10",
+  room11: "Room 11"
   },
   ES: {
     roomSelect: "SELECCIONAR HABITACIÓN"
