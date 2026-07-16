@@ -44,6 +44,14 @@ const translations = {
     room11: "11호실"
   },
   ZH: {
-    roomSelect: "选择房间"
+    roomSelect: "选择房间",
+    room12: "1・2号房",
+    room3: "3号房",
+    room4: "4号房",
+    room56: "5・6号房",
+    room78: "7・8号房",
+    room910_54: "9・10号房",
+    room910_32: "9・10号房",
+    room11: "11号房"
   }
 };
