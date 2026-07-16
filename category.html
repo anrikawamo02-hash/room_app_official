@@ -269,7 +269,7 @@
 
 const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
 const t = translations[languageCodes[savedLanguage]];
-
+document.getElementById("mainRoom-ja").textContent = t.mainRoom;
   const list7 = document.querySelector(".category-list-7");
   const list14 = document.querySelector(".category-list-14");
 
