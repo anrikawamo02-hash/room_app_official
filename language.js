@@ -1,5 +1,7 @@
 const translations = {
-  JP: {},
+  JP: {
+    roomSelect: "号室選択"
+  },
   EN: {},
   ES: {},
   KO: {},
