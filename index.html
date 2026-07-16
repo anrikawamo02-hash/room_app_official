@@ -220,6 +220,7 @@ document.querySelector(".header-ja").textContent = t.roomSelect;
 
 　　　　const t = translations[languageCodes[selectedLanguage]];
 　　　　document.querySelector(".header-ja").textContent = t.roomSelect;
+　　　　document.querySelector(".header-ja").classList.toggle("header-ja-es", selectedLanguage === "es");
       languageMenu.hidden = true;
       languageButton.setAttribute("aria-expanded", "false");
     });
