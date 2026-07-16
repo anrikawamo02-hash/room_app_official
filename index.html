@@ -218,6 +218,8 @@ document.querySelector(".header-ja").textContent = t.roomSelect;
 
       localStorage.setItem("selectedLanguage", selectedLanguage);
 
+　　　　const t = translations[languageCodes[selectedLanguage]];
+　　　　document.querySelector(".header-ja").textContent = t.roomSelect;
       languageMenu.hidden = true;
       languageButton.setAttribute("aria-expanded", "false");
     });
