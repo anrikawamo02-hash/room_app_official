@@ -143,7 +143,7 @@
 
   <div class="room-text">
 
-    <div class="room-ja">9・10号室</div>
+    <div class="room-ja" id="room910_54-ja">9・10号室</div>
 
     <div class="room-en">Rooms 9-10</div>
 
@@ -158,7 +158,7 @@
 
   <div class="room-text">
 
-    <div class="room-ja" id="room910_54-ja">9・10号室</div>
+    <div class="room-ja" id="room910_32-ja">9・10号室</div>
 
     <div class="room-en">Rooms 9-10</div>
 
@@ -207,6 +207,7 @@
 　document.getElementById("room56-ja").textContent = t.room56;
 　document.getElementById("room78-ja").textContent = t.room78;
 　document.getElementById("room910_54-ja").textContent = t.room910_54;
+　document.getElementById("room910_32-ja").textContent = t.room910_32;
 　document.querySelector(".header-ja").classList.toggle("header-ja-es", savedLanguage === "es");
   languageCode.textContent = languageCodes[savedLanguage];
 
@@ -233,6 +234,7 @@
 　　　　document.getElementById("room56-ja").textContent = t.room56;
 　　　　document.getElementById("room78-ja").textContent = t.room78;
 　　　　document.getElementById("room910_54-ja").textContent = t.room910_54;
+　　　　document.getElementById("room910_32-ja").textContent = t.room910_32;
 　　　　document.querySelector(".header-ja").classList.toggle("header-ja-es", selectedLanguage === "es");
       languageMenu.hidden = true;
       languageButton.setAttribute("aria-expanded", "false");
