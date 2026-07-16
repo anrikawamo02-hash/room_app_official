@@ -33,7 +33,15 @@ const translations = {
     room11: "Habitación 11"
   },
   KO: {
-    roomSelect: "객실 선택"
+    roomSelect: "객실 선택",
+    room12: "1·2호실",
+    room3: "3호실",
+    room4: "4호실",
+    room56: "5·6호실",
+    room78: "7·8호실",
+    room910_54: "9·10호실",
+    room910_32: "9·10호실",
+    room11: "11호실"
   },
   ZH: {
     roomSelect: "选择房间"
