@@ -54,7 +54,7 @@
 
   <div class="room-text">
 
-    <div class="room-ja" id="kitchen-ja">キッチン</div>
+    <div class="room-ja" data-i18n="kitchen">キッチン</div>
 
     <div class="room-en">Kitchen</div>
 
@@ -269,7 +269,7 @@
 
 const savedLanguage = localStorage.getItem("selectedLanguage") || "ja";
 const t = translations[languageCodes[savedLanguage]];
-document.getElementById("kitchen-ja").textContent = t.kitchen;
+// document.getElementById("kitchen-ja").textContent = t.kitchen;
 document.getElementById("vanity-ja").textContent = t.vanity;
 document.getElementById("bath-ja").textContent = t.bath;
 document.getElementById("toilet-ja").textContent = t.toilet;
