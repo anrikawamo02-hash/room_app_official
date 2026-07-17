@@ -80,6 +80,13 @@ const translations = {
     room78: "7・8号房",
     room910_54: "9・10号房",
     room910_32: "9・10号房",
-    room11: "11号房"
+    room11: "11号房",
+    mainRoom: "主卧室",
+    kitchen: "厨房",
+    vanity: "洗面区",
+    bath: "浴室",
+    toilet: "卫生间",
+    closet: "衣柜",
+    entrance: "玄关"
   }
 };
