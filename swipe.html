@@ -307,6 +307,21 @@ document.querySelector(".header-en").textContent = title.en;
 const inspectCard = document.querySelector(".inspect-card");
 const inspectContent = document.querySelector(".inspect-content");
 const inspectArrow = document.querySelector(".inspect-card-arrow");
+if (cat === "main") {
+  const mainInspectTitles = {
+    ja: "メインルームインスペ表",
+    en: "Main Room Inspection",
+    es: "Inspección de la habitación principal",
+    ko: "메인룸 점검표",
+    zh: "主卧室检查表"
+  };
+
+  document.querySelector(".inspect-card-ja").textContent =
+    mainInspectTitles[lang] || mainInspectTitles.ja;
+
+  document.querySelector(".inspect-card-en").textContent =
+    mainInspectTitles.en;
+}
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
   document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
