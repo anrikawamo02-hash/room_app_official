@@ -107,31 +107,22 @@
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-椅子の脚に髪の毛は絡まっていないか
+<span class="inspect-text" data-inspect-key="chairLegs"></span>
 </label><br>
-  <span class="inspect-en">
-Are there any hairs tangled around the chair legs?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ベッドはきれいに整えられているか。シミ、髪の毛、ゴミなどが付着していないか
+<span class="inspect-text" data-inspect-key="bedMade"></span>
 </label><br>
-  <span class="inspect-en">
-Is the bed neatly made and free of stains, hair, and debris?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ベッドの両側隙間とベッドフレームの下に忘れ物はないか、清掃は行き届いてるか
+<span class="inspect-text" data-inspect-key="bedArea"></span>
 </label><br>
-  <span class="inspect-en">
-Are there any forgotten items beside or under the bed, and has the area been properly cleaned?
-</span><br>
 </p>
 
 <p>
@@ -353,10 +344,31 @@ deskTable: {
   es: "¿Están limpios el escritorio y la mesa?",
   ko: "책상과 테이블은 깨끗한가?",
   zh: "书桌和桌子是否干净？"
+},
+chairLegs: {
+  ja: "椅子の脚に髪の毛は絡まっていないか",
+  en: "Are there any hairs tangled around the chair legs?",
+  es: "¿Hay cabellos enredados alrededor de las patas de la silla?",
+  ko: "의자 다리에 머리카락이 엉켜 있지 않은가?",
+  zh: "椅子腿上是否缠有头发？"
+},
+bedMade: {
+  ja: "ベッドはきれいに整えられているか。シミ、髪の毛、ゴミなどが付着していないか",
+  en: "Is the bed neatly made and free of stains, hair, and debris?",
+  es: "¿Está la cama bien hecha y libre de manchas, cabellos y residuos?",
+  ko: "침대가 깔끔하게 정돈되어 있고 얼룩, 머리카락, 쓰레기가 없는가?",
+  zh: "床铺是否整齐，并且没有污渍、头发和垃圾？"
+},
+bedArea: {
+  ja: "ベッドの両側隙間とベッドフレームの下に忘れ物はないか、清掃は行き届いてるか",
+  en: "Are there any forgotten items beside or under the bed, and has the area been properly cleaned?",
+  es: "¿No hay objetos olvidados a ambos lados ni debajo de la cama, y está bien limpia la zona?",
+  ko: "침대 양쪽 틈과 침대 프레임 아래에 분실물이 없고, 청소가 잘 되어 있는가?",
+  zh: "床两侧缝隙和床架下是否没有遗留物，并且清洁到位？"
 }
   };
 
-  const airConditionerText = document.querySelector(
+const airConditionerText = document.querySelector(
     '[data-inspect-key="airConditioner"]'
   );
 
@@ -364,7 +376,7 @@ deskTable: {
     mainInspectTexts.airConditioner[lang] ||
     mainInspectTexts.airConditioner.ja;
     
-    const windowsClosedText = document.querySelector(
+const windowsClosedText = document.querySelector(
   '[data-inspect-key="windowsClosed"]'
 );
 
@@ -372,7 +384,7 @@ windowsClosedText.textContent =
   mainInspectTexts.windowsClosed[lang] ||
   mainInspectTexts.windowsClosed.ja;
   
-  const curtainsPositionText = document.querySelector(
+const curtainsPositionText = document.querySelector(
   '[data-inspect-key="curtainsPosition"]'
 );
 
@@ -396,7 +408,7 @@ tissuesText.textContent =
   mainInspectTexts.tissues[lang] ||
   mainInspectTexts.tissues.ja;
   
-  const tvRemoteText = document.querySelector(
+const tvRemoteText = document.querySelector(
   '[data-inspect-key="tvRemote"]'
 );
 
@@ -419,6 +431,30 @@ const deskTableText = document.querySelector(
 deskTableText.textContent =
   mainInspectTexts.deskTable[lang] ||
   mainInspectTexts.deskTable.ja;
+  
+const chairLegsText = document.querySelector(
+  '[data-inspect-key="chairLegs"]'
+);
+
+chairLegsText.textContent =
+  mainInspectTexts.chairLegs[lang] ||
+  mainInspectTexts.chairLegs.ja;
+
+const bedMadeText = document.querySelector(
+  '[data-inspect-key="bedMade"]'
+);
+
+bedMadeText.textContent =
+  mainInspectTexts.bedMade[lang] ||
+  mainInspectTexts.bedMade.ja;
+
+const bedAreaText = document.querySelector(
+  '[data-inspect-key="bedArea"]'
+);
+
+bedAreaText.textContent =
+  mainInspectTexts.bedArea[lang] ||
+  mainInspectTexts.bedArea.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
