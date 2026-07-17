@@ -327,6 +327,13 @@ if (cat === "main") {
       es: "¿El aire acondicionado o la calefacción están apagados?",
       ko: "냉난방은 꺼져 있는가?",
       zh: "空调或暖气是否已关闭？"
+    },
+        windowsClosed: {
+      ja: "窓は開きっぱなしになっていないか",
+      en: "Are all windows closed?",
+      es: "¿Están cerradas todas las ventanas?",
+      ko: "모든 창문이 닫혀 있는가?",
+      zh: "所有窗户是否都已关闭？"
     }
   };
 
@@ -337,6 +344,14 @@ if (cat === "main") {
   airConditionerText.textContent =
     mainInspectTexts.airConditioner[lang] ||
     mainInspectTexts.airConditioner.ja;
+    
+    const windowsClosedText = document.querySelector(
+  '[data-inspect-key="windowsClosed"]'
+);
+
+windowsClosedText.textContent =
+  mainInspectTexts.windowsClosed[lang] ||
+  mainInspectTexts.windowsClosed.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
