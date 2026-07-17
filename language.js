@@ -12,7 +12,7 @@ const translations = {
    mainRoom: "メインルーム",
 　　kitchen: "キッチン",
 　　vanity: "洗面",
-　　bath: "バス",
+　　bath: "バスルーム",
 　　toilet: "トイレ",
 　　closet: "クローゼット",
 　　entrance: "玄関",
