@@ -62,34 +62,25 @@
 </label><br>
 </p>
   
-  <p>
+<p>
 <label>
 <input type="checkbox" class="inspect-check">
-カーテンは開いて、レースカーテンは閉まっているか
+<span class="inspect-text" data-inspect-key="curtainsPosition"></span>
 </label><br>
-    <span class="inspect-en">
-  Are the curtains open and the lace curtains closed?
-  </span><br>
-  </p>
+</p>
   
-  <p>
-  <label>
-<input type="checkbox" class="inspect-check">
-ゴミ箱は汚れていないか、袋は交換されてるか
-</label><br>
-    <span class="inspect-en">
-Is the trash bin clean and the liner replaced?
-  </span><br>
-  </p>
-  
-  <p>
+<p>
 <label>
 <input type="checkbox" class="inspect-check">
-ティッシュペーパーは十分に入っているか
+<span class="inspect-text" data-inspect-key="trashBin"></span>
 </label><br>
-  <span class="inspect-en">
-Are there enough tissues provided?
-</span><br>
+</p>
+  
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+<span class="inspect-text" data-inspect-key="tissues"></span>
+</label><br>
 </p>
 
 <p>
@@ -329,7 +320,28 @@ if (cat === "main") {
       es: "¿Están cerradas todas las ventanas?",
       ko: "모든 창문이 닫혀 있는가?",
       zh: "所有窗户是否都已关闭？"
-    }
+    },
+    curtainsPosition: {
+  ja: "カーテンは開いて、レースカーテンは閉まっているか",
+  en: "Are the curtains open and the lace curtains closed?",
+  es: "¿Están abiertas las cortinas y cerradas las cortinas de encaje?",
+  ko: "커튼은 열려 있고 레이스 커튼은 닫혀 있는가?",
+  zh: "窗帘是否已打开，纱帘是否已关闭？"
+},
+trashBin: {
+  ja: "ゴミ箱は汚れていないか、袋は交換されてるか",
+  en: "Is the trash bin clean and the liner replaced?",
+  es: "¿Está limpio el cubo de basura y se ha cambiado la bolsa?",
+  ko: "쓰레기통은 깨끗하고 봉투는 교체되어 있는가?",
+  zh: "垃圾桶是否干净，垃圾袋是否已更换？"
+},
+tissues: {
+  ja: "ティッシュペーパーは十分に入っているか",
+  en: "Are there enough tissues provided?",
+  es: "¿Hay suficientes pañuelos de papel?",
+  ko: "티슈가 충분히 채워져 있는가?",
+  zh: "纸巾是否充足？"
+}
   };
 
   const airConditionerText = document.querySelector(
@@ -347,6 +359,30 @@ if (cat === "main") {
 windowsClosedText.textContent =
   mainInspectTexts.windowsClosed[lang] ||
   mainInspectTexts.windowsClosed.ja;
+  
+  const curtainsPositionText = document.querySelector(
+  '[data-inspect-key="curtainsPosition"]'
+);
+
+curtainsPositionText.textContent =
+  mainInspectTexts.curtainsPosition[lang] ||
+  mainInspectTexts.curtainsPosition.ja;
+
+const trashBinText = document.querySelector(
+  '[data-inspect-key="trashBin"]'
+);
+
+trashBinText.textContent =
+  mainInspectTexts.trashBin[lang] ||
+  mainInspectTexts.trashBin.ja;
+
+const tissuesText = document.querySelector(
+  '[data-inspect-key="tissues"]'
+);
+
+tissuesText.textContent =
+  mainInspectTexts.tissues[lang] ||
+  mainInspectTexts.tissues.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
