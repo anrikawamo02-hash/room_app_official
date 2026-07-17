@@ -323,6 +323,23 @@ if (cat === "main") {
 
   document.querySelector(".inspect-card-en").textContent =
     mainInspectTitles.en;
+      const mainInspectTexts = {
+    airConditioner: {
+      ja: "冷暖房は付けっぱなしになっていないか",
+      en: "Is the air conditioner/heater turned off?",
+      es: "¿El aire acondicionado o la calefacción están apagados?",
+      ko: "냉난방은 꺼져 있는가?",
+      zh: "空调或暖气是否已关闭？"
+    }
+  };
+
+  const airConditionerText = document.querySelector(
+    '[data-inspect-key="airConditioner"]'
+  );
+
+  airConditionerText.textContent =
+    mainInspectTexts.airConditioner[lang] ||
+    mainInspectTexts.airConditioner.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
