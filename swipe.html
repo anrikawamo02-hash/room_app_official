@@ -149,31 +149,22 @@
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-床やソファーに髪の毛やゴミは付着していないか
+<span class="inspect-text" data-inspect-key="floorSofa"></span>
 </label><br>
-  <span class="inspect-en">
-Are the floor and sofa free of hair and debris?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-バスタオル、フェイスタオルは人数分セットされているか
+<span class="inspect-text" data-inspect-key="towels"></span>
 </label><br>
-  <span class="inspect-en">
-Are bath towels and face towels prepared for all guests?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-卓上ランプにホコリはついていないか
+<span class="inspect-text" data-inspect-key="deskLamp"></span>
 </label><br>
-  <span class="inspect-en">
-Is the desk lamp free of dust?
-</span><br>
 </p>
 
 <p>
@@ -377,6 +368,27 @@ fullLengthMirror: {
   es: "¿Se ha limpiado el espejo de cuerpo entero?",
   ko: "전신거울이 깨끗하게 닦여 있는가?",
   zh: "全身镜是否已擦拭干净？"
+},
+floorSofa: {
+  ja: "床やソファーに髪の毛やゴミは付着していないか",
+  en: "Are the floor and sofa free of hair and debris?",
+  es: "¿Están el suelo y el sofá libres de cabellos y residuos?",
+  ko: "바닥과 소파에 머리카락이나 쓰레기가 붙어 있지 않은가?",
+  zh: "地板和沙发上是否没有头发和垃圾？"
+},
+towels: {
+  ja: "バスタオル、フェイスタオルは人数分セットされているか",
+  en: "Are bath towels and face towels prepared for all guests?",
+  es: "¿Se han preparado toallas de baño y toallas faciales para todos los huéspedes?",
+  ko: "숙박 인원수에 맞게 목욕 수건과 세수 수건이 준비되어 있는가?",
+  zh: "浴巾和面巾是否已按入住人数备齐？"
+},
+deskLamp: {
+  ja: "卓上ランプにホコリはついていないか",
+  en: "Is the desk lamp free of dust?",
+  es: "¿Está la lámpara de mesa libre de polvo?",
+  ko: "탁상 램프에 먼지가 없는가?",
+  zh: "台灯上是否没有灰尘？"
 }
   };
 
@@ -491,6 +503,30 @@ const fullLengthMirrorText = document.querySelector(
 fullLengthMirrorText.textContent =
   mainInspectTexts.fullLengthMirror[lang] ||
   mainInspectTexts.fullLengthMirror.ja;
+  
+  const floorSofaText = document.querySelector(
+  '[data-inspect-key="floorSofa"]'
+);
+
+floorSofaText.textContent =
+  mainInspectTexts.floorSofa[lang] ||
+  mainInspectTexts.floorSofa.ja;
+
+const towelsText = document.querySelector(
+  '[data-inspect-key="towels"]'
+);
+
+towelsText.textContent =
+  mainInspectTexts.towels[lang] ||
+  mainInspectTexts.towels.ja;
+
+const deskLampText = document.querySelector(
+  '[data-inspect-key="deskLamp"]'
+);
+
+deskLampText.textContent =
+  mainInspectTexts.deskLamp[lang] ||
+  mainInspectTexts.deskLamp.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
