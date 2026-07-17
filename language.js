@@ -26,7 +26,14 @@ const translations = {
   room78: "Rooms 7-8",
   room910_54: "Rooms 9-10",
   room910_32: "Rooms 9-10",
-  room11: "Room 11"
+  room11: "Room 11",
+  mainRoom: "Main room",
+  kitchen: "Kitchen",
+  vanity: "Vanity",
+  bath: "Bath",
+  toilet: "Toilet",
+  closet: "Closet",
+  entrance: "Entrance"
   },
   ES: {
     roomSelect: "SELECCIONAR HABITACIÓN",
