@@ -244,10 +244,13 @@ if (room && backButton) {
 }
 
     const categoryTitles = {
-      main: {
-        ja: "メインルーム",
-        en: "Main room"
-      },
+  main: {
+    ja: "メインルーム",
+    en: "Main room",
+    es: "Habitación principal",
+    ko: "메인룸",
+    zh: "主卧室"
+  },
       kitchen: {
         ja: "キッチン",
         en: "Kitchen"
@@ -276,8 +279,14 @@ if (room && backButton) {
 
     const title = categoryTitles[cat] || categoryTitles.main;
 
-    document.querySelector(".header-ja").textContent = title.ja;
-    document.querySelector(".header-en").textContent = title.en;
+    const title = categoryTitles[cat] || categoryTitles.main;
+
+const lang = localStorage.getItem("language") || "ja";
+
+document.querySelector(".header-ja").textContent =
+  title[lang] || title.ja;
+
+document.querySelector(".header-en").textContent = title.en;
     const inspectCard = document.querySelector(".inspect-card");
 const inspectContent = document.querySelector(".inspect-content");
 const inspectArrow = document.querySelector(".inspect-card-arrow");
