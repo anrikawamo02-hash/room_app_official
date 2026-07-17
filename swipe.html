@@ -170,11 +170,8 @@
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-机の引き出しにゴミは入っていないか
+<span class="inspect-text" data-inspect-key="deskDrawers"></span>
 </label><br>
-  <span class="inspect-en">
-Is there any trash inside the desk drawers?
-</span><br>
 </p>
 
 </div>
@@ -389,6 +386,13 @@ deskLamp: {
   es: "¿Está la lámpara de mesa libre de polvo?",
   ko: "탁상 램프에 먼지가 없는가?",
   zh: "台灯上是否没有灰尘？"
+},
+deskDrawers: {
+  ja: "机の引き出しにゴミは入っていないか",
+  en: "Is there any trash inside the desk drawers?",
+  es: "¿Hay basura dentro de los cajones del escritorio?",
+  ko: "책상 서랍 안에 쓰레기가 없는가?",
+  zh: "书桌抽屉里是否没有垃圾？"
 }
   };
 
@@ -527,6 +531,14 @@ const deskLampText = document.querySelector(
 deskLampText.textContent =
   mainInspectTexts.deskLamp[lang] ||
   mainInspectTexts.deskLamp.ja;
+  
+  const deskDrawersText = document.querySelector(
+  '[data-inspect-key="deskDrawers"]'
+);
+
+deskDrawersText.textContent =
+  mainInspectTexts.deskDrawers[lang] ||
+  mainInspectTexts.deskDrawers.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
