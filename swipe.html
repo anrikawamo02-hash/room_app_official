@@ -128,31 +128,22 @@
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ゴミ袋交換しているか
+<span class="inspect-text" data-inspect-key="trashBag"></span>
 </label><br>
-  <span class="inspect-en">
-Has the trash bag been replaced?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ベランダにゴミは落ちていないか
+<span class="inspect-text" data-inspect-key="balconyTrash"></span>
 </label><br>
-  <span class="inspect-en">
-Is the balcony free of trash?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-全身鏡は拭かれているか
+<span class="inspect-text" data-inspect-key="fullLengthMirror"></span>
 </label><br>
-  <span class="inspect-en">
-Has the full-length mirror been cleaned?
-</span><br>
 </p>
 
 <p>
@@ -365,6 +356,27 @@ bedArea: {
   es: "¿No hay objetos olvidados a ambos lados ni debajo de la cama, y está bien limpia la zona?",
   ko: "침대 양쪽 틈과 침대 프레임 아래에 분실물이 없고, 청소가 잘 되어 있는가?",
   zh: "床两侧缝隙和床架下是否没有遗留物，并且清洁到位？"
+},
+trashBag: {
+  ja: "ゴミ袋交換しているか",
+  en: "Has the trash bag been replaced?",
+  es: "¿Se ha cambiado la bolsa de basura?",
+  ko: "쓰레기봉투가 교체되어 있는가?",
+  zh: "垃圾袋是否已更换？"
+},
+balconyTrash: {
+  ja: "ベランダにゴミは落ちていないか",
+  en: "Is the balcony free of trash?",
+  es: "¿Está el balcón libre de basura?",
+  ko: "베란다에 쓰레기가 없는가?",
+  zh: "阳台上是否没有垃圾？"
+},
+fullLengthMirror: {
+  ja: "全身鏡は拭かれているか",
+  en: "Has the full-length mirror been cleaned?",
+  es: "¿Se ha limpiado el espejo de cuerpo entero?",
+  ko: "전신거울이 깨끗하게 닦여 있는가?",
+  zh: "全身镜是否已擦拭干净？"
 }
   };
 
@@ -455,6 +467,30 @@ const bedAreaText = document.querySelector(
 bedAreaText.textContent =
   mainInspectTexts.bedArea[lang] ||
   mainInspectTexts.bedArea.ja;
+  
+  const trashBagText = document.querySelector(
+  '[data-inspect-key="trashBag"]'
+);
+
+trashBagText.textContent =
+  mainInspectTexts.trashBag[lang] ||
+  mainInspectTexts.trashBag.ja;
+
+const balconyTrashText = document.querySelector(
+  '[data-inspect-key="balconyTrash"]'
+);
+
+balconyTrashText.textContent =
+  mainInspectTexts.balconyTrash[lang] ||
+  mainInspectTexts.balconyTrash.ja;
+
+const fullLengthMirrorText = document.querySelector(
+  '[data-inspect-key="fullLengthMirror"]'
+);
+
+fullLengthMirrorText.textContent =
+  mainInspectTexts.fullLengthMirror[lang] ||
+  mainInspectTexts.fullLengthMirror.ja;
 }
 if (cat === "kitchen") {
   document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
