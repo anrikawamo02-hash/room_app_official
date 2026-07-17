@@ -62,7 +62,14 @@ const translations = {
     room78: "7·8호실",
     room910_54: "9·10호실",
     room910_32: "9·10호실",
-    room11: "11호실"
+    room11: "11호실",
+    mainRoom: "메인룸",
+    kitchen: "주방",
+    vanity: "세면대",
+    bath: "욕실",
+    toilet: "화장실",
+    closet: "옷장",
+    entrance: "현관"
   },
   ZH: {
     roomSelect: "选择房间",
