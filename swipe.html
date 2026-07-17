@@ -279,15 +279,14 @@ if (room && backButton) {
 
     const title = categoryTitles[cat] || categoryTitles.main;
 
-    const title = categoryTitles[cat] || categoryTitles.main;
-
-const lang = localStorage.getItem("language") || "ja";
+const lang = localStorage.getItem("selectedLanguage") || "ja";
 
 document.querySelector(".header-ja").textContent =
   title[lang] || title.ja;
 
 document.querySelector(".header-en").textContent = title.en;
-    const inspectCard = document.querySelector(".inspect-card");
+
+const inspectCard = document.querySelector(".inspect-card");
 const inspectContent = document.querySelector(".inspect-content");
 const inspectArrow = document.querySelector(".inspect-card-arrow");
 if (cat === "kitchen") {
