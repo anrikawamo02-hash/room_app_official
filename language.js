@@ -44,7 +44,14 @@ const translations = {
     room78: "Habitaciones 7-8",
     room910_54: "Habitaciones 9-10",
     room910_32: "Habitaciones 9-10",
-    room11: "Habitación 11"
+    room11: "Habitación 11",
+    mainRoom: "Habitación principal",
+    kitchen: "Cocina",
+    vanity: "Tocador",
+    bath: "Baño",
+    toilet: "Inodoro",
+    closet: "Armario",
+    entrance: "Entrada"
   },
   KO: {
     roomSelect: "객실 선택",
