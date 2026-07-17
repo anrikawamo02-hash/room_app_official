@@ -9,6 +9,9 @@ const translations = {
    room910_54: "9・10号室",
    room910_32: "9・10号室",
    room11: "11号室",
+  
+　　category: "カテゴリー",
+  
    mainRoom: "メインルーム",
 　　kitchen: "キッチン",
 　　vanity: "洗面",
@@ -27,6 +30,9 @@ const translations = {
   room910_54: "Rooms 9-10",
   room910_32: "Rooms 9-10",
   room11: "Room 11",
+  
+  category: "Categories",
+  
   mainRoom: "Main room",
   kitchen: "Kitchen",
   vanity: "Vanity",
@@ -45,6 +51,9 @@ const translations = {
     room910_54: "Habitaciones 9-10",
     room910_32: "Habitaciones 9-10",
     room11: "Habitación 11",
+    
+    category: "Categorías",
+    
     mainRoom: "Habitación principal",
     kitchen: "Cocina",
     vanity: "Tocador",
@@ -63,6 +72,9 @@ const translations = {
     room910_54: "9·10호실",
     room910_32: "9·10호실",
     room11: "11호실",
+    
+    category: "카테고리",
+    
     mainRoom: "메인룸",
     kitchen: "주방",
     vanity: "세면대",
@@ -81,6 +93,9 @@ const translations = {
     room910_54: "9・10号房",
     room910_32: "9・10号房",
     room11: "11号房",
+    
+    category: "分类",
+    
     mainRoom: "主卧室",
     kitchen: "厨房",
     vanity: "洗面区",
