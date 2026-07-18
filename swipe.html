@@ -618,6 +618,27 @@ dishwashingDetergent: {
   es: "¿Hay suficiente detergente para platos?",
   ko: "주방세제가 충분히 들어 있는가?",
   zh: "洗洁精是否充足？"
+},
+cabinetsClean: {
+  ja: "収納棚に水垢や手垢が付いていないか",
+  en: "Are the cabinets free of water stains and fingerprints?",
+  es: "¿Los armarios están libres de manchas de agua y huellas dactilares?",
+  ko: "수납장에 물때나 손자국이 없는가?",
+  zh: "储物柜上是否没有水渍和指纹？"
+},
+faucetSinkDry: {
+  ja: "水栓・シンクは拭き上げられているか",
+  en: "Have the faucet and sink been properly wiped dry?",
+  es: "¿Se han secado correctamente el grifo y el fregadero?",
+  ko: "수전과 싱크대가 깨끗하게 닦여 있는가?",
+  zh: "水龙头和水槽是否已擦拭干净？"
+},
+applianceTopDust: {
+  ja: "レンジと冷蔵庫の上に埃は溜まっていないか",
+  en: "Is there no dust on top of the microwave and refrigerator?",
+  es: "¿No hay polvo encima del microondas y del refrigerador?",
+  ko: "전자레인지와 냉장고 위에 먼지가 쌓여 있지 않은가?",
+  zh: "微波炉和冰箱顶部是否没有积灰？"
 }
 };
 
@@ -688,31 +709,22 @@ dishwashingDetergent: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-収納棚に水垢や手垢が付いていないか
+<span class="inspect-text" data-inspect-key="cabinetsClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the cabinets free of water stains and fingerprints?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-水栓・シンクは拭き上げられているか
+<span class="inspect-text" data-inspect-key="faucetSinkDry"></span>
 </label><br>
-<span class="inspect-en">
-Have the faucet and sink been properly wiped dry?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-レンジと冷蔵庫の上に埃は溜まっていないか
+<span class="inspect-text" data-inspect-key="applianceTopDust"></span>
 </label><br>
-<span class="inspect-en">
-Is there no dust on top of the microwave and refrigerator?
-</span><br>
 </p>
   `;
   const cutleryPresentText = document.querySelector(
@@ -786,6 +798,30 @@ const dishwashingDetergentText = document.querySelector(
 dishwashingDetergentText.textContent =
   kitchenInspectTexts.dishwashingDetergent[lang] ||
   kitchenInspectTexts.dishwashingDetergent.ja;
+  
+  const cabinetsCleanText = document.querySelector(
+  '[data-inspect-key="cabinetsClean"]'
+);
+
+cabinetsCleanText.textContent =
+  kitchenInspectTexts.cabinetsClean[lang] ||
+  kitchenInspectTexts.cabinetsClean.ja;
+
+const faucetSinkDryText = document.querySelector(
+  '[data-inspect-key="faucetSinkDry"]'
+);
+
+faucetSinkDryText.textContent =
+  kitchenInspectTexts.faucetSinkDry[lang] ||
+  kitchenInspectTexts.faucetSinkDry.ja;
+
+const applianceTopDustText = document.querySelector(
+  '[data-inspect-key="applianceTopDust"]'
+);
+
+applianceTopDustText.textContent =
+  kitchenInspectTexts.applianceTopDust[lang] ||
+  kitchenInspectTexts.applianceTopDust.ja;
 }
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
