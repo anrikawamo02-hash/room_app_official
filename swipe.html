@@ -1077,36 +1077,51 @@ document.querySelector(".inspect-card-ja").textContent =
 
 document.querySelector(".inspect-card-en").textContent =
   "Bath Inspection";
+  
+  const bathInspectTexts = {
+  waterTemperature42: {
+    ja: "温度は42度にセットしてあるか",
+    en: "Is the water temperature set to 42°C?",
+    es: "¿La temperatura del agua está ajustada a 42 °C?",
+    ko: "물 온도가 42도로 설정되어 있는가?",
+    zh: "水温是否已设定为42°C？"
+  },
+  bathProductsFilled: {
+    ja: "シャンプー、コンディショナー、ボディーソープは十分に入っているか",
+    en: "Are the shampoo, conditioner, and body soap sufficiently filled?",
+    es: "¿Hay suficiente champú, acondicionador y jabón corporal?",
+    ko: "샴푸, 컨디셔너, 바디워시가 충분히 들어 있는가?",
+    zh: "洗发水、护发素和沐浴露是否充足？"
+  },
+  bathProductNozzlesForward: {
+    ja: "シャンプー、コンディショナー、ボディーソープのノズルは正面を向いているか",
+    en: "Are the shampoo, conditioner, and body soap nozzles facing forward?",
+    es: "¿Las boquillas del champú, acondicionador y jabón corporal están orientadas hacia delante?",
+    ko: "샴푸, 컨디셔너, 바디워시의 노즐이 정면을 향하고 있는가?",
+    zh: "洗发水、护发素和沐浴露的喷嘴是否朝向正面？"
+  }
+};
 
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-温度は42度にセットしてあるか
+<span class="inspect-text" data-inspect-key="waterTemperature42"></span>
 </label><br>
-<span class="inspect-en">
-Is the water temperature set to 42°C?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-シャンプー、コンディショナー、ボディーソープは十分に入っているか
+<span class="inspect-text" data-inspect-key="bathProductsFilled"></span>
 </label><br>
-<span class="inspect-en">
-Are the shampoo, conditioner, and body soap sufficiently filled?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-シャンプー、コンディショナー、ボディーソープのノズルは正面を向いているか
+<span class="inspect-text" data-inspect-key="bathProductNozzlesForward"></span>
 </label><br>
-<span class="inspect-en">
-Are the shampoo, conditioner, and body soap nozzles facing forward?
-</span><br>
 </p>
 
 <p>
@@ -1199,6 +1214,29 @@ Are the wash basin and stool in their designated positions and directions?
 </span><br>
 </p>
   `;
+  const waterTemperature42Text = document.querySelector(
+  '[data-inspect-key="waterTemperature42"]'
+);
+
+waterTemperature42Text.textContent =
+  bathInspectTexts.waterTemperature42[lang] ||
+  bathInspectTexts.waterTemperature42.ja;
+
+const bathProductsFilledText = document.querySelector(
+  '[data-inspect-key="bathProductsFilled"]'
+);
+
+bathProductsFilledText.textContent =
+  bathInspectTexts.bathProductsFilled[lang] ||
+  bathInspectTexts.bathProductsFilled.ja;
+
+const bathProductNozzlesForwardText = document.querySelector(
+  '[data-inspect-key="bathProductNozzlesForward"]'
+);
+
+bathProductNozzlesForwardText.textContent =
+  bathInspectTexts.bathProductNozzlesForward[lang] ||
+  bathInspectTexts.bathProductNozzlesForward.ja;
 }
 
 if (cat === "toilet") {
