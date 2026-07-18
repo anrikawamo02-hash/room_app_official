@@ -1601,7 +1601,28 @@ document.querySelector(".inspect-card-en").textContent =
     es: "¿La cantidad de ropa de cama de repuesto es correcta?",
     ko: "여분의 침구 수량이 맞는가?",
     zh: "备用寝具的数量是否正确？"
-  }
+  },
+  hangersSeparated: {
+  ja: "ハンガーはピンチとハンガーが混ざってないか（向きは同じか、左右にきちんと分かれて配置されているか）",
+  en: "Are hangers and clip hangers separated and arranged neatly in the correct direction?",
+  es: "¿Los ganchos y los ganchos con pinzas están separados y colocados ordenadamente en la dirección correcta?",
+  ko: "일반 옷걸이와 집게 옷걸이가 섞이지 않고, 같은 방향으로 좌우에 나뉘어 정리되어 있는가?",
+  zh: "普通衣架和夹子衣架是否没有混放，并以相同方向整齐地分开放置在左右两侧？"
+},
+ironingBoardStored: {
+  ja: "アイロン台はきちんと掛かっているか",
+  en: "Is the ironing board properly stored?",
+  es: "¿La tabla de planchar está guardada correctamente?",
+  ko: "다리미판이 올바르게 걸려 있는가?",
+  zh: "熨衣板是否已正确挂放？"
+},
+spareSheetsDuvetStored: {
+  ja: "予備のシーツ・デュベは整えてきちんと置いてあるか",
+  en: "Are the spare sheets and duvet covers neatly folded and stored?",
+  es: "¿Las sábanas y fundas de edredón de repuesto están bien dobladas y guardadas?",
+  ko: "여분의 시트와 이불 커버가 깔끔하게 정리되어 놓여 있는가?",
+  zh: "备用床单和被套是否已整理整齐并妥善放置？"
+}
 };
 
   inspectContent.innerHTML = `
@@ -1629,31 +1650,22 @@ document.querySelector(".inspect-card-en").textContent =
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ハンガーはピンチとハンガーが混ざってないか（向きは同じか、左右にきちんと分かれて配置されているか）
+<span class="inspect-text" data-inspect-key="hangersSeparated"></span>
 </label><br>
-<span class="inspect-en">
-Are hangers and clip hangers separated and arranged neatly in the correct direction?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-アイロン台はきちんと掛かっているか
+<span class="inspect-text" data-inspect-key="ironingBoardStored"></span>
 </label><br>
-<span class="inspect-en">
-Is the ironing board properly stored?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-予備のシーツ・デュベは整えてきちんと置いてあるか
+<span class="inspect-text" data-inspect-key="spareSheetsDuvetStored"></span>
 </label><br>
-<span class="inspect-en">
-Are the spare sheets and duvet covers neatly folded and stored?
-</span><br>
 </p>
 
 <p>
@@ -1719,6 +1731,30 @@ const spareBeddingQuantityCorrectText = document.querySelector(
 spareBeddingQuantityCorrectText.textContent =
   closetInspectTexts.spareBeddingQuantityCorrect[lang] ||
   closetInspectTexts.spareBeddingQuantityCorrect.ja;
+  
+  const hangersSeparatedText = document.querySelector(
+  '[data-inspect-key="hangersSeparated"]'
+);
+
+hangersSeparatedText.textContent =
+  closetInspectTexts.hangersSeparated[lang] ||
+  closetInspectTexts.hangersSeparated.ja;
+
+const ironingBoardStoredText = document.querySelector(
+  '[data-inspect-key="ironingBoardStored"]'
+);
+
+ironingBoardStoredText.textContent =
+  closetInspectTexts.ironingBoardStored[lang] ||
+  closetInspectTexts.ironingBoardStored.ja;
+
+const spareSheetsDuvetStoredText = document.querySelector(
+  '[data-inspect-key="spareSheetsDuvetStored"]'
+);
+
+spareSheetsDuvetStoredText.textContent =
+  closetInspectTexts.spareSheetsDuvetStored[lang] ||
+  closetInspectTexts.spareSheetsDuvetStored.ja;
 }
 
 if (cat === "entrance") {
