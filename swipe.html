@@ -824,8 +824,19 @@ applianceTopDustText.textContent =
   kitchenInspectTexts.applianceTopDust.ja;
 }
 if (cat === "vanity") {
-  document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Vanity Inspection";
+  const vanityInspectTitles = {
+  ja: "洗面インスペ表",
+  en: "Vanity Inspection",
+  es: "Inspección del lavabo",
+  ko: "세면대 점검표",
+  zh: "洗面区检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  vanityInspectTitles[lang] || vanityInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Vanity Inspection";
 
   inspectContent.innerHTML = `
 <p>
