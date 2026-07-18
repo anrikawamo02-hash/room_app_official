@@ -1841,7 +1841,28 @@ const entranceInspectTexts = {
     es: "¿Está limpio el interior del zapatero?",
     ko: "신발장 내부가 깨끗한가?",
     zh: "鞋柜内部是否干净？"
-  }
+  },
+  entranceDoorKnobClean: {
+  ja: "ドアノブに指紋は付いていないか",
+  en: "Is the door knob free of fingerprints?",
+  es: "¿El pomo de la puerta está libre de huellas dactilares?",
+  ko: "문손잡이에 지문이 남아 있지 않은가?",
+  zh: "门把手上是否没有指纹？"
+},
+refresherFilled: {
+  ja: "リフレッシャーは十分に入っているか",
+  en: "Is there enough refresher spray?",
+  es: "¿Hay suficiente espray ambientador?",
+  ko: "방향제 스프레이가 충분히 들어 있는가?",
+  zh: "清新喷雾是否充足？"
+},
+entranceUpperShelfClean: {
+  ja: "玄関上棚に汚れはないか",
+  en: "Is the upper entrance shelf clean?",
+  es: "¿Está limpio el estante superior de la entrada?",
+  ko: "현관 위쪽 선반이 깨끗한가?",
+  zh: "玄关上方的架子是否干净？"
+}
 };
   inspectContent.innerHTML = `
 <p>
@@ -1868,31 +1889,22 @@ const entranceInspectTexts = {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ドアノブに指紋は付いていないか
+<span class="inspect-text" data-inspect-key="entranceDoorKnobClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the door knob free of fingerprints?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-リフレッシャーは十分に入っているか
+<span class="inspect-text" data-inspect-key="refresherFilled"></span>
 </label><br>
-<span class="inspect-en">
-Is there enough refresher spray?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-玄関上棚に汚れはないか
+<span class="inspect-text" data-inspect-key="entranceUpperShelfClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the upper entrance shelf clean?
-</span><br>
 </p>
 
 <p>
@@ -1938,7 +1950,32 @@ const shoeCabinetCleanText = document.querySelector(
 shoeCabinetCleanText.textContent =
   entranceInspectTexts.shoeCabinetClean[lang] ||
   entranceInspectTexts.shoeCabinetClean.ja;
+  
+  const entranceDoorKnobCleanText = document.querySelector(
+  '[data-inspect-key="entranceDoorKnobClean"]'
+);
+
+entranceDoorKnobCleanText.textContent =
+  entranceInspectTexts.entranceDoorKnobClean[lang] ||
+  entranceInspectTexts.entranceDoorKnobClean.ja;
+
+const refresherFilledText = document.querySelector(
+  '[data-inspect-key="refresherFilled"]'
+);
+
+refresherFilledText.textContent =
+  entranceInspectTexts.refresherFilled[lang] ||
+  entranceInspectTexts.refresherFilled.ja;
+
+const entranceUpperShelfCleanText = document.querySelector(
+  '[data-inspect-key="entranceUpperShelfClean"]'
+);
+
+entranceUpperShelfCleanText.textContent =
+  entranceInspectTexts.entranceUpperShelfClean[lang] ||
+  entranceInspectTexts.entranceUpperShelfClean.ja;
 }
+
 
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
