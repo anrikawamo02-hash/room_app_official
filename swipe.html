@@ -1819,36 +1819,50 @@ document.querySelector(".inspect-card-ja").textContent =
 
 document.querySelector(".inspect-card-en").textContent =
   "Entrance Inspection";
-
+  
+const entranceInspectTexts = {
+  entranceLightAuto: {
+    ja: "ライトスイッチは真ん中の自動になっているか",
+    en: 'Is the light switch set to the center "AUTO" position?',
+    es: "¿El interruptor de la luz está ajustado en la posición central «AUTO»?",
+    ko: '조명 스위치가 가운데 "자동" 위치로 설정되어 있는가?',
+    zh: "灯光开关是否设置在中间的“自动”位置？"
+  },
+  slippersAligned: {
+    ja: "スリッパの向きはそろっているか",
+    en: "Are the slippers facing the same direction?",
+    es: "¿Las zapatillas están orientadas en la misma dirección?",
+    ko: "슬리퍼의 방향이 모두 같은가?",
+    zh: "拖鞋的方向是否一致？"
+  },
+  shoeCabinetClean: {
+    ja: "靴箱の中は汚れていないか",
+    en: "Is the inside of the shoe cabinet clean?",
+    es: "¿Está limpio el interior del zapatero?",
+    ko: "신발장 내부가 깨끗한가?",
+    zh: "鞋柜内部是否干净？"
+  }
+};
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ライトスイッチは真ん中の自動になっているか
+<span class="inspect-text" data-inspect-key="entranceLightAuto"></span>
 </label><br>
-<span class="inspect-en">
-Is the light switch set to the center "AUTO" position?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-スリッパの向きはそろっているか
+<span class="inspect-text" data-inspect-key="slippersAligned"></span>
 </label><br>
-<span class="inspect-en">
-Are the slippers facing the same direction?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-靴箱の中は汚れていないか
+<span class="inspect-text" data-inspect-key="shoeCabinetClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the inside of the shoe cabinet clean?
-</span><br>
 </p>
 
 <p>
@@ -1901,7 +1915,31 @@ Is the entrance floor free of trash and hair?
 </span><br>
 </p>
   `;
+  const entranceLightAutoText = document.querySelector(
+  '[data-inspect-key="entranceLightAuto"]'
+);
+
+entranceLightAutoText.textContent =
+  entranceInspectTexts.entranceLightAuto[lang] ||
+  entranceInspectTexts.entranceLightAuto.ja;
+
+const slippersAlignedText = document.querySelector(
+  '[data-inspect-key="slippersAligned"]'
+);
+
+slippersAlignedText.textContent =
+  entranceInspectTexts.slippersAligned[lang] ||
+  entranceInspectTexts.slippersAligned.ja;
+
+const shoeCabinetCleanText = document.querySelector(
+  '[data-inspect-key="shoeCabinetClean"]'
+);
+
+shoeCabinetCleanText.textContent =
+  entranceInspectTexts.shoeCabinetClean[lang] ||
+  entranceInspectTexts.shoeCabinetClean.ja;
 }
+
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
 
