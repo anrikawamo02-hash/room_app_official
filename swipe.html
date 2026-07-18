@@ -576,7 +576,28 @@ const kitchenInspectTexts = {
     es: "¿Los platos, los palillos y los cubiertos están libres de señales de uso?",
     ko: "접시, 젓가락, 커트러리에 사용 흔적이 남아 있지 않은지, 안쪽과 가장자리까지 하나씩 확인했는가?",
     zh: "盘子、筷子和餐具是否无使用痕迹，并逐个检查了内侧和边缘？"
-  }
+  },
+  cookingUtensils: {
+  ja: "調理器具に使用感は残っていないか",
+  en: "Are the cooking utensils free of any signs of use?",
+  es: "¿Los utensilios de cocina están libres de señales de uso?",
+  ko: "조리도구에 사용 흔적이 남아 있지 않은가?",
+  zh: "烹饪用具是否没有使用痕迹？"
+},
+fridgeMicrowaveInside: {
+  ja: "冷蔵庫・レンジの中に汚れや跡は付いていないか",
+  en: "Are the refrigerator and microwave clean inside and free of stains or marks?",
+  es: "¿Están limpios por dentro el refrigerador y el microondas, sin suciedad ni marcas?",
+  ko: "냉장고와 전자레인지 내부에 오염이나 자국이 없는가?",
+  zh: "冰箱和微波炉内部是否干净，没有污渍或痕迹？"
+},
+kettleClean: {
+  ja: "ケトルに使用感は残っていないか、中に水滴はないか",
+  en: "Is the kettle clean and free of water droplets inside?",
+  es: "¿Está el hervidor limpio y sin gotas de agua en el interior?",
+  ko: "주전자에 사용 흔적이 없고 내부에 물방울이 없는가?",
+  zh: "电热水壶是否没有使用痕迹，内部没有水滴？"
+}
 };
 
   inspectContent.innerHTML = `
@@ -604,31 +625,22 @@ const kitchenInspectTexts = {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-調理器具に使用感は残っていないか
+<span class="inspect-text" data-inspect-key="cookingUtensils"></span>
 </label><br>
-<span class="inspect-en">
-Are the cooking utensils free of any signs of use?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-冷蔵庫・レンジの中に汚れや跡は付いていないか
+<span class="inspect-text" data-inspect-key="fridgeMicrowaveInside"></span>
 </label><br>
-<span class="inspect-en">
-Are the refrigerator and microwave clean inside and free of stains or marks?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ケトルに使用感は残っていないか、中に水滴はないか
+<span class="inspect-text" data-inspect-key="kettleClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the kettle clean and free of water droplets inside?
-</span><br>
 </p>
 
 <p>
@@ -714,6 +726,30 @@ const dishesCutleryCleanText = document.querySelector(
 dishesCutleryCleanText.textContent =
   kitchenInspectTexts.dishesCutleryClean[lang] ||
   kitchenInspectTexts.dishesCutleryClean.ja;
+  
+  const cookingUtensilsText = document.querySelector(
+  '[data-inspect-key="cookingUtensils"]'
+);
+
+cookingUtensilsText.textContent =
+  kitchenInspectTexts.cookingUtensils[lang] ||
+  kitchenInspectTexts.cookingUtensils.ja;
+
+const fridgeMicrowaveInsideText = document.querySelector(
+  '[data-inspect-key="fridgeMicrowaveInside"]'
+);
+
+fridgeMicrowaveInsideText.textContent =
+  kitchenInspectTexts.fridgeMicrowaveInside[lang] ||
+  kitchenInspectTexts.fridgeMicrowaveInside.ja;
+
+const kettleCleanText = document.querySelector(
+  '[data-inspect-key="kettleClean"]'
+);
+
+kettleCleanText.textContent =
+  kitchenInspectTexts.kettleClean[lang] ||
+  kitchenInspectTexts.kettleClean.ja;
 }
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
