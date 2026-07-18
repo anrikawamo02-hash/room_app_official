@@ -901,6 +901,13 @@ laundryDetergentRefilled: {
   es: "¿Se ha rellenado el detergente para la ropa?",
   ko: "세탁세제가 보충되어 있는가?",
   zh: "洗衣液是否已补充？"
+},
+washingMachineClean: {
+  ja: "洗濯機のゴミは取られているか・洗濯バンに髪の毛や埃が落ちていないか・網にゴミが詰まっていないか",
+  en: "Has the washing machine lint been removed, is the washing machine tray free of hair and dust, and is the filter free of debris?",
+  es: "¿Se ha retirado la pelusa de la lavadora, está la bandeja libre de cabellos y polvo, y está el filtro libre de residuos?",
+  ko: "세탁기의 먼지가 제거되어 있고, 세탁기 받침대에 머리카락이나 먼지가 없으며, 필터에 이물질이 막혀 있지 않은가?",
+  zh: "洗衣机内的垃圾是否已清除，洗衣机底盘是否没有头发和灰尘，滤网是否没有堵塞物？"
 }
 };
 
@@ -971,11 +978,8 @@ laundryDetergentRefilled: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-洗濯機のゴミは取られているか・洗濯バンに髪の毛や埃が落ちていないか・網にゴミが詰まっていないか
+<span class="inspect-text" data-inspect-key="washingMachineClean"></span>
 </label><br>
-<span class="inspect-en">
-Has the washing machine lint been removed, is the washing machine tray free of hair and dust, and is the filter free of debris?
-</span><br>
 </p>
   `;
   const handSoapText = document.querySelector(
@@ -1049,6 +1053,14 @@ const laundryDetergentRefilledText = document.querySelector(
 laundryDetergentRefilledText.textContent =
   vanityInspectTexts.laundryDetergentRefilled[lang] ||
   vanityInspectTexts.laundryDetergentRefilled.ja;
+  
+  const washingMachineCleanText = document.querySelector(
+  '[data-inspect-key="washingMachineClean"]'
+);
+
+washingMachineCleanText.textContent =
+  vanityInspectTexts.washingMachineClean[lang] ||
+  vanityInspectTexts.washingMachineClean.ja;
 }
 
 if (cat === "bath") {
