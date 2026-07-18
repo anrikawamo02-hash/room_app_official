@@ -1579,36 +1579,51 @@ document.querySelector(".inspect-card-ja").textContent =
 
 document.querySelector(".inspect-card-en").textContent =
   "Closet Inspection";
+  
+  const closetInspectTexts = {
+  spareFutonsStored: {
+    ja: "予備の布団はきちんと整えて収納しているか",
+    en: "Are the spare futons neatly stored?",
+    es: "¿Los futones de repuesto están ordenados y guardados correctamente?",
+    ko: "여분의 이불이 깔끔하게 정리되어 보관되어 있는가?",
+    zh: "备用被褥是否已整理整齐并妥善收纳？"
+  },
+  sparePillowcasesAttached: {
+    ja: "枕には枕カバーが付いているか",
+    en: "Are pillowcases properly attached to the spare pillows?",
+    es: "¿Las almohadas de repuesto tienen las fundas correctamente colocadas?",
+    ko: "여분의 베개에 베갯잇이 올바르게 씌워져 있는가?",
+    zh: "备用枕头是否已正确套上枕套？"
+  },
+  spareBeddingQuantityCorrect: {
+    ja: "予備の枚数は合っているか",
+    en: "Are the quantities of spare bedding correct?",
+    es: "¿La cantidad de ropa de cama de repuesto es correcta?",
+    ko: "여분의 침구 수량이 맞는가?",
+    zh: "备用寝具的数量是否正确？"
+  }
+};
 
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-予備の布団はきちんと整えて収納しているか
+<span class="inspect-text" data-inspect-key="spareFutonsStored"></span>
 </label><br>
-<span class="inspect-en">
-Are the spare futons neatly stored?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-枕には枕カバーが付いているか
+<span class="inspect-text" data-inspect-key="sparePillowcasesAttached"></span>
 </label><br>
-<span class="inspect-en">
-Are pillowcases properly attached to the spare pillows?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-予備の枚数は合っているか
+<span class="inspect-text" data-inspect-key="spareBeddingQuantityCorrect"></span>
 </label><br>
-<span class="inspect-en">
-Are the quantities of spare bedding correct?
-</span><br>
 </p>
 
 <p>
@@ -1681,6 +1696,29 @@ Are the closet walls and shelves free of dirt and dust?
 </span><br>
 </p>
   `;
+  const spareFutonsStoredText = document.querySelector(
+  '[data-inspect-key="spareFutonsStored"]'
+);
+
+spareFutonsStoredText.textContent =
+  closetInspectTexts.spareFutonsStored[lang] ||
+  closetInspectTexts.spareFutonsStored.ja;
+
+const sparePillowcasesAttachedText = document.querySelector(
+  '[data-inspect-key="sparePillowcasesAttached"]'
+);
+
+sparePillowcasesAttachedText.textContent =
+  closetInspectTexts.sparePillowcasesAttached[lang] ||
+  closetInspectTexts.sparePillowcasesAttached.ja;
+
+const spareBeddingQuantityCorrectText = document.querySelector(
+  '[data-inspect-key="spareBeddingQuantityCorrect"]'
+);
+
+spareBeddingQuantityCorrectText.textContent =
+  closetInspectTexts.spareBeddingQuantityCorrect[lang] ||
+  closetInspectTexts.spareBeddingQuantityCorrect.ja;
 }
 
 if (cat === "entrance") {
