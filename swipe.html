@@ -1566,8 +1566,19 @@ toiletAroundBehindCleanText.textContent =
 }
 
 if (cat === "closet") {
-  document.querySelector(".inspect-card-ja").textContent = "クローゼットインスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Closet Inspection";
+  const closetInspectTitles = {
+  ja: "クローゼットインスペ表",
+  en: "Closet Inspection",
+  es: "Inspección del armario",
+  ko: "옷장 점검표",
+  zh: "衣柜检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  closetInspectTitles[lang] || closetInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Closet Inspection";
 
   inspectContent.innerHTML = `
 <p>
