@@ -1348,8 +1348,19 @@ basinStoolPositionedText.textContent =
 }
 
 if (cat === "toilet") {
-  document.querySelector(".inspect-card-ja").textContent = "トイレインスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Toilet Inspection";
+  const toiletInspectTitles = {
+  ja: "トイレインスペ表",
+  en: "Toilet Inspection",
+  es: "Inspección del inodoro",
+  ko: "화장실 점검표",
+  zh: "卫生间检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  toiletInspectTitles[lang] || toiletInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Toilet Inspection";
 
   inspectContent.innerHTML = `
 <p>
