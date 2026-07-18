@@ -837,36 +837,51 @@ document.querySelector(".inspect-card-ja").textContent =
 
 document.querySelector(".inspect-card-en").textContent =
   "Vanity Inspection";
+  
+  const vanityInspectTexts = {
+  handSoap: {
+    ja: "ハンドソープは十分に入っているか、正面を向いているか、ボトルはきれいに拭かれているか",
+    en: "Is there enough hand soap, is the bottle facing forward, and has it been wiped clean?",
+    es: "¿Hay suficiente jabón de manos, está la botella orientada hacia delante y está limpia?",
+    ko: "핸드솝이 충분히 들어 있고, 병이 정면을 향하며 깨끗하게 닦여 있는가?",
+    zh: "洗手液是否充足，瓶身是否朝向正面，并已擦拭干净？"
+  },
+  mirrorClean: {
+    ja: "鏡に指紋や汚れは残っていないか",
+    en: "Is the mirror free of fingerprints and stains?",
+    es: "¿El espejo está libre de huellas dactilares y manchas?",
+    ko: "거울에 지문이나 얼룩이 남아 있지 않은가?",
+    zh: "镜子上是否没有指纹和污渍？"
+  },
+  mirrorStorageClean: {
+    ja: "鏡裏の収納スペースにゴミや汚れは残っていないか",
+    en: "Is the storage space behind the mirror clean and free of trash?",
+    es: "¿Está limpio y sin basura el espacio de almacenamiento detrás del espejo?",
+    ko: "거울 뒤 수납공간에 쓰레기나 오염이 남아 있지 않은가?",
+    zh: "镜子后面的储物空间是否干净，没有垃圾或污渍？"
+  }
+};
 
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ハンドソープは十分に入っているか、正面を向いているか、ボトルはきれいに拭かれているか
+<span class="inspect-text" data-inspect-key="handSoap"></span>
 </label><br>
-<span class="inspect-en">
-Is there enough hand soap, is the bottle facing forward, and has it been wiped clean?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-鏡に指紋や汚れは残っていないか
+<span class="inspect-text" data-inspect-key="mirrorClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the mirror free of fingerprints and stains?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-鏡裏の収納スペースにゴミや汚れは残っていないか
+<span class="inspect-text" data-inspect-key="mirrorStorageClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the storage space behind the mirror clean and free of trash?
-</span><br>
 </p>
 
 <p>
@@ -939,6 +954,29 @@ Has the washing machine lint been removed, is the washing machine tray free of h
 </span><br>
 </p>
   `;
+  const handSoapText = document.querySelector(
+  '[data-inspect-key="handSoap"]'
+);
+
+handSoapText.textContent =
+  vanityInspectTexts.handSoap[lang] ||
+  vanityInspectTexts.handSoap.ja;
+
+const mirrorCleanText = document.querySelector(
+  '[data-inspect-key="mirrorClean"]'
+);
+
+mirrorCleanText.textContent =
+  vanityInspectTexts.mirrorClean[lang] ||
+  vanityInspectTexts.mirrorClean.ja;
+
+const mirrorStorageCleanText = document.querySelector(
+  '[data-inspect-key="mirrorStorageClean"]'
+);
+
+mirrorStorageCleanText.textContent =
+  vanityInspectTexts.mirrorStorageClean[lang] ||
+  vanityInspectTexts.mirrorStorageClean.ja;
 }
 
 if (cat === "bath") {
