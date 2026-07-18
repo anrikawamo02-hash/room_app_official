@@ -1141,6 +1141,27 @@ bathSurfacesClean: {
   es: "¿Las paredes, el suelo, la bañera y la puerta están libres de gotas de agua, manchas de agua y cabellos?",
   ko: "벽, 바닥, 욕조와 문에 물방울, 물때나 머리카락이 남아 있지 않은가?",
   zh: "墙壁、地面、浴缸和门上是否没有水滴、水垢和头发？"
+},
+bathDoorOutsideClean: {
+  ja: "お風呂のドアを閉めて、外側に指紋は付いていないか確認",
+  en: "After closing the bathroom door, is the outside free of fingerprints?",
+  es: "Después de cerrar la puerta del baño, ¿la parte exterior está libre de huellas dactilares?",
+  ko: "욕실 문을 닫은 후 바깥쪽에 지문이 남아 있지 않은가?",
+  zh: "关闭浴室门后，外侧是否没有指纹？"
+},
+bathMatPlaced: {
+  ja: "バスマットは設置されているか",
+  en: "Is the bath mat properly placed?",
+  es: "¿La alfombrilla de baño está colocada correctamente?",
+  ko: "욕실 매트가 올바르게 놓여 있는가?",
+  zh: "浴室垫是否已正确放置？"
+},
+basinStoolPositioned: {
+  ja: "洗面器と椅子は所定の位置・向きになっているか",
+  en: "Are the wash basin and stool in their designated positions and directions?",
+  es: "¿El recipiente y el taburete están colocados en sus posiciones y orientaciones designadas?",
+  ko: "세면대야와 의자가 정해진 위치와 방향으로 놓여 있는가?",
+  zh: "脸盆和浴室凳是否放在指定的位置和方向？"
 }
 };
 
@@ -1211,31 +1232,22 @@ bathSurfacesClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-お風呂のドアを閉めて、外側に指紋は付いていないか確認
+<span class="inspect-text" data-inspect-key="bathDoorOutsideClean"></span>
 </label><br>
-<span class="inspect-en">
-After closing the bathroom door, is the outside free of fingerprints?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-バスマットは設置されているか
+<span class="inspect-text" data-inspect-key="bathMatPlaced"></span>
 </label><br>
-<span class="inspect-en">
-Is the bath mat properly placed?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-洗面器と椅子は所定の位置・向きになっているか
+<span class="inspect-text" data-inspect-key="basinStoolPositioned"></span>
 </label><br>
-<span class="inspect-en">
-Are the wash basin and stool in their designated positions and directions?
-</span><br>
 </p>
   `;
   const waterTemperature42Text = document.querySelector(
@@ -1309,6 +1321,30 @@ const bathSurfacesCleanText = document.querySelector(
 bathSurfacesCleanText.textContent =
   bathInspectTexts.bathSurfacesClean[lang] ||
   bathInspectTexts.bathSurfacesClean.ja;
+  
+  const bathDoorOutsideCleanText = document.querySelector(
+  '[data-inspect-key="bathDoorOutsideClean"]'
+);
+
+bathDoorOutsideCleanText.textContent =
+  bathInspectTexts.bathDoorOutsideClean[lang] ||
+  bathInspectTexts.bathDoorOutsideClean.ja;
+
+const bathMatPlacedText = document.querySelector(
+  '[data-inspect-key="bathMatPlaced"]'
+);
+
+bathMatPlacedText.textContent =
+  bathInspectTexts.bathMatPlaced[lang] ||
+  bathInspectTexts.bathMatPlaced.ja;
+
+const basinStoolPositionedText = document.querySelector(
+  '[data-inspect-key="basinStoolPositioned"]'
+);
+
+basinStoolPositionedText.textContent =
+  bathInspectTexts.basinStoolPositioned[lang] ||
+  bathInspectTexts.basinStoolPositioned.ja;
 }
 
 if (cat === "toilet") {
