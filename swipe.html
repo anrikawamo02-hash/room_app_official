@@ -1099,7 +1099,28 @@ document.querySelector(".inspect-card-en").textContent =
     es: "¿Las boquillas del champú, acondicionador y jabón corporal están orientadas hacia delante?",
     ko: "샴푸, 컨디셔너, 바디워시의 노즐이 정면을 향하고 있는가?",
     zh: "洗发水、护发素和沐浴露的喷嘴是否朝向正面？"
-  }
+  },
+  showerFaucetMetalClean: {
+  ja: "シャワー・蛇口の金属部分に水垢は残っていないか",
+  en: "Are the metal parts of the shower and faucet free of water stains?",
+  es: "¿Las partes metálicas de la ducha y el grifo están libres de manchas de agua?",
+  ko: "샤워기와 수도꼭지의 금속 부분에 물때가 남아 있지 않은가?",
+  zh: "淋浴器和水龙头的金属部分是否没有水垢？"
+},
+showerHeadBackward: {
+  ja: "シャワーヘッドは裏側を向いているか",
+  en: "Is the shower head facing backward?",
+  es: "¿El cabezal de la ducha está orientado hacia atrás?",
+  ko: "샤워헤드가 뒤쪽을 향하고 있는가?",
+  zh: "淋浴喷头是否朝向后方？"
+},
+bathMirrorClean: {
+  ja: "鏡に汚れや指紋は残っていないか",
+  en: "Is the mirror free of stains and fingerprints?",
+  es: "¿El espejo está libre de manchas y huellas dactilares?",
+  ko: "거울에 얼룩이나 지문이 남아 있지 않은가?",
+  zh: "镜子上是否没有污渍和指纹？"
+}
 };
 
   inspectContent.innerHTML = `
@@ -1127,31 +1148,22 @@ document.querySelector(".inspect-card-en").textContent =
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-シャワー・蛇口の金属部分に水垢は残っていないか
+<span class="inspect-text" data-inspect-key="showerFaucetMetalClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the metal parts of the shower and faucet free of water stains?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-シャワーヘッドは裏側を向いているか
+<span class="inspect-text" data-inspect-key="showerHeadBackward"></span>
 </label><br>
-<span class="inspect-en">
-Is the shower head facing backward?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-鏡に汚れや指紋は残っていないか
+<span class="inspect-text" data-inspect-key="bathMirrorClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the mirror free of stains and fingerprints?
-</span><br>
 </p>
 
 <p>
@@ -1237,6 +1249,30 @@ const bathProductNozzlesForwardText = document.querySelector(
 bathProductNozzlesForwardText.textContent =
   bathInspectTexts.bathProductNozzlesForward[lang] ||
   bathInspectTexts.bathProductNozzlesForward.ja;
+  
+  const showerFaucetMetalCleanText = document.querySelector(
+  '[data-inspect-key="showerFaucetMetalClean"]'
+);
+
+showerFaucetMetalCleanText.textContent =
+  bathInspectTexts.showerFaucetMetalClean[lang] ||
+  bathInspectTexts.showerFaucetMetalClean.ja;
+
+const showerHeadBackwardText = document.querySelector(
+  '[data-inspect-key="showerHeadBackward"]'
+);
+
+showerHeadBackwardText.textContent =
+  bathInspectTexts.showerHeadBackward[lang] ||
+  bathInspectTexts.showerHeadBackward.ja;
+
+const bathMirrorCleanText = document.querySelector(
+  '[data-inspect-key="bathMirrorClean"]'
+);
+
+bathMirrorCleanText.textContent =
+  bathInspectTexts.bathMirrorClean[lang] ||
+  bathInspectTexts.bathMirrorClean.ja;
 }
 
 if (cat === "toilet") {
