@@ -1622,6 +1622,27 @@ spareSheetsDuvetStored: {
   es: "¿Las sábanas y fundas de edredón de repuesto están bien dobladas y guardadas?",
   ko: "여분의 시트와 이불 커버가 깔끔하게 정리되어 놓여 있는가?",
   zh: "备用床单和被套是否已整理整齐并妥善放置？"
+},
+ironWaterEmpty: {
+  ja: "アイロンの中に水は残っていないか",
+  en: "Is the iron completely empty of water?",
+  es: "¿No queda agua dentro de la plancha?",
+  ko: "다리미 안에 물이 남아 있지 않은가?",
+  zh: "熨斗内是否没有残留的水？"
+},
+ironCordWrapped: {
+  ja: "アイロンのコードはきちんとまとめられているか",
+  en: "Is the iron cord neatly wrapped?",
+  es: "¿El cable de la plancha está bien recogido?",
+  ko: "다리미 코드가 깔끔하게 정리되어 있는가?",
+  zh: "熨斗电线是否整理整齐？"
+},
+closetFloorShelfClean: {
+  ja: "床や上の棚にゴミや髪の毛は落ちていないか",
+  en: "Are the floor and upper shelves free of trash and hair?",
+  es: "¿El suelo y los estantes superiores están libres de basura y cabellos?",
+  ko: "바닥과 위쪽 선반에 쓰레기나 머리카락이 떨어져 있지 않은가?",
+  zh: "地面和上层架子上是否没有垃圾和头发？"
 }
 };
 
@@ -1671,31 +1692,22 @@ spareSheetsDuvetStored: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-アイロンの中に水は残っていないか
+<span class="inspect-text" data-inspect-key="ironWaterEmpty"></span>
 </label><br>
-<span class="inspect-en">
-Is there no water remaining inside the iron?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-アイロンのコードはきちんとまとめられているか
+<span class="inspect-text" data-inspect-key="ironCordWrapped"></span>
 </label><br>
-<span class="inspect-en">
-Is the iron cord neatly wrapped?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-床や上の棚にゴミや髪の毛は落ちていないか
+<span class="inspect-text" data-inspect-key="closetFloorShelfClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the floor and upper shelves free of trash and hair?
-</span><br>
 </p>
 
 <p>
@@ -1755,6 +1767,30 @@ const spareSheetsDuvetStoredText = document.querySelector(
 spareSheetsDuvetStoredText.textContent =
   closetInspectTexts.spareSheetsDuvetStored[lang] ||
   closetInspectTexts.spareSheetsDuvetStored.ja;
+  
+  const ironWaterEmptyText = document.querySelector(
+  '[data-inspect-key="ironWaterEmpty"]'
+);
+
+ironWaterEmptyText.textContent =
+  closetInspectTexts.ironWaterEmpty[lang] ||
+  closetInspectTexts.ironWaterEmpty.ja;
+
+const ironCordWrappedText = document.querySelector(
+  '[data-inspect-key="ironCordWrapped"]'
+);
+
+ironCordWrappedText.textContent =
+  closetInspectTexts.ironCordWrapped[lang] ||
+  closetInspectTexts.ironCordWrapped.ja;
+
+const closetFloorShelfCleanText = document.querySelector(
+  '[data-inspect-key="closetFloorShelfClean"]'
+);
+
+closetFloorShelfCleanText.textContent =
+  closetInspectTexts.closetFloorShelfClean[lang] ||
+  closetInspectTexts.closetFloorShelfClean.ja;
 }
 
 if (cat === "entrance") {
