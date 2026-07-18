@@ -1120,6 +1120,27 @@ bathMirrorClean: {
   es: "¿El espejo está libre de manchas y huellas dactilares?",
   ko: "거울에 얼룩이나 지문이 남아 있지 않은가?",
   zh: "镜子上是否没有污渍和指纹？"
+},
+drainStopperClean: {
+  ja: "排水溝・浴槽の栓のゴミは回収されているか、髪の毛は残っていないか",
+  en: "Has debris been removed from the drain and bathtub stopper, and is there no hair remaining?",
+  es: "¿Se han retirado los residuos del desagüe y del tapón de la bañera, y no quedan cabellos?",
+  ko: "배수구와 욕조 마개에 있는 쓰레기가 제거되어 있고 머리카락이 남아 있지 않은가?",
+  zh: "排水口和浴缸塞子的垃圾是否已清除，并且没有残留头发？"
+},
+bathtubSmooth: {
+  ja: "浴槽にざらつきはないか",
+  en: "Is the bathtub free of roughness or residue?",
+  es: "¿La bañera está libre de asperezas o residuos?",
+  ko: "욕조에 거친 느낌이나 잔여물이 남아 있지 않은가?",
+  zh: "浴缸表面是否没有粗糙感或残留物？"
+},
+bathSurfacesClean: {
+  ja: "壁・床・浴槽・ドアに水滴、水垢、髪の毛は残っていないか",
+  en: "Are the walls, floor, bathtub, and door free of water droplets, water stains, and hair?",
+  es: "¿Las paredes, el suelo, la bañera y la puerta están libres de gotas de agua, manchas de agua y cabellos?",
+  ko: "벽, 바닥, 욕조와 문에 물방울, 물때나 머리카락이 남아 있지 않은가?",
+  zh: "墙壁、地面、浴缸和门上是否没有水滴、水垢和头发？"
 }
 };
 
@@ -1169,31 +1190,22 @@ bathMirrorClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-排水溝・浴槽の栓のゴミは回収されているか、髪の毛は残っていないか
+<span class="inspect-text" data-inspect-key="drainStopperClean"></span>
 </label><br>
-<span class="inspect-en">
-Has debris been removed from the drain and bathtub stopper, and is there no hair remaining?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-浴槽にざらつきはないか
+<span class="inspect-text" data-inspect-key="bathtubSmooth"></span>
 </label><br>
-<span class="inspect-en">
-Is the bathtub free of roughness or residue?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-壁・床・浴槽・ドアに水滴、水垢、髪の毛は残っていないか
+<span class="inspect-text" data-inspect-key="bathSurfacesClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the walls, floor, bathtub, and door free of water droplets, water stains, and hair?
-</span><br>
 </p>
 
 <p>
@@ -1273,6 +1285,30 @@ const bathMirrorCleanText = document.querySelector(
 bathMirrorCleanText.textContent =
   bathInspectTexts.bathMirrorClean[lang] ||
   bathInspectTexts.bathMirrorClean.ja;
+  
+  const drainStopperCleanText = document.querySelector(
+  '[data-inspect-key="drainStopperClean"]'
+);
+
+drainStopperCleanText.textContent =
+  bathInspectTexts.drainStopperClean[lang] ||
+  bathInspectTexts.drainStopperClean.ja;
+
+const bathtubSmoothText = document.querySelector(
+  '[data-inspect-key="bathtubSmooth"]'
+);
+
+bathtubSmoothText.textContent =
+  bathInspectTexts.bathtubSmooth[lang] ||
+  bathInspectTexts.bathtubSmooth.ja;
+
+const bathSurfacesCleanText = document.querySelector(
+  '[data-inspect-key="bathSurfacesClean"]'
+);
+
+bathSurfacesCleanText.textContent =
+  bathInspectTexts.bathSurfacesClean[lang] ||
+  bathInspectTexts.bathSurfacesClean.ja;
 }
 
 if (cat === "toilet") {
