@@ -1404,6 +1404,27 @@ spareToiletPaperTwoRolls: {
   es: "¿Hay dos rollos de papel higiénico de repuesto?",
   ko: "여분의 화장지가 두 롤 비치되어 있는가?",
   zh: "是否放置了两卷备用厕纸？"
+},
+toiletTowelPlaced: {
+  ja: "タオルは設置されているか",
+  en: "Is a towel properly provided?",
+  es: "¿La toalla está colocada correctamente?",
+  ko: "수건이 올바르게 비치되어 있는가?",
+  zh: "毛巾是否已正确放置？"
+},
+toiletPaperTriangleFolded: {
+  ja: "トイレットペーパーは三角折りされているか",
+  en: "Has the toilet paper been folded into a triangle?",
+  es: "¿El papel higiénico está doblado en forma de triángulo?",
+  ko: "화장지가 삼각형으로 접혀 있는가?",
+  zh: "厕纸是否已折成三角形？"
+},
+toiletAroundBehindClean: {
+  ja: "便器の周辺や裏側にゴミや汚れは残っていないか",
+  en: "Are the areas around and behind the toilet free of stains and debris?",
+  es: "¿Las zonas alrededor y detrás del inodoro están libres de suciedad y residuos?",
+  ko: "변기 주변과 뒤쪽에 쓰레기나 오염이 남아 있지 않은가?",
+  zh: "马桶周围和后方是否没有垃圾和污渍？"
 }
 };
 
@@ -1453,31 +1474,22 @@ spareToiletPaperTwoRolls: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-タオルは設置されているか
+<span class="inspect-text" data-inspect-key="toiletTowelPlaced"></span>
 </label><br>
-<span class="inspect-en">
-Is a towel properly provided?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-トイレットペーパーは三角折りされているか
+<span class="inspect-text" data-inspect-key="toiletPaperTriangleFolded"></span>
 </label><br>
-<span class="inspect-en">
-Has the toilet paper been folded into a triangle?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-便器の周辺や裏側にゴミや汚れは残っていないか
+<span class="inspect-text" data-inspect-key="toiletAroundBehindClean"></span>
 </label><br>
-<span class="inspect-en">
-Are there any stains or debris around or behind the toilet?
-</span><br>
 </p>
   `;
   const toiletBowlRaisedCleanText = document.querySelector(
@@ -1527,6 +1539,30 @@ const spareToiletPaperTwoRollsText = document.querySelector(
 spareToiletPaperTwoRollsText.textContent =
   toiletInspectTexts.spareToiletPaperTwoRolls[lang] ||
   toiletInspectTexts.spareToiletPaperTwoRolls.ja;
+  
+  const toiletTowelPlacedText = document.querySelector(
+  '[data-inspect-key="toiletTowelPlaced"]'
+);
+
+toiletTowelPlacedText.textContent =
+  toiletInspectTexts.toiletTowelPlaced[lang] ||
+  toiletInspectTexts.toiletTowelPlaced.ja;
+
+const toiletPaperTriangleFoldedText = document.querySelector(
+  '[data-inspect-key="toiletPaperTriangleFolded"]'
+);
+
+toiletPaperTriangleFoldedText.textContent =
+  toiletInspectTexts.toiletPaperTriangleFolded[lang] ||
+  toiletInspectTexts.toiletPaperTriangleFolded.ja;
+
+const toiletAroundBehindCleanText = document.querySelector(
+  '[data-inspect-key="toiletAroundBehindClean"]'
+);
+
+toiletAroundBehindCleanText.textContent =
+  toiletInspectTexts.toiletAroundBehindClean[lang] ||
+  toiletInspectTexts.toiletAroundBehindClean.ja;
 }
 
 if (cat === "closet") {
