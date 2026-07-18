@@ -1862,6 +1862,20 @@ entranceUpperShelfClean: {
   es: "¿Está limpio el estante superior de la entrada?",
   ko: "현관 위쪽 선반이 깨끗한가?",
   zh: "玄关上方的架子是否干净？"
+},
+entranceCabinetOpeningClean: {
+  ja: "玄関棚の開閉部分に汚れはないか",
+  en: "Is the opening area of the entrance cabinet clean?",
+  es: "¿Está limpia la zona de apertura del armario de la entrada?",
+  ko: "현관 수납장의 여닫는 부분이 깨끗한가?",
+  zh: "玄关柜的开合部位是否干净？"
+},
+entranceFloorClean: {
+  ja: "玄関の床にゴミや髪の毛はないか",
+  en: "Is the entrance floor free of trash and hair?",
+  es: "¿El suelo de la entrada está libre de basura y cabellos?",
+  ko: "현관 바닥에 쓰레기나 머리카락이 없는가?",
+  zh: "玄关地面是否没有垃圾和头发？"
 }
 };
   inspectContent.innerHTML = `
@@ -1910,21 +1924,15 @@ entranceUpperShelfClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-玄関棚の開閉部分に汚れはないか
+<span class="inspect-text" data-inspect-key="entranceCabinetOpeningClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the opening area of the entrance cabinet clean?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-玄関の床にゴミや髪の毛はないか
+<span class="inspect-text" data-inspect-key="entranceFloorClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the entrance floor free of trash and hair?
-</span><br>
 </p>
   `;
   const entranceLightAutoText = document.querySelector(
@@ -1974,8 +1982,23 @@ const entranceUpperShelfCleanText = document.querySelector(
 entranceUpperShelfCleanText.textContent =
   entranceInspectTexts.entranceUpperShelfClean[lang] ||
   entranceInspectTexts.entranceUpperShelfClean.ja;
-}
+  
+  const entranceCabinetOpeningCleanText = document.querySelector(
+  '[data-inspect-key="entranceCabinetOpeningClean"]'
+);
 
+entranceCabinetOpeningCleanText.textContent =
+  entranceInspectTexts.entranceCabinetOpeningClean[lang] ||
+  entranceInspectTexts.entranceCabinetOpeningClean.ja;
+
+const entranceFloorCleanText = document.querySelector(
+  '[data-inspect-key="entranceFloorClean"]'
+);
+
+entranceFloorCleanText.textContent =
+  entranceInspectTexts.entranceFloorClean[lang] ||
+  entranceInspectTexts.entranceFloorClean.ja;
+}
 
 inspectCard.addEventListener("click", () => {
   inspectContent.classList.toggle("is-open");
