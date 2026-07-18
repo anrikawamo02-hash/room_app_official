@@ -555,35 +555,50 @@ document.querySelector(".inspect-card-ja").textContent =
 document.querySelector(".inspect-card-en").textContent =
   "Kitchen Inspection";
 
+const kitchenInspectTexts = {
+  cutleryPresent: {
+    ja: "カトラリーは揃っているか",
+    en: "Are all cutlery items present?",
+    es: "¿Están todos los cubiertos?",
+    ko: "모든 커트러리가 갖춰져 있는가?",
+    zh: "餐具是否齐全？"
+  },
+  glassesCupsClean: {
+    ja: "グラス・カップに使用感は残っていないか、一つずつ内側・ふちまで確認",
+    en: "Are the glasses and cups free of any signs of use, including the inside and rims?",
+    es: "¿Los vasos y las tazas están libres de señales de uso, incluido el interior y los bordes?",
+    ko: "유리잔과 컵에 사용 흔적이 남아 있지 않은지, 안쪽과 가장자리까지 하나씩 확인했는가?",
+    zh: "玻璃杯和杯子是否无使用痕迹，并逐个检查了内侧和杯沿？"
+  },
+  dishesCutleryClean: {
+    ja: "お皿・お箸・カトラリーに使用感は残っていないか、一つずつ内側・ふちまで確認",
+    en: "Are the dishes, chopsticks, and cutlery free of any signs of use?",
+    es: "¿Los platos, los palillos y los cubiertos están libres de señales de uso?",
+    ko: "접시, 젓가락, 커트러리에 사용 흔적이 남아 있지 않은지, 안쪽과 가장자리까지 하나씩 확인했는가?",
+    zh: "盘子、筷子和餐具是否无使用痕迹，并逐个检查了内侧和边缘？"
+  }
+};
+
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-カトラリーは揃っているか
+<span class="inspect-text" data-inspect-key="cutleryPresent"></span>
 </label><br>
-<span class="inspect-en">
-Are all cutlery items present?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-グラス・カップに使用感は残っていないか、一つずつ内側・ふちまで確認
+<span class="inspect-text" data-inspect-key="glassesCupsClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the glasses and cups free of any signs of use, including the inside and rims?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-お皿・お箸・カトラリーに使用感は残っていないか、一つずつ内側・ふちまで確認
+<span class="inspect-text" data-inspect-key="dishesCutleryClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the dishes, chopsticks, and cutlery free of any signs of use?
-</span><br>
 </p>
 
 <p>
@@ -676,6 +691,29 @@ Is there no dust on top of the microwave and refrigerator?
 </span><br>
 </p>
   `;
+  const cutleryPresentText = document.querySelector(
+  '[data-inspect-key="cutleryPresent"]'
+);
+
+cutleryPresentText.textContent =
+  kitchenInspectTexts.cutleryPresent[lang] ||
+  kitchenInspectTexts.cutleryPresent.ja;
+
+const glassesCupsCleanText = document.querySelector(
+  '[data-inspect-key="glassesCupsClean"]'
+);
+
+glassesCupsCleanText.textContent =
+  kitchenInspectTexts.glassesCupsClean[lang] ||
+  kitchenInspectTexts.glassesCupsClean.ja;
+
+const dishesCutleryCleanText = document.querySelector(
+  '[data-inspect-key="dishesCutleryClean"]'
+);
+
+dishesCutleryCleanText.textContent =
+  kitchenInspectTexts.dishesCutleryClean[lang] ||
+  kitchenInspectTexts.dishesCutleryClean.ja;
 }
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
