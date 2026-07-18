@@ -1383,7 +1383,28 @@ document.querySelector(".inspect-card-en").textContent =
     es: "¿Se ha limpiado bien el pomo de la puerta?",
     ko: "문손잡이가 깨끗하게 닦여 있는가?",
     zh: "门把手是否已擦拭干净？"
-  }
+  },
+  sanitaryBoxEmpty: {
+  ja: "サニタリーボックスにゴミは残っていないか",
+  en: "Is the sanitary box empty and free of trash?",
+  es: "¿La papelera sanitaria está vacía y sin basura?",
+  ko: "위생용품 수거함에 쓰레기가 남아 있지 않은가?",
+  zh: "卫生垃圾桶内是否没有垃圾？"
+},
+toiletFloorClean: {
+  ja: "トイレの床に汚れは残っていないか",
+  en: "Is the toilet floor clean and free of stains?",
+  es: "¿El suelo del baño está limpio y sin manchas?",
+  ko: "화장실 바닥에 오염이 남아 있지 않은가?",
+  zh: "卫生间地面是否干净，没有污渍？"
+},
+spareToiletPaperTwoRolls: {
+  ja: "予備のトイレットペーパーは2ロール設置されているか",
+  en: "Are two spare toilet paper rolls provided?",
+  es: "¿Hay dos rollos de papel higiénico de repuesto?",
+  ko: "여분의 화장지가 두 롤 비치되어 있는가?",
+  zh: "是否放置了两卷备用厕纸？"
+}
 };
 
   inspectContent.innerHTML = `
@@ -1411,31 +1432,22 @@ document.querySelector(".inspect-card-en").textContent =
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-サニタリーボックスにゴミは残っていないか
+<span class="inspect-text" data-inspect-key="sanitaryBoxEmpty"></span>
 </label><br>
-<span class="inspect-en">
-Is the sanitary box empty and free of trash?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-トイレの床に汚れは残っていないか
+<span class="inspect-text" data-inspect-key="toiletFloorClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the toilet floor clean and free of stains?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-予備のトイレットペーパーは2ロール設置されているか
+<span class="inspect-text" data-inspect-key="spareToiletPaperTwoRolls"></span>
 </label><br>
-<span class="inspect-en">
-Are two spare toilet paper rolls provided?
-</span><br>
 </p>
 
 <p>
@@ -1491,6 +1503,30 @@ const toiletDoorKnobCleanText = document.querySelector(
 toiletDoorKnobCleanText.textContent =
   toiletInspectTexts.toiletDoorKnobClean[lang] ||
   toiletInspectTexts.toiletDoorKnobClean.ja;
+  
+  const sanitaryBoxEmptyText = document.querySelector(
+  '[data-inspect-key="sanitaryBoxEmpty"]'
+);
+
+sanitaryBoxEmptyText.textContent =
+  toiletInspectTexts.sanitaryBoxEmpty[lang] ||
+  toiletInspectTexts.sanitaryBoxEmpty.ja;
+
+const toiletFloorCleanText = document.querySelector(
+  '[data-inspect-key="toiletFloorClean"]'
+);
+
+toiletFloorCleanText.textContent =
+  toiletInspectTexts.toiletFloorClean[lang] ||
+  toiletInspectTexts.toiletFloorClean.ja;
+
+const spareToiletPaperTwoRollsText = document.querySelector(
+  '[data-inspect-key="spareToiletPaperTwoRolls"]'
+);
+
+spareToiletPaperTwoRollsText.textContent =
+  toiletInspectTexts.spareToiletPaperTwoRolls[lang] ||
+  toiletInspectTexts.spareToiletPaperTwoRolls.ja;
 }
 
 if (cat === "closet") {
