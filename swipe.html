@@ -541,8 +541,19 @@ deskDrawersText.textContent =
   mainInspectTexts.deskDrawers.ja;
 }
 if (cat === "kitchen") {
-  document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
+  const kitchenInspectTitles = {
+  ja: "キッチンインスペ表",
+  en: "Kitchen Inspection",
+  es: "Inspección de la cocina",
+  ko: "주방 점검표",
+  zh: "厨房检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  kitchenInspectTitles[lang] || kitchenInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Kitchen Inspection";
 
   inspectContent.innerHTML = `
 <p>
