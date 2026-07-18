@@ -880,6 +880,27 @@ vanitySinkDrainClean: {
   es: "¿El lavabo y el desagüe están limpios y sin gotas de agua ni cabellos?",
   ko: "세면대와 배수구가 깨끗하게 청소되어 있고 물방울이나 머리카락이 남아 있지 않은가?",
   zh: "洗面台和排水口是否已清洁干净，没有水滴和头发？"
+},
+lowerCabinetClean: {
+  ja: "下の収納棚の中に汚れは残っていないか",
+  en: "Is the lower storage cabinet clean inside?",
+  es: "¿Está limpio el interior del armario inferior?",
+  ko: "아래쪽 수납장 내부에 오염이 남아 있지 않은가?",
+  zh: "下方储物柜内部是否干净，没有污渍？"
+},
+doorKnobClean: {
+  ja: "扉のドアノブはきれいに拭かれているか",
+  en: "Has the door knob been wiped clean?",
+  es: "¿Se ha limpiado bien el pomo de la puerta?",
+  ko: "문손잡이가 깨끗하게 닦여 있는가?",
+  zh: "门把手是否已擦拭干净？"
+},
+laundryDetergentRefilled: {
+  ja: "洗濯洗剤は補充されているか",
+  en: "Has the laundry detergent been refilled?",
+  es: "¿Se ha rellenado el detergente para la ropa?",
+  ko: "세탁세제가 보충되어 있는가?",
+  zh: "洗衣液是否已补充？"
 }
 };
 
@@ -929,31 +950,22 @@ vanitySinkDrainClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-下の収納棚の中に汚れは残っていないか
+<span class="inspect-text" data-inspect-key="lowerCabinetClean"></span>
 </label><br>
-<span class="inspect-en">
-Is the lower storage cabinet clean inside?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-扉のドアノブはきれいに拭かれているか
+<span class="inspect-text" data-inspect-key="doorKnobClean"></span>
 </label><br>
-<span class="inspect-en">
-Has the door knob been wiped clean?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-洗濯洗剤は補充されているか
+<span class="inspect-text" data-inspect-key="laundryDetergentRefilled"></span>
 </label><br>
-<span class="inspect-en">
-Has the laundry detergent been refilled?
-</span><br>
 </p>
 
 <p>
@@ -1013,6 +1025,30 @@ const vanitySinkDrainCleanText = document.querySelector(
 vanitySinkDrainCleanText.textContent =
   vanityInspectTexts.vanitySinkDrainClean[lang] ||
   vanityInspectTexts.vanitySinkDrainClean.ja;
+  
+  const lowerCabinetCleanText = document.querySelector(
+  '[data-inspect-key="lowerCabinetClean"]'
+);
+
+lowerCabinetCleanText.textContent =
+  vanityInspectTexts.lowerCabinetClean[lang] ||
+  vanityInspectTexts.lowerCabinetClean.ja;
+
+const doorKnobCleanText = document.querySelector(
+  '[data-inspect-key="doorKnobClean"]'
+);
+
+doorKnobCleanText.textContent =
+  vanityInspectTexts.doorKnobClean[lang] ||
+  vanityInspectTexts.doorKnobClean.ja;
+
+const laundryDetergentRefilledText = document.querySelector(
+  '[data-inspect-key="laundryDetergentRefilled"]'
+);
+
+laundryDetergentRefilledText.textContent =
+  vanityInspectTexts.laundryDetergentRefilled[lang] ||
+  vanityInspectTexts.laundryDetergentRefilled.ja;
 }
 
 if (cat === "bath") {
