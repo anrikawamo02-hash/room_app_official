@@ -1806,8 +1806,19 @@ closetWallsShelvesCleanText.textContent =
 }
 
 if (cat === "entrance") {
-  document.querySelector(".inspect-card-ja").textContent = "玄関インスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Entrance Inspection";
+  const entranceInspectTitles = {
+  ja: "玄関インスペ表",
+  en: "Entrance Inspection",
+  es: "Inspección de la entrada",
+  ko: "현관 점검표",
+  zh: "玄关检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  entranceInspectTitles[lang] || entranceInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Entrance Inspection";
 
   inspectContent.innerHTML = `
 <p>
