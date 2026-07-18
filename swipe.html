@@ -597,6 +597,27 @@ kettleClean: {
   es: "¿Está el hervidor limpio y sin gotas de agua en el interior?",
   ko: "주전자에 사용 흔적이 없고 내부에 물방울이 없는가?",
   zh: "电热水壶是否没有使用痕迹，内部没有水滴？"
+},
+sinkDrainNet: {
+  ja: "シンクと排水溝はきれいに清掃されているか、ネットは交換されているか",
+  en: "Are the sink and drain clean, and has the drain net been replaced?",
+  es: "¿Están limpios el fregadero y el desagüe, y se ha cambiado la malla del desagüe?",
+  ko: "싱크대와 배수구가 깨끗하게 청소되어 있고 배수구 망이 교체되어 있는가?",
+  zh: "水槽和排水口是否清洁，滤网是否已更换？"
+},
+spongeReplaced: {
+  ja: "スポンジは新しい物に交換されているか",
+  en: "Has the kitchen sponge been replaced with a new one?",
+  es: "¿Se ha cambiado la esponja de cocina por una nueva?",
+  ko: "주방 스펀지가 새것으로 교체되어 있는가?",
+  zh: "厨房海绵是否已更换为新的？"
+},
+dishwashingDetergent: {
+  ja: "食器用洗剤は十分に入っているか",
+  en: "Is there enough dishwashing detergent?",
+  es: "¿Hay suficiente detergente para platos?",
+  ko: "주방세제가 충분히 들어 있는가?",
+  zh: "洗洁精是否充足？"
 }
 };
 
@@ -646,31 +667,22 @@ kettleClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-シンクと排水溝はきれいに清掃されているか、ネットは交換されているか
+<span class="inspect-text" data-inspect-key="sinkDrainNet"></span>
 </label><br>
-<span class="inspect-en">
-Are the sink and drain clean, and has the drain net been replaced?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-スポンジは新しい物に交換されているか
+<span class="inspect-text" data-inspect-key="spongeReplaced"></span>
 </label><br>
-<span class="inspect-en">
-Has the kitchen sponge been replaced with a new one?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-食器用洗剤は十分に入っているか
+<span class="inspect-text" data-inspect-key="dishwashingDetergent"></span>
 </label><br>
-<span class="inspect-en">
-Is there enough dishwashing detergent?
-</span><br>
 </p>
 
 <p>
@@ -750,6 +762,30 @@ const kettleCleanText = document.querySelector(
 kettleCleanText.textContent =
   kitchenInspectTexts.kettleClean[lang] ||
   kitchenInspectTexts.kettleClean.ja;
+  
+  const sinkDrainNetText = document.querySelector(
+  '[data-inspect-key="sinkDrainNet"]'
+);
+
+sinkDrainNetText.textContent =
+  kitchenInspectTexts.sinkDrainNet[lang] ||
+  kitchenInspectTexts.sinkDrainNet.ja;
+
+const spongeReplacedText = document.querySelector(
+  '[data-inspect-key="spongeReplaced"]'
+);
+
+spongeReplacedText.textContent =
+  kitchenInspectTexts.spongeReplaced[lang] ||
+  kitchenInspectTexts.spongeReplaced.ja;
+
+const dishwashingDetergentText = document.querySelector(
+  '[data-inspect-key="dishwashingDetergent"]'
+);
+
+dishwashingDetergentText.textContent =
+  kitchenInspectTexts.dishwashingDetergent[lang] ||
+  kitchenInspectTexts.dishwashingDetergent.ja;
 }
 if (cat === "vanity") {
   document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
