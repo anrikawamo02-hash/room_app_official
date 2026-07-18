@@ -1064,8 +1064,19 @@ washingMachineCleanText.textContent =
 }
 
 if (cat === "bath") {
-  document.querySelector(".inspect-card-ja").textContent = "バスルームインスペ表";
-  document.querySelector(".inspect-card-en").textContent = "Bath Inspection";
+  const bathInspectTitles = {
+  ja: "バスルームインスペ表",
+  en: "Bathroom Inspection",
+  es: "Inspección del baño",
+  ko: "욕실 점검표",
+  zh: "浴室检查表"
+};
+
+document.querySelector(".inspect-card-ja").textContent =
+  bathInspectTitles[lang] || bathInspectTitles.ja;
+
+document.querySelector(".inspect-card-en").textContent =
+  "Bath Inspection";
 
   inspectContent.innerHTML = `
 <p>
