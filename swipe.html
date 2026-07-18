@@ -1361,36 +1361,51 @@ document.querySelector(".inspect-card-ja").textContent =
 
 document.querySelector(".inspect-card-en").textContent =
   "Toilet Inspection";
+  
+  const toiletInspectTexts = {
+  toiletBowlRaisedClean: {
+    ja: "便器は蓋と便座を上げて確認し、汚れは残っていないか",
+    en: "Has the toilet been checked with both the lid and seat raised, and is it free of stains?",
+    es: "¿Se ha revisado el inodoro con la tapa y el asiento levantados, y está libre de manchas?",
+    ko: "변기 뚜껑과 변좌를 모두 올려 확인했으며, 오염이 남아 있지 않은가?",
+    zh: "是否已抬起马桶盖和坐垫进行检查，并且没有污渍？"
+  },
+  flushHandlePaperShelfClean: {
+    ja: "水を流すハンドル部分・ペーパーホルダーの棚に汚れや手垢は残っていないか",
+    en: "Are the flush handle and toilet paper holder shelf free of stains and fingerprints?",
+    es: "¿La palanca de descarga y la repisa del portarrollos están libres de suciedad y marcas de manos?",
+    ko: "물 내림 손잡이와 휴지걸이 선반에 오염이나 손자국이 남아 있지 않은가?",
+    zh: "冲水手柄和厕纸架置物台上是否没有污渍和手印？"
+  },
+  toiletDoorKnobClean: {
+    ja: "扉のドアノブはきれいに拭かれているか",
+    en: "Has the door knob been wiped clean?",
+    es: "¿Se ha limpiado bien el pomo de la puerta?",
+    ko: "문손잡이가 깨끗하게 닦여 있는가?",
+    zh: "门把手是否已擦拭干净？"
+  }
+};
 
   inspectContent.innerHTML = `
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-便器は蓋と便座を上げて確認し、汚れは残っていないか
+<span class="inspect-text" data-inspect-key="toiletBowlRaisedClean"></span>
 </label><br>
-<span class="inspect-en">
-Has the toilet been checked with both the lid and seat raised, and is it free of stains?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-水を流すハンドル部分・ペーパーホルダーの棚に汚れや手垢は残っていないか
+<span class="inspect-text" data-inspect-key="flushHandlePaperShelfClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the flush handle and toilet paper holder shelf free of stains and fingerprints?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-扉のドアノブはきれいに拭かれているか
+<span class="inspect-text" data-inspect-key="toiletDoorKnobClean"></span>
 </label><br>
-<span class="inspect-en">
-Has the door knob been wiped clean?
-</span><br>
 </p>
 
 <p>
@@ -1453,6 +1468,29 @@ Are there any stains or debris around or behind the toilet?
 </span><br>
 </p>
   `;
+  const toiletBowlRaisedCleanText = document.querySelector(
+  '[data-inspect-key="toiletBowlRaisedClean"]'
+);
+
+toiletBowlRaisedCleanText.textContent =
+  toiletInspectTexts.toiletBowlRaisedClean[lang] ||
+  toiletInspectTexts.toiletBowlRaisedClean.ja;
+
+const flushHandlePaperShelfCleanText = document.querySelector(
+  '[data-inspect-key="flushHandlePaperShelfClean"]'
+);
+
+flushHandlePaperShelfCleanText.textContent =
+  toiletInspectTexts.flushHandlePaperShelfClean[lang] ||
+  toiletInspectTexts.flushHandlePaperShelfClean.ja;
+
+const toiletDoorKnobCleanText = document.querySelector(
+  '[data-inspect-key="toiletDoorKnobClean"]'
+);
+
+toiletDoorKnobCleanText.textContent =
+  toiletInspectTexts.toiletDoorKnobClean[lang] ||
+  toiletInspectTexts.toiletDoorKnobClean.ja;
 }
 
 if (cat === "closet") {
