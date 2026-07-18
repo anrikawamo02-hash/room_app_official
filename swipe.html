@@ -1643,6 +1643,13 @@ closetFloorShelfClean: {
   es: "¿El suelo y los estantes superiores están libres de basura y cabellos?",
   ko: "바닥과 위쪽 선반에 쓰레기나 머리카락이 떨어져 있지 않은가?",
   zh: "地面和上层架子上是否没有垃圾和头发？"
+},
+closetWallsShelvesClean: {
+  ja: "クローゼット内の壁や棚に汚れ・埃は残っていないか",
+  en: "Are the closet walls and shelves free of dirt and dust?",
+  es: "¿Las paredes y los estantes del armario están libres de suciedad y polvo?",
+  ko: "옷장 내부의 벽과 선반에 오염이나 먼지가 남아 있지 않은가?",
+  zh: "衣柜内部的墙壁和架子上是否没有污渍和灰尘？"
 }
 };
 
@@ -1713,11 +1720,8 @@ closetFloorShelfClean: {
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-クローゼット内の壁や棚に汚れ・埃は残っていないか
+<span class="inspect-text" data-inspect-key="closetWallsShelvesClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the closet walls and shelves free of dirt and dust?
-</span><br>
 </p>
   `;
   const spareFutonsStoredText = document.querySelector(
@@ -1791,6 +1795,14 @@ const closetFloorShelfCleanText = document.querySelector(
 closetFloorShelfCleanText.textContent =
   closetInspectTexts.closetFloorShelfClean[lang] ||
   closetInspectTexts.closetFloorShelfClean.ja;
+  
+  const closetWallsShelvesCleanText = document.querySelector(
+  '[data-inspect-key="closetWallsShelvesClean"]'
+);
+
+closetWallsShelvesCleanText.textContent =
+  closetInspectTexts.closetWallsShelvesClean[lang] ||
+  closetInspectTexts.closetWallsShelvesClean.ja;
 }
 
 if (cat === "entrance") {
