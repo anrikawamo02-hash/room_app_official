@@ -859,7 +859,28 @@ document.querySelector(".inspect-card-en").textContent =
     es: "¿Está limpio y sin basura el espacio de almacenamiento detrás del espejo?",
     ko: "거울 뒤 수납공간에 쓰레기나 오염이 남아 있지 않은가?",
     zh: "镜子后面的储物空间是否干净，没有垃圾或污渍？"
-  }
+  },
+  dryerCord: {
+  ja: "ドライヤーのコードはきれいにまとめられているか",
+  en: "Is the hair dryer cord neatly wrapped?",
+  es: "¿Está el cable del secador de pelo bien enrollado?",
+  ko: "헤어드라이어 코드가 깔끔하게 정리되어 있는가?",
+  zh: "吹风机电线是否整理整齐？"
+},
+faucetMetalClean: {
+  ja: "蛇口の金属部分に水垢や汚れは残っていないか、裏側も確認",
+  en: "Are the metal parts of the faucet free of water stains and dirt? Check the back side as well.",
+  es: "¿Las partes metálicas del grifo están libres de manchas de agua y suciedad? Compruebe también la parte trasera.",
+  ko: "수도꼭지의 금속 부분에 물때나 오염이 남아 있지 않은가? 뒷면도 확인했는가?",
+  zh: "水龙头的金属部分是否没有水垢和污渍？背面也请检查。"
+},
+vanitySinkDrainClean: {
+  ja: "洗面台と排水溝はきれいに清掃されているか、水滴や髪の毛は残っていないか",
+  en: "Are the sink and drain clean and free of water droplets and hair?",
+  es: "¿El lavabo y el desagüe están limpios y sin gotas de agua ni cabellos?",
+  ko: "세면대와 배수구가 깨끗하게 청소되어 있고 물방울이나 머리카락이 남아 있지 않은가?",
+  zh: "洗面台和排水口是否已清洁干净，没有水滴和头发？"
+}
 };
 
   inspectContent.innerHTML = `
@@ -887,31 +908,22 @@ document.querySelector(".inspect-card-en").textContent =
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-ドライヤーのコードはきれいにまとめられているか
+<span class="inspect-text" data-inspect-key="dryerCord"></span>
 </label><br>
-<span class="inspect-en">
-Is the hair dryer cord neatly wrapped?
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-蛇口の金属部分に水垢や汚れは残っていないか、裏側も確認
+<span class="inspect-text" data-inspect-key="faucetMetalClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the metal parts of the faucet free of water stains and dirt? Check the back side as well.
-</span><br>
 </p>
 
 <p>
 <label>
 <input type="checkbox" class="inspect-check">
-洗面台と排水溝はきれいに清掃されているか、水滴や髪の毛は残っていないか
+<span class="inspect-text" data-inspect-key="vanitySinkDrainClean"></span>
 </label><br>
-<span class="inspect-en">
-Are the sink and drain clean and free of water droplets and hair?
-</span><br>
 </p>
 
 <p>
@@ -977,6 +989,30 @@ const mirrorStorageCleanText = document.querySelector(
 mirrorStorageCleanText.textContent =
   vanityInspectTexts.mirrorStorageClean[lang] ||
   vanityInspectTexts.mirrorStorageClean.ja;
+  
+  const dryerCordText = document.querySelector(
+  '[data-inspect-key="dryerCord"]'
+);
+
+dryerCordText.textContent =
+  vanityInspectTexts.dryerCord[lang] ||
+  vanityInspectTexts.dryerCord.ja;
+
+const faucetMetalCleanText = document.querySelector(
+  '[data-inspect-key="faucetMetalClean"]'
+);
+
+faucetMetalCleanText.textContent =
+  vanityInspectTexts.faucetMetalClean[lang] ||
+  vanityInspectTexts.faucetMetalClean.ja;
+
+const vanitySinkDrainCleanText = document.querySelector(
+  '[data-inspect-key="vanitySinkDrainClean"]'
+);
+
+vanitySinkDrainCleanText.textContent =
+  vanityInspectTexts.vanitySinkDrainClean[lang] ||
+  vanityInspectTexts.vanitySinkDrainClean.ja;
 }
 
 if (cat === "bath") {
