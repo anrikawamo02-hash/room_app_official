@@ -58,8 +58,16 @@
     return;
   }
 
-  const catFolder = `${cat}${unit}`;
+    const catFolder = `${cat}${unit}`;
   const basePath = `photos/${room}/${catFolder}/`;
+
+  const savedLanguage =
+    localStorage.getItem('selectedLanguage') || 'ja';
+
+  const imageLanguage =
+    ['en', 'es', 'ko', 'zh'].includes(savedLanguage)
+      ? savedLanguage
+      : 'ja';
 
   scroller.innerHTML = '';
 
@@ -68,33 +76,56 @@
 
   for (let i = 1; i <= MAX_IMAGES; i++) {
     const num = String(i).padStart(2, '0');
-    const imgPath = `${basePath}${num}.png`;
+
+    const defaultImgPath = `${basePath}${num}.png`;
+    const localizedImgPath =
+      `${basePath}${num}_${imageLanguage}.png`;
+
+    const useLocalizedImage = imageLanguage !== 'ja';
 
     const slide = document.createElement('div');
     slide.className = 'slide';
+
     const frame = document.createElement('div');
-frame.className = 'photo-frame';
+    frame.className = 'photo-frame';
+
     const img = document.createElement('img');
-    img.src = imgPath;
+
+    img.src = useLocalizedImage
+      ? localizedImgPath
+      : defaultImgPath;
+
     img.alt = `${cat} ${unit} ${num}`;
 
     img.addEventListener('load', () => {
-  if (img.naturalWidth > img.naturalHeight) {
-    frame.classList.add('photo-frame-landscape');
-  } else {
-    frame.classList.add('photo-frame-portrait');
-  }
+      if (img.naturalWidth > img.naturalHeight) {
+        frame.classList.add('photo-frame-landscape');
+      } else {
+        frame.classList.add('photo-frame-portrait');
+      }
 
-  loadedCount += 1;
-  finishedCount += 1;
-  updateCounter();
-});
+      loadedCount += 1;
+      finishedCount += 1;
+      updateCounter();
+    });
 
     img.addEventListener('error', () => {
+      if (
+        useLocalizedImage &&
+        img.dataset.fallbackTried !== '1'
+      ) {
+        img.dataset.fallbackTried = '1';
+        img.src = defaultImgPath;
+        return;
+      }
+
       finishedCount += 1;
       slide.remove();
 
-      if (finishedCount === MAX_IMAGES && loadedCount === 0) {
+      if (
+        finishedCount === MAX_IMAGES &&
+        loadedCount === 0
+      ) {
         showEmptyMessage();
         return;
       }
@@ -103,8 +134,8 @@ frame.className = 'photo-frame';
     });
 
     frame.appendChild(img);
-slide.appendChild(frame);
-scroller.appendChild(slide);
+    slide.appendChild(frame);
+    scroller.appendChild(slide);
   }
 
   scroller.addEventListener(
