@@ -17,7 +17,7 @@
     'entrance'
   ]);
 
-  const MAX_IMAGES = 20;
+  const MAX_IMAGES = 30;
 
   const scroller = document.querySelector('.scroller');
   const counter = document.getElementById('counter');
