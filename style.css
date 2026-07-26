@@ -234,7 +234,6 @@ justify-content: center;
 .swipe-view {
   width: 100%;
   min-height: calc(100vh - 120px);
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
