@@ -116,10 +116,6 @@ justify-content: center;
   width: 46px;
   height: 46px;
 }
-.app-header {
-  position: relative;
-}
-
 .header-back {
   position: absolute;
   left: 18px;
