@@ -347,10 +347,6 @@ justify-content: center;
 .inspect-content p br + * {
     color: #3d62ad;
 }
-.inspect-en {
-    font-size: 14px;
-    color: #3d62ad;
-}
 /* ---------- Language ---------- */
 
 .language-selector{
