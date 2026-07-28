@@ -59,7 +59,7 @@
   }
 
     const catFolder = `${cat}${unit}`;
-  const basePath = `photos/${room}/${catFolder}/`;
+  const basePath = `photos_v2/${room}/${catFolder}/`;
 
   const savedLanguage =
     localStorage.getItem('selectedLanguage') || 'ja';
