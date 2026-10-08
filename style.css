@@ -1,0 +1,322 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #111316;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", sans-serif;
+}
+
+body { min-height: 100vh; }
+
+.app {
+  --bg1: #25282e;
+  --bg2: #17191d;
+  --bg3: #101216;
+  --panel: rgba(21, 23, 28, .74);
+  --panel-soft: rgba(255, 255, 255, .08);
+  --text: #f7f7f8;
+  --muted: rgba(247, 247, 248, .64);
+  --line: rgba(255, 255, 255, .10);
+  --input: rgba(29, 32, 37, .92);
+  --primary: #f4f4f5;
+  --primary-text: #15171b;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 25% 10%, rgba(255,255,255,.08), transparent 28%),
+    linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 56%, var(--bg3) 100%);
+  transition: background .35s ease, color .35s ease;
+}
+
+.app.theme-lavender {
+  --bg1: #a7a8d0;
+  --bg2: #7879a7;
+  --bg3: #55577d;
+  --panel: rgba(66, 65, 102, .62);
+  --panel-soft: rgba(255, 255, 255, .15);
+  --text: #fff;
+  --muted: rgba(255,255,255,.72);
+  --line: rgba(255,255,255,.17);
+  --input: rgba(78, 77, 118, .88);
+  --primary: #faf8ff;
+  --primary-text: #4b4770;
+}
+
+.app.theme-morning {
+  --bg1: #c3d4e9;
+  --bg2: #9eb6d2;
+  --bg3: #7d95b5;
+  --panel: rgba(64, 83, 111, .42);
+  --panel-soft: rgba(255,255,255,.18);
+  --text: #fff;
+  --muted: rgba(255,255,255,.78);
+  --line: rgba(255,255,255,.20);
+  --input: rgba(74, 95, 125, .82);
+  --primary: #fff;
+  --primary-text: #45607e;
+}
+
+.app.theme-evening {
+  --bg1: #aa806f;
+  --bg2: #7c5c51;
+  --bg3: #4f3d38;
+  --panel: rgba(68, 47, 41, .52);
+  --panel-soft: rgba(255,255,255,.13);
+  --text: #fff9f6;
+  --muted: rgba(255,249,246,.74);
+  --line: rgba(255,255,255,.15);
+  --input: rgba(83, 59, 52, .88);
+  --primary: #fff2ed;
+  --primary-text: #5a4037;
+}
+
+.topbar {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: max(14px, env(safe-area-inset-top)) 14px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #b8e3c2;
+  box-shadow: 0 0 0 5px rgba(184,227,194,.10);
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.status {
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0,0,0,.08);
+  backdrop-filter: blur(12px);
+}
+
+.theme-btn {
+  min-height: 34px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.theme-btn.active {
+  background: var(--primary);
+  color: var(--primary-text);
+}
+
+.portrait-wrap,
+.conversation {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 14px;
+}
+
+.portrait {
+  overflow: hidden;
+  border-radius: 26px;
+  background: #22252a;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 18px 46px rgba(0,0,0,.18);
+}
+
+.portrait-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 46%;
+  will-change: transform;
+  animation: renIdleBreath 5.6s ease-in-out infinite;
+}
+
+.portrait-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.ren-base { z-index: 1; }
+
+.eye-layer {
+  z-index: 2;
+  opacity: 0;
+}
+
+.mouth-layer {
+  z-index: 3;
+  opacity: 0;
+}
+
+@keyframes renIdleBreath {
+  0%, 100% {
+    transform: scale(1.000) translateY(0);
+  }
+  50% {
+    transform: scale(1.018) translateY(2px);
+  }
+}
+
+.conversation {
+  margin-top: -10px;
+  position: relative;
+  z-index: 2;
+}
+
+.bubble {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 14px 15px;
+  line-height: 1.55;
+  font-size: 15px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.10);
+}
+
+.who {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.composer {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  padding: 10px 14px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, transparent 0%, rgba(11,13,17,.48) 22%, rgba(11,13,17,.88) 100%);
+}
+
+.composer-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.mini-controls {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.mini-btn {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 0 12px;
+  background: var(--panel-soft);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.mini-btn.active {
+  background: var(--primary);
+  color: var(--primary-text);
+}
+
+.sendbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px 48px;
+  gap: 8px;
+  align-items: end;
+}
+
+textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  max-height: 120px;
+  resize: none;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--input);
+  color: var(--text);
+  padding: 13px 14px;
+  font-size: 16px;
+  outline: none;
+}
+
+textarea::placeholder { color: var(--muted); }
+
+.iconbtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--input);
+  color: var(--text);
+  font-size: 19px;
+}
+
+.iconbtn.primary {
+  background: var(--primary);
+  color: var(--primary-text);
+}
+
+.notice {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+}
+
+button { -webkit-tap-highlight-color: transparent; }
+
+button:active { transform: scale(.98); }
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-stage { animation: none; }
+}
+
+@media (max-width: 390px) {
+  .theme-btn { padding: 0 8px; }
+}
+
+@media (min-width: 700px) {
+  .portrait { aspect-ratio: 16 / 10; }
+}

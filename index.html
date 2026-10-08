@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#15171b" />
+  <title>&#34030;</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <div class="name">&#34030;</div>
+          <div class="status" id="status">&#24453;&#12387;&#12390;&#12427;</div>
+        </div>
+      </div>
+
+      <div class="theme-switcher" aria-label="theme">
+        <button class="theme-btn active" id="autoBtn" type="button">&#33258;&#21205;</button>
+        <button class="theme-btn" id="blackBtn" type="button">&#40658;</button>
+        <button class="theme-btn" id="lavBtn" type="button">&#12521;&#12505;&#12531;&#12480;&#12540;</button>
+      </div>
+    </header>
+
+    <section class="portrait-wrap" aria-label="Ren">
+      <div class="portrait">
+        <div class="portrait-stage">
+          <img class="ren-base" id="renImage" alt="Ren" style="opacity:0;" />
+          <img class="eye-layer" id="eyeLayer" alt="" aria-hidden="true" />
+          <img class="mouth-layer" id="mouthLayer" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <section class="conversation" aria-live="polite">
+      <div class="bubble" id="bubble">
+        <div class="who">&#34030;</div>
+        <div>&#26447;&#37324;&#12364;&#35441;&#12375;&#12363;&#12369;&#12427;&#12414;&#12391;&#12289;&#12371;&#12371;&#12391;&#24453;&#12387;&#12390;&#12427;&#12391;&#12290;</div>
+      </div>
+    </section>
+
+    <footer class="composer">
+      <div class="composer-inner">
+        <div class="mini-controls">
+          <button class="mini-btn active" id="voiceBtn" type="button">&#128266; &#38899;&#22768;ON</button>
+          <button class="mini-btn" id="lipBtn" type="button">&#21475;&#12497;&#12463;&#32244;&#32722;</button>
+        </div>
+
+        <div class="sendbar">
+          <textarea id="msg" rows="1" placeholder="&#34030;&#12395;&#35441;&#12375;&#12363;&#12369;&#12427;&#8230;"></textarea>
+          <button class="iconbtn" id="micBtn" type="button" aria-label="mic">&#127908;</button>
+          <button class="iconbtn primary" id="sendBtn" type="button" aria-label="send">&#8593;</button>
+        </div>
+
+        <p class="notice">AI&#12539;&#38899;&#22768;API&#12395;&#12399;&#12414;&#12384;&#25509;&#32154;&#12375;&#12390;&#12356;&#12414;&#12379;&#12435;&#65288;&#35506;&#37329;&#12394;&#12375;&#65289;</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
