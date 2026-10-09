@@ -191,6 +191,26 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
+
+/* 「う」表示時だけ、ベース側の右上の元髭をやわらかく抑える */
+.portrait-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity .18s ease;
+}
+
+.portrait-stage.u-beard-fix::after {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 4.4% 2.5% at 56.8% 47.6%, rgba(178, 149, 136, .66) 0%, rgba(178, 149, 136, .58) 42%, rgba(178, 149, 136, .28) 68%, rgba(178, 149, 136, 0) 100%),
+    radial-gradient(ellipse 3.2% 1.8% at 58.7% 46.9%, rgba(165, 136, 124, .52) 0%, rgba(165, 136, 124, .36) 58%, rgba(165, 136, 124, 0) 100%);
+  filter: blur(1.6px);
+}
+
 @keyframes renIdleBreath {
   0%, 100% {
     transform: scale(1.000) translateY(0);
@@ -319,38 +339,4 @@ button:active { transform: scale(.98); }
 
 @media (min-width: 700px) {
   .portrait { aspect-ratio: 16 / 10; }
-}
-/* ────────────────────────────────────────────
-   お試し版：丸い口（mouth_round.png）の上髭境界だけ少し減らす。
-   OFF時は完全に元の表示。位置・サイズ・レイヤー順は変更しない。
-   ベース画像、あ の画像、そのほかの口画像は加工しない。
-   ※ マスクは顔画像を描き直さない。必要な毛も減る可能性がある。
-──────────────────────────────────────────── */
-.mini-controls { flex-wrap: wrap; }
-.beard-compare-btn { font-size: 12px; padding: 0 9px; }
-
-/* iPhone等の縦画面。上唇の中心はほぼ維持し、パーツ上端だけ徐々に透過。 */
-.mouth-layer.beard-compare-active {
-  -webkit-mask-image: linear-gradient(to bottom,
-    transparent 0%, transparent 18%,
-    rgba(0,0,0,.28) 20.5%, rgba(0,0,0,.82) 22.1%,
-    #000 23.5%, #000 100%);
-  mask-image: linear-gradient(to bottom,
-    transparent 0%, transparent 18%,
-    rgba(0,0,0,.28) 20.5%, rgba(0,0,0,.82) 22.1%,
-    #000 23.5%, #000 100%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-/* 元CSSの横長表示(16:10)に合わせてマスク位置を補正。 */
-@media (min-width: 700px) {
-  .mouth-layer.beard-compare-active {
-    -webkit-mask-image: linear-gradient(to bottom,
-      transparent 0%, rgba(0,0,0,.28) 5%,
-      rgba(0,0,0,.82) 9%, #000 15%, #000 100%);
-    mask-image: linear-gradient(to bottom,
-      transparent 0%, rgba(0,0,0,.28) 5%,
-      rgba(0,0,0,.82) 9%, #000 15%, #000 100%);
-  }
 }
