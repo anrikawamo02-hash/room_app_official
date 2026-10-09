@@ -191,9 +191,9 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
-/* 位置確認で成功した透明画像重ね方式を、そのまま上髭補正にも使う */
+/* 補正画像を口パーツより上に出して、隠れないようにする */
 .beard-fix-overlay {
-  z-index: 2;
+  z-index: 4;
   opacity: 0;
 }
 .portrait-stage.show-beard-fix .beard-fix-overlay { opacity: 1; }
