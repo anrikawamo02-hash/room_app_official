@@ -14,8 +14,9 @@
   const eyeLayer = document.getElementById('eyeLayer');
   const mouthLayer = document.getElementById('mouthLayer');
   const portraitStage = document.querySelector('.portrait-stage');
-  let beardFixEnabled = false;
-  let beardFixBtn = null;
+  let positionGuideEnabled = false;
+  let positionGuideButton = null;
+  let positionGuideImage = null;
 
   const JP = {
     waiting: '\u5f85\u3063\u3066\u308b',
@@ -34,9 +35,7 @@
     displayDay: '\u663c',
     displayNight: '\u591c',
     mouthPractice: '\u53e3\u30d1\u30af\u7df4\u7fd2',
-    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62',
-    beardFixOn: '上髭補正 ON',
-    beardFixOff: '上髭補正 OFF'
+    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62'
   };
 
   /*
@@ -143,56 +142,89 @@
     eyeLayer.style.opacity = '1';
   }
 
-  function updateBeardFixButton() {
-    if (!beardFixBtn) return;
-    beardFixBtn.classList.toggle('active', beardFixEnabled);
-    beardFixBtn.textContent = beardFixEnabled ? JP.beardFixOn : JP.beardFixOff;
+
+  // 位置確認専用。補正や肌色塗りは一切行わない。
+  // 元画像と同じ 1024×1536 の透明目印画像を作り、同じ object-fit で表示する。
+  function createPositionGuideImage() {
+    if (!portraitStage || positionGuideImage) return;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 1536;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    // 右上の髭の「確認候補」。確定位置ではなく、杏里が実機で位置を確認するための印。
+    context.save();
+    context.translate(459, 377);
+    context.rotate(-0.38);
+    context.beginPath();
+    context.ellipse(0, 0, 36, 23, 0, 0, Math.PI * 2);
+    context.fillStyle = 'rgba(255, 100, 145, 0.20)';
+    context.fill();
+    context.lineWidth = 8;
+    context.strokeStyle = 'rgba(255,255,255,0.97)';
+    context.stroke();
+    context.setLineDash([10, 7]);
+    context.lineWidth = 4;
+    context.strokeStyle = '#E52967';
+    context.stroke();
+    context.setLineDash([]);
+    context.beginPath();
+    context.moveTo(-8, 0); context.lineTo(8, 0);
+    context.moveTo(0, -8); context.lineTo(0, 8);
+    context.lineWidth = 3;
+    context.strokeStyle = '#FFFFFF';
+    context.stroke();
+    context.restore();
+
+    positionGuideImage = document.createElement('img');
+    positionGuideImage.className = 'beard-position-guide';
+    positionGuideImage.alt = '';
+    positionGuideImage.setAttribute('aria-hidden', 'true');
+    positionGuideImage.src = canvas.toDataURL('image/png');
+    portraitStage.appendChild(positionGuideImage);
   }
 
-  function setUBeardFix(active) {
+  function updatePositionGuide() {
     if (!portraitStage) return;
-    portraitStage.classList.toggle('u-beard-fix-enabled', !!beardFixEnabled);
-    portraitStage.classList.toggle('u-beard-fix-active', !!active && !!beardFixEnabled);
+    const roundVisible = Boolean(
+      activeAssets && mouthLayer &&
+      mouthLayer.style.opacity === '1' &&
+      mouthLayer.getAttribute('src') === activeAssets.mouthRound
+    );
+    portraitStage.classList.toggle('show-beard-position-guide', positionGuideEnabled && roundVisible);
   }
 
-  function createBeardFixButton() {
+  function createPositionGuideButton() {
     const controls = document.querySelector('.mini-controls');
-    if (!controls || beardFixBtn) return;
-
-    beardFixBtn = document.createElement('button');
-    beardFixBtn.type = 'button';
-    beardFixBtn.className = 'mini-btn';
-    beardFixBtn.id = 'beardFixBtn';
-    beardFixBtn.addEventListener('click', () => {
-      beardFixEnabled = !beardFixEnabled;
-      updateBeardFixButton();
-      const isRoundVisible = Boolean(
-        mouthLayer &&
-        mouthLayer.style.opacity === '1' &&
-        activeAssets &&
-        mouthLayer.getAttribute('src') === activeAssets.mouthRound
-      );
-      setUBeardFix(isRoundVisible);
+    if (!controls || positionGuideButton) return;
+    createPositionGuideImage();
+    positionGuideButton = document.createElement('button');
+    positionGuideButton.type = 'button';
+    positionGuideButton.className = 'mini-btn';
+    positionGuideButton.textContent = '位置確認 OFF';
+    positionGuideButton.addEventListener('click', () => {
+      positionGuideEnabled = !positionGuideEnabled;
+      positionGuideButton.classList.toggle('active', positionGuideEnabled);
+      positionGuideButton.textContent = positionGuideEnabled ? '位置確認 ON' : '位置確認 OFF';
+      updatePositionGuide();
     });
-
-    controls.appendChild(beardFixBtn);
-    updateBeardFixButton();
+    controls.appendChild(positionGuideButton);
   }
 
   function hideMouth() {
     if (!mouthLayer) return;
     mouthLayer.style.opacity = '0';
     mouthLayer.removeAttribute('src');
-    setUBeardFix(false);
+    updatePositionGuide();
   }
 
   function showMouth(src) {
     if (!mouthLayer || !src) return;
     mouthLayer.src = src;
     mouthLayer.style.opacity = '1';
-
-    const isRoundMouth = Boolean(activeAssets && src === activeAssets.mouthRound);
-    setUBeardFix(isRoundMouth);
+    updatePositionGuide();
   }
 
   function updateLipButton() {
@@ -595,7 +627,7 @@
     });
   }
 
-  createBeardFixButton();
+  createPositionGuideButton();
 
   function showBubble(who, text) {
     if (!bubble) return;

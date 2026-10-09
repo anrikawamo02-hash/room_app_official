@@ -191,28 +191,12 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
-
-/* 実験用：『う』のときだけ右上の元髭を限定的に弱める */
-.portrait-stage::after {
-  content: '';
-  position: absolute;
-  left: 55.2%;
-  top: 43.6%;
-  width: 8.2%;
-  height: 4.8%;
-  pointer-events: none;
+/* 位置確認時だけ表示する透明の目印。画像と同じ object-fit と object-position を継承。 */
+.beard-position-guide {
+  z-index: 4;
   opacity: 0;
-  z-index: 2;
-  border-radius: 999px;
-  transform: rotate(-10deg);
-  transition: opacity .16s ease;
 }
-
-.portrait-stage.u-beard-fix-enabled.u-beard-fix-active::after {
-  opacity: 1;
-  background: radial-gradient(ellipse at 40% 52%, rgba(195, 166, 151, .82) 0%, rgba(191, 161, 146, .72) 42%, rgba(186, 156, 141, .36) 72%, rgba(186, 156, 141, 0) 100%);
-  filter: blur(1.2px);
-}
+.portrait-stage.show-beard-position-guide .beard-position-guide { opacity: 1; }
 
 @keyframes renIdleBreath {
   0%, 100% {
