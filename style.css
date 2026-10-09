@@ -320,3 +320,37 @@ button:active { transform: scale(.98); }
 @media (min-width: 700px) {
   .portrait { aspect-ratio: 16 / 10; }
 }
+/* ────────────────────────────────────────────
+   お試し版：丸い口（mouth_round.png）の上髭境界だけ少し減らす。
+   OFF時は完全に元の表示。位置・サイズ・レイヤー順は変更しない。
+   ベース画像、あ の画像、そのほかの口画像は加工しない。
+   ※ マスクは顔画像を描き直さない。必要な毛も減る可能性がある。
+──────────────────────────────────────────── */
+.mini-controls { flex-wrap: wrap; }
+.beard-compare-btn { font-size: 12px; padding: 0 9px; }
+
+/* iPhone等の縦画面。上唇の中心はほぼ維持し、パーツ上端だけ徐々に透過。 */
+.mouth-layer.beard-compare-active {
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0%, transparent 18%,
+    rgba(0,0,0,.28) 20.5%, rgba(0,0,0,.82) 22.1%,
+    #000 23.5%, #000 100%);
+  mask-image: linear-gradient(to bottom,
+    transparent 0%, transparent 18%,
+    rgba(0,0,0,.28) 20.5%, rgba(0,0,0,.82) 22.1%,
+    #000 23.5%, #000 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* 元CSSの横長表示(16:10)に合わせてマスク位置を補正。 */
+@media (min-width: 700px) {
+  .mouth-layer.beard-compare-active {
+    -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%, rgba(0,0,0,.28) 5%,
+      rgba(0,0,0,.82) 9%, #000 15%, #000 100%);
+    mask-image: linear-gradient(to bottom,
+      transparent 0%, rgba(0,0,0,.28) 5%,
+      rgba(0,0,0,.82) 9%, #000 15%, #000 100%);
+  }
+}

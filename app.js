@@ -138,16 +138,50 @@
     eyeLayer.style.opacity = '1';
   }
 
+  // 髭比較テスト：通常時はOFF（元の表示）。「round」の口パーツだけ補正する。
+  let beardCompareOn = false;
+  let beardCompareBtn = null;
+
+  function updateBeardCompare() {
+    if (!mouthLayer) return;
+    const isRound = !!activeAssets &&
+      mouthLayer.getAttribute('src') === activeAssets.mouthRound;
+    mouthLayer.classList.toggle('beard-compare-active', beardCompareOn && isRound);
+    if (beardCompareBtn) {
+      beardCompareBtn.textContent = beardCompareOn ? '上髭調整 ON' : '上髭調整 OFF';
+      beardCompareBtn.setAttribute('aria-pressed', String(beardCompareOn));
+      beardCompareBtn.classList.toggle('active', beardCompareOn);
+    }
+  }
+
+  function createBeardCompareButton() {
+    const controls = lipBtn?.parentElement;
+    if (!controls || document.getElementById('beardCompareBtn')) return;
+    beardCompareBtn = document.createElement('button');
+    beardCompareBtn.type = 'button';
+    beardCompareBtn.id = 'beardCompareBtn';
+    beardCompareBtn.className = 'mini-btn beard-compare-btn';
+    beardCompareBtn.setAttribute('aria-label', '丸い口の上髭の調整を比較');
+    beardCompareBtn.addEventListener('click', () => {
+      beardCompareOn = !beardCompareOn;
+      updateBeardCompare();
+    });
+    controls.appendChild(beardCompareBtn);
+    updateBeardCompare();
+  }
+
   function hideMouth() {
     if (!mouthLayer) return;
     mouthLayer.style.opacity = '0';
     mouthLayer.removeAttribute('src');
+    updateBeardCompare();
   }
 
   function showMouth(src) {
     if (!mouthLayer || !src) return;
     mouthLayer.src = src;
     mouthLayer.style.opacity = '1';
+    updateBeardCompare();
   }
 
   function updateLipButton() {
@@ -606,5 +640,6 @@
 
   applyAuto();
   createDisplayCheckPanel();
+  createBeardCompareButton(); // テストボタンを追加（OFFが元の見た目）
   applyCurrentRen(true);
 })();
