@@ -191,12 +191,12 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
-/* 補正画像を口パーツより上に出して、隠れないようにする */
-.beard-fix-overlay {
-  z-index: 4;
+/* ベース側の残り髭だけを弱めるため、口パーツより下に置く補正レイヤー */
+.beard-fix-underlay {
+  z-index: 2;
   opacity: 0;
 }
-.portrait-stage.show-beard-fix .beard-fix-overlay { opacity: 1; }
+.portrait-stage.show-base-beard-fix .beard-fix-underlay { opacity: 1; }
 
 @keyframes renIdleBreath {
   0%, 100% {

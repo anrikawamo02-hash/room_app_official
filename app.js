@@ -16,7 +16,7 @@
   const portraitStage = document.querySelector('.portrait-stage');
   let beardFixEnabled = false;
   let beardFixButton = null;
-  let beardFixImage = null;
+  let beardFixUnderlay = null;
 
   const JP = {
     waiting: '\u5f85\u3063\u3066\u308b',
@@ -142,10 +142,10 @@
     eyeLayer.style.opacity = '1';
   }
 
-  // 位置確認で成功した『透明画像を object-fit で重ねる方式』をそのまま使用。
-  // 今回は補正画像を口パーツより上へ出し、赤マル2か所だけをピンポイントで弱める。
-  function createBeardFixImage() {
-    if (!portraitStage || beardFixImage) return;
+  // 『う』に切り替わった時だけ、ベース画像側に残って見える右上の元髭を目立たなくするための下地補正。
+  // 口パーツ側の髭は触らないため、補正レイヤーは口パーツより下に置く。
+  function createBeardFixUnderlay() {
+    if (!portraitStage || beardFixUnderlay) return;
 
     const canvas = document.createElement('canvas');
     canvas.width = 1024;
@@ -166,44 +166,43 @@
       context.restore();
     }
 
-    // 左の赤マル：鼻の右下のうっすら残る元髭。
-    drawPatch(414, 381, 23, 18, -0.10, [
-      [0.00, 'rgba(203, 160, 147, 0.58)'],
-      [0.44, 'rgba(198, 155, 142, 0.42)'],
-      [0.78, 'rgba(194, 151, 138, 0.18)'],
+    // 主対象：ベース画像右上の残り髭。位置は確認テストで合っていた右上付近に限定。
+    drawPatch(486, 368, 20, 15, -0.14, [
+      [0.00, 'rgba(201, 158, 145, 0.88)'],
+      [0.36, 'rgba(196, 153, 140, 0.66)'],
+      [0.70, 'rgba(191, 149, 136, 0.30)'],
+      [1.00, 'rgba(191, 149, 136, 0.00)']
+    ]);
+
+    // 右上の残りを少しだけ横へ馴染ませる補助。口パーツ側の髭にかからないよう控えめ。
+    drawPatch(470, 374, 12, 9, -0.18, [
+      [0.00, 'rgba(199, 156, 143, 0.24)'],
+      [0.65, 'rgba(194, 151, 138, 0.10)'],
       [1.00, 'rgba(194, 151, 138, 0.00)']
     ]);
 
-    // 右の赤マル：上髭の濃く見える残り。
-    drawPatch(474, 377, 24, 18, -0.12, [
-      [0.00, 'rgba(199, 155, 142, 0.64)'],
-      [0.42, 'rgba(193, 149, 136, 0.48)'],
-      [0.76, 'rgba(188, 145, 132, 0.22)'],
-      [1.00, 'rgba(188, 145, 132, 0.00)']
-    ]);
-
-    beardFixImage = document.createElement('img');
-    beardFixImage.className = 'beard-fix-overlay';
-    beardFixImage.alt = '';
-    beardFixImage.setAttribute('aria-hidden', 'true');
-    beardFixImage.src = canvas.toDataURL('image/png');
-    portraitStage.appendChild(beardFixImage);
+    beardFixUnderlay = document.createElement('img');
+    beardFixUnderlay.className = 'beard-fix-underlay';
+    beardFixUnderlay.alt = '';
+    beardFixUnderlay.setAttribute('aria-hidden', 'true');
+    beardFixUnderlay.src = canvas.toDataURL('image/png');
+    portraitStage.appendChild(beardFixUnderlay);
   }
 
   function updateBeardFix() {
-    if (!portraitStage) return;
+    if (!portraitStage || !beardFixUnderlay) return;
     const roundVisible = Boolean(
       activeAssets && mouthLayer &&
       mouthLayer.style.opacity === '1' &&
       mouthLayer.getAttribute('src') === activeAssets.mouthRound
     );
-    portraitStage.classList.toggle('show-beard-fix', beardFixEnabled && roundVisible);
+    portraitStage.classList.toggle('show-base-beard-fix', beardFixEnabled && roundVisible);
   }
 
   function createBeardFixButton() {
     const controls = document.querySelector('.mini-controls');
     if (!controls || beardFixButton) return;
-    createBeardFixImage();
+    createBeardFixUnderlay();
     beardFixButton = document.createElement('button');
     beardFixButton.type = 'button';
     beardFixButton.className = 'mini-btn';
