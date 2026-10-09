@@ -14,6 +14,8 @@
   const eyeLayer = document.getElementById('eyeLayer');
   const mouthLayer = document.getElementById('mouthLayer');
   const portraitStage = document.querySelector('.portrait-stage');
+  let beardFixEnabled = false;
+  let beardFixBtn = null;
 
   const JP = {
     waiting: '\u5f85\u3063\u3066\u308b',
@@ -32,7 +34,9 @@
     displayDay: '\u663c',
     displayNight: '\u591c',
     mouthPractice: '\u53e3\u30d1\u30af\u7df4\u7fd2',
-    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62'
+    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62',
+    beardFixOn: '上髭補正 ON',
+    beardFixOff: '上髭補正 OFF'
   };
 
   /*
@@ -139,9 +143,40 @@
     eyeLayer.style.opacity = '1';
   }
 
-  function setUBeardFix(enabled) {
+  function updateBeardFixButton() {
+    if (!beardFixBtn) return;
+    beardFixBtn.classList.toggle('active', beardFixEnabled);
+    beardFixBtn.textContent = beardFixEnabled ? JP.beardFixOn : JP.beardFixOff;
+  }
+
+  function setUBeardFix(active) {
     if (!portraitStage) return;
-    portraitStage.classList.toggle('u-beard-fix', !!enabled);
+    portraitStage.classList.toggle('u-beard-fix-enabled', !!beardFixEnabled);
+    portraitStage.classList.toggle('u-beard-fix-active', !!active && !!beardFixEnabled);
+  }
+
+  function createBeardFixButton() {
+    const controls = document.querySelector('.mini-controls');
+    if (!controls || beardFixBtn) return;
+
+    beardFixBtn = document.createElement('button');
+    beardFixBtn.type = 'button';
+    beardFixBtn.className = 'mini-btn';
+    beardFixBtn.id = 'beardFixBtn';
+    beardFixBtn.addEventListener('click', () => {
+      beardFixEnabled = !beardFixEnabled;
+      updateBeardFixButton();
+      const isRoundVisible = Boolean(
+        mouthLayer &&
+        mouthLayer.style.opacity === '1' &&
+        activeAssets &&
+        mouthLayer.getAttribute('src') === activeAssets.mouthRound
+      );
+      setUBeardFix(isRoundVisible);
+    });
+
+    controls.appendChild(beardFixBtn);
+    updateBeardFixButton();
   }
 
   function hideMouth() {
@@ -559,6 +594,8 @@
       }
     });
   }
+
+  createBeardFixButton();
 
   function showBubble(who, text) {
     if (!bubble) return;

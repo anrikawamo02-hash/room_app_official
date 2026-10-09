@@ -192,23 +192,26 @@ body { min-height: 100vh; }
 }
 
 
-/* 「う」表示時だけ、ベース側の右上の元髭をやわらかく抑える */
+/* 実験用：『う』のときだけ右上の元髭を限定的に弱める */
 .portrait-stage::after {
   content: '';
   position: absolute;
-  inset: 0;
+  left: 55.2%;
+  top: 43.6%;
+  width: 8.2%;
+  height: 4.8%;
   pointer-events: none;
   opacity: 0;
   z-index: 2;
-  transition: opacity .18s ease;
+  border-radius: 999px;
+  transform: rotate(-10deg);
+  transition: opacity .16s ease;
 }
 
-.portrait-stage.u-beard-fix::after {
+.portrait-stage.u-beard-fix-enabled.u-beard-fix-active::after {
   opacity: 1;
-  background:
-    radial-gradient(ellipse 4.4% 2.5% at 56.8% 47.6%, rgba(178, 149, 136, .66) 0%, rgba(178, 149, 136, .58) 42%, rgba(178, 149, 136, .28) 68%, rgba(178, 149, 136, 0) 100%),
-    radial-gradient(ellipse 3.2% 1.8% at 58.7% 46.9%, rgba(165, 136, 124, .52) 0%, rgba(165, 136, 124, .36) 58%, rgba(165, 136, 124, 0) 100%);
-  filter: blur(1.6px);
+  background: radial-gradient(ellipse at 40% 52%, rgba(195, 166, 151, .82) 0%, rgba(191, 161, 146, .72) 42%, rgba(186, 156, 141, .36) 72%, rgba(186, 156, 141, 0) 100%);
+  filter: blur(1.2px);
 }
 
 @keyframes renIdleBreath {
