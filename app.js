@@ -142,7 +142,8 @@
     eyeLayer.style.opacity = '1';
   }
 
-  // 位置確認で成功した『透明画像を同じ object-fit で重ねる方式』を、そのまま本番補正に流用する。
+  // 位置確認で成功した『透明画像を同じ object-fit で重ねる方式』をそのまま使用。
+  // 今回は杏里が赤マルで指定した2か所だけを、より小さく自然に弱める。
   function createBeardFixImage() {
     if (!portraitStage || beardFixImage) return;
 
@@ -152,37 +153,41 @@
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    // 右上の元髭をやわらかく弱めるための補正。
-    // 位置は、杏里が実機で『合ってる』と確認した位置確認テストと同じ。
-    context.save();
-    context.translate(459, 377);
-    context.rotate(-0.38);
+    function drawPatch(cx, cy, rx, ry, rotation, stops) {
+      context.save();
+      context.translate(cx, cy);
+      context.rotate(rotation);
+      const grad = context.createRadialGradient(0, 0, 1, 0, 0, Math.max(rx, ry));
+      for (const [offset, color] of stops) grad.addColorStop(offset, color);
+      context.fillStyle = grad;
+      context.beginPath();
+      context.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+      context.fill();
+      context.restore();
+    }
 
-    const grad1 = context.createRadialGradient(-8, -2, 2, -2, 0, 42);
-    grad1.addColorStop(0.00, 'rgba(201, 157, 143, 0.76)');
-    grad1.addColorStop(0.40, 'rgba(193, 149, 136, 0.64)');
-    grad1.addColorStop(0.72, 'rgba(188, 144, 132, 0.30)');
-    grad1.addColorStop(1.00, 'rgba(188, 144, 132, 0.00)');
-    context.fillStyle = grad1;
-    context.beginPath();
-    context.ellipse(0, 0, 34, 22, 0, 0, Math.PI * 2);
-    context.fill();
+    // 左の赤マル：鼻の右下〜口の上にあるうっすら残る部分
+    drawPatch(414, 381, 24, 19, -0.10, [
+      [0.00, 'rgba(202, 160, 147, 0.48)'],
+      [0.45, 'rgba(197, 155, 142, 0.34)'],
+      [0.78, 'rgba(194, 152, 139, 0.14)'],
+      [1.00, 'rgba(194, 152, 139, 0.00)']
+    ]);
 
-    const grad2 = context.createRadialGradient(10, -3, 1, 8, -2, 22);
-    grad2.addColorStop(0.00, 'rgba(197, 153, 140, 0.38)');
-    grad2.addColorStop(0.60, 'rgba(192, 148, 136, 0.20)');
-    grad2.addColorStop(1.00, 'rgba(192, 148, 136, 0.00)');
-    context.fillStyle = grad2;
-    context.beginPath();
-    context.ellipse(10, -1, 16, 10, 0, 0, Math.PI * 2);
-    context.fill();
+    // 右の赤マル：上髭の濃く見える残り
+    drawPatch(474, 377, 26, 19, -0.12, [
+      [0.00, 'rgba(196, 152, 139, 0.56)'],
+      [0.40, 'rgba(191, 147, 134, 0.40)'],
+      [0.72, 'rgba(187, 143, 131, 0.18)'],
+      [1.00, 'rgba(187, 143, 131, 0.00)']
+    ]);
 
-    // エッジを少しだけ柔らかくする補助。
-    context.fillStyle = 'rgba(202, 160, 146, 0.10)';
-    context.beginPath();
-    context.ellipse(-4, 1, 28, 18, 0, 0, Math.PI * 2);
-    context.fill();
-    context.restore();
+    // 境界を少しなじませる、ごく薄い補助。
+    drawPatch(446, 379, 14, 11, -0.11, [
+      [0.00, 'rgba(201, 159, 146, 0.14)'],
+      [0.70, 'rgba(198, 156, 143, 0.06)'],
+      [1.00, 'rgba(198, 156, 143, 0.00)']
+    ]);
 
     beardFixImage = document.createElement('img');
     beardFixImage.className = 'beard-fix-overlay';
