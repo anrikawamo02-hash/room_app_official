@@ -14,10 +14,9 @@
   const eyeLayer = document.getElementById('eyeLayer');
   const mouthLayer = document.getElementById('mouthLayer');
   const portraitStage = document.querySelector('.portrait-stage');
-  let beardFixBtn = null;
-  let beardFixExperimentOn = false;
-  let beardFixLayer = null;
-  let currentMouthVowel = '';
+  let beardFixEnabled = false;
+  let beardFixButton = null;
+  let beardFixImage = null;
 
   const JP = {
     waiting: '\u5f85\u3063\u3066\u308b',
@@ -36,9 +35,7 @@
     displayDay: '\u663c',
     displayNight: '\u591c',
     mouthPractice: '\u53e3\u30d1\u30af\u7df4\u7fd2',
-    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62',
-    beardFixOn: '上髭補正 ON',
-    beardFixOff: '上髭補正 OFF'
+    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62'
   };
 
   /*
@@ -58,37 +55,6 @@
       day: 'images/winter_day_main',
       night: 'images/winter_night_main'
     }
-  };
-
-  // 現在の3口素材を、将来的な『あ・い・う・え・お』個別補正へ広げやすくするための土台。
-  // 今は open→あ / small→い / round→う として扱い、必要な口だけ enabled を true にする。
-  // 将来 mouth_e / mouth_o などを追加する時は、この対応表を広げればOK。
-  const MOUTH_FRAME_TO_VOWEL = {
-    open: 'a',
-    small: 'i',
-    round: 'u'
-  };
-
-  const VOWEL_BEARD_FIX_CONFIG = {
-    a: { enabled: false, patches: [] },
-    i: { enabled: false, patches: [] },
-    u: {
-      enabled: true,
-      patches: [
-        {
-          left: '55.2%',
-          top: '43.7%',
-          width: '8.4%',
-          height: '4.9%',
-          rotate: '-10deg',
-          background: 'radial-gradient(ellipse at 44% 54%, rgba(195,166,151,.83) 0%, rgba(191,161,146,.76) 38%, rgba(187,157,142,.44) 68%, rgba(187,157,142,0) 100%)',
-          blur: '1.2px',
-          borderRadius: '999px'
-        }
-      ]
-    },
-    e: { enabled: false, patches: [] },
-    o: { enabled: false, patches: [] }
   };
 
   // éçºä¸­ã¯ãã¼ã¸ãåèª­ã¿è¾¼ã¿ãããã³ã«ææ°ç»åãåããããããã
@@ -176,94 +142,95 @@
     eyeLayer.style.opacity = '1';
   }
 
-  function ensureBeardFixLayer() {
-    if (!portraitStage || beardFixLayer) return beardFixLayer;
+  // 位置確認で成功した『透明画像を同じ object-fit で重ねる方式』を、そのまま本番補正に流用する。
+  function createBeardFixImage() {
+    if (!portraitStage || beardFixImage) return;
 
-    beardFixLayer = document.createElement('div');
-    beardFixLayer.className = 'beard-fix-layer';
-    beardFixLayer.setAttribute('aria-hidden', 'true');
-    portraitStage.appendChild(beardFixLayer);
-    return beardFixLayer;
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 1536;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    // 右上の元髭をやわらかく弱めるための補正。
+    // 位置は、杏里が実機で『合ってる』と確認した位置確認テストと同じ。
+    context.save();
+    context.translate(459, 377);
+    context.rotate(-0.38);
+
+    const grad1 = context.createRadialGradient(-8, -2, 2, -2, 0, 42);
+    grad1.addColorStop(0.00, 'rgba(201, 157, 143, 0.76)');
+    grad1.addColorStop(0.40, 'rgba(193, 149, 136, 0.64)');
+    grad1.addColorStop(0.72, 'rgba(188, 144, 132, 0.30)');
+    grad1.addColorStop(1.00, 'rgba(188, 144, 132, 0.00)');
+    context.fillStyle = grad1;
+    context.beginPath();
+    context.ellipse(0, 0, 34, 22, 0, 0, Math.PI * 2);
+    context.fill();
+
+    const grad2 = context.createRadialGradient(10, -3, 1, 8, -2, 22);
+    grad2.addColorStop(0.00, 'rgba(197, 153, 140, 0.38)');
+    grad2.addColorStop(0.60, 'rgba(192, 148, 136, 0.20)');
+    grad2.addColorStop(1.00, 'rgba(192, 148, 136, 0.00)');
+    context.fillStyle = grad2;
+    context.beginPath();
+    context.ellipse(10, -1, 16, 10, 0, 0, Math.PI * 2);
+    context.fill();
+
+    // エッジを少しだけ柔らかくする補助。
+    context.fillStyle = 'rgba(202, 160, 146, 0.10)';
+    context.beginPath();
+    context.ellipse(-4, 1, 28, 18, 0, 0, Math.PI * 2);
+    context.fill();
+    context.restore();
+
+    beardFixImage = document.createElement('img');
+    beardFixImage.className = 'beard-fix-overlay';
+    beardFixImage.alt = '';
+    beardFixImage.setAttribute('aria-hidden', 'true');
+    beardFixImage.src = canvas.toDataURL('image/png');
+    portraitStage.appendChild(beardFixImage);
   }
 
-  function updateBeardFixButton() {
-    if (!beardFixBtn) return;
-    beardFixBtn.classList.toggle('active', beardFixExperimentOn);
-    beardFixBtn.textContent = beardFixExperimentOn ? JP.beardFixOn : JP.beardFixOff;
+  function updateBeardFix() {
+    if (!portraitStage) return;
+    const roundVisible = Boolean(
+      activeAssets && mouthLayer &&
+      mouthLayer.style.opacity === '1' &&
+      mouthLayer.getAttribute('src') === activeAssets.mouthRound
+    );
+    portraitStage.classList.toggle('show-beard-fix', beardFixEnabled && roundVisible);
   }
 
   function createBeardFixButton() {
     const controls = document.querySelector('.mini-controls');
-    if (!controls || beardFixBtn) return;
-
-    beardFixBtn = document.createElement('button');
-    beardFixBtn.type = 'button';
-    beardFixBtn.className = 'mini-btn';
-    beardFixBtn.id = 'beardFixBtn';
-    beardFixBtn.addEventListener('click', () => {
-      beardFixExperimentOn = !beardFixExperimentOn;
-      updateBeardFixButton();
-      applyCurrentBeardFix();
+    if (!controls || beardFixButton) return;
+    createBeardFixImage();
+    beardFixButton = document.createElement('button');
+    beardFixButton.type = 'button';
+    beardFixButton.className = 'mini-btn';
+    beardFixButton.textContent = '上髭補正 OFF';
+    beardFixButton.addEventListener('click', () => {
+      beardFixEnabled = !beardFixEnabled;
+      beardFixButton.classList.toggle('active', beardFixEnabled);
+      beardFixButton.textContent = beardFixEnabled ? '上髭補正 ON' : '上髭補正 OFF';
+      updateBeardFix();
     });
-
-    controls.appendChild(beardFixBtn);
-    updateBeardFixButton();
-  }
-
-  function clearBeardFix() {
-    if (!beardFixLayer) return;
-    beardFixLayer.innerHTML = '';
-    beardFixLayer.style.opacity = '0';
-  }
-
-  function applyCurrentBeardFix() {
-    const layer = ensureBeardFixLayer();
-    if (!layer) return;
-
-    layer.innerHTML = '';
-    const config = VOWEL_BEARD_FIX_CONFIG[currentMouthVowel];
-
-    if (!beardFixExperimentOn || !config?.enabled || !Array.isArray(config.patches) || !config.patches.length) {
-      layer.style.opacity = '0';
-      return;
-    }
-
-    for (const patch of config.patches) {
-      const patchEl = document.createElement('span');
-      patchEl.className = 'beard-fix-patch';
-      patchEl.style.left = patch.left;
-      patchEl.style.top = patch.top;
-      patchEl.style.width = patch.width;
-      patchEl.style.height = patch.height;
-      patchEl.style.transform = `rotate(${patch.rotate || '0deg'})`;
-      patchEl.style.background = patch.background;
-      patchEl.style.filter = `blur(${patch.blur || '0px'})`;
-      patchEl.style.borderRadius = patch.borderRadius || '999px';
-      layer.appendChild(patchEl);
-    }
-
-    layer.style.opacity = '1';
-  }
-
-  function setCurrentMouthVowel(vowel) {
-    currentMouthVowel = vowel || '';
-    applyCurrentBeardFix();
+    controls.appendChild(beardFixButton);
   }
 
   function hideMouth() {
     if (!mouthLayer) return;
     mouthLayer.style.opacity = '0';
     mouthLayer.removeAttribute('src');
-    setCurrentMouthVowel('');
-    clearBeardFix();
+    updateBeardFix();
   }
 
-  function showMouth(src, frameKey = '') {
+  function showMouth(src) {
     if (!mouthLayer || !src) return;
     mouthLayer.src = src;
     mouthLayer.style.opacity = '1';
-    const vowel = MOUTH_FRAME_TO_VOWEL[frameKey] || '';
-    setCurrentMouthVowel(vowel);
+    updateBeardFix();
   }
 
   function updateLipButton() {
@@ -291,9 +258,9 @@
     if (!activeAssets) return;
 
     const frames = [
-      { key: 'small', available: mouthAvailability.small, src: activeAssets.mouthSmall },
-      { key: 'open', available: mouthAvailability.open, src: activeAssets.mouthOpen },
-      { key: 'round', available: mouthAvailability.round, src: activeAssets.mouthRound }
+      { available: mouthAvailability.small, src: activeAssets.mouthSmall },
+      { available: mouthAvailability.open, src: activeAssets.mouthOpen },
+      { available: mouthAvailability.round, src: activeAssets.mouthRound }
     ].filter((frame) => frame.available);
 
     if (!frames.length) {
@@ -313,7 +280,7 @@
 
       // å° â å¤§ â ãã»ãï¼å­å¨ããç´ æã ãé çªã«ç¢ºèªï¼
       for (const frame of frames) {
-        showMouth(frame.src, frame.key);
+        showMouth(frame.src);
         await sleep(900);
         if (!mouthPracticeOn || token !== mouthPracticeToken) break;
       }
@@ -667,7 +634,6 @@
   }
 
   createBeardFixButton();
-  ensureBeardFixLayer();
 
   function showBubble(who, text) {
     if (!bubble) return;

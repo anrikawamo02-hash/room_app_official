@@ -191,20 +191,12 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
-.beard-fix-layer {
-  position: absolute;
-  inset: 0;
+/* 位置確認で成功した透明画像重ね方式を、そのまま上髭補正にも使う */
+.beard-fix-overlay {
   z-index: 2;
-  pointer-events: none;
   opacity: 0;
-  transition: opacity .16s ease;
 }
-
-.beard-fix-patch {
-  position: absolute;
-  display: block;
-  pointer-events: none;
-}
+.portrait-stage.show-beard-fix .beard-fix-overlay { opacity: 1; }
 
 @keyframes renIdleBreath {
   0%, 100% {
