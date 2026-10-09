@@ -191,12 +191,20 @@ body { min-height: 100vh; }
   opacity: 0;
 }
 
-/* 位置確認時だけ表示する透明の目印。画像と同じ object-fit と object-position を継承。 */
-.beard-position-guide {
-  z-index: 4;
+.beard-fix-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
   opacity: 0;
+  transition: opacity .16s ease;
 }
-.portrait-stage.show-beard-position-guide .beard-position-guide { opacity: 1; }
+
+.beard-fix-patch {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
 
 @keyframes renIdleBreath {
   0%, 100% {

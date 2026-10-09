@@ -14,9 +14,10 @@
   const eyeLayer = document.getElementById('eyeLayer');
   const mouthLayer = document.getElementById('mouthLayer');
   const portraitStage = document.querySelector('.portrait-stage');
-  let positionGuideEnabled = false;
-  let positionGuideButton = null;
-  let positionGuideImage = null;
+  let beardFixBtn = null;
+  let beardFixExperimentOn = false;
+  let beardFixLayer = null;
+  let currentMouthVowel = '';
 
   const JP = {
     waiting: '\u5f85\u3063\u3066\u308b',
@@ -35,7 +36,9 @@
     displayDay: '\u663c',
     displayNight: '\u591c',
     mouthPractice: '\u53e3\u30d1\u30af\u7df4\u7fd2',
-    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62'
+    mouthStop: '\u53e3\u30d1\u30af\u505c\u6b62',
+    beardFixOn: '上髭補正 ON',
+    beardFixOff: '上髭補正 OFF'
   };
 
   /*
@@ -55,6 +58,37 @@
       day: 'images/winter_day_main',
       night: 'images/winter_night_main'
     }
+  };
+
+  // 現在の3口素材を、将来的な『あ・い・う・え・お』個別補正へ広げやすくするための土台。
+  // 今は open→あ / small→い / round→う として扱い、必要な口だけ enabled を true にする。
+  // 将来 mouth_e / mouth_o などを追加する時は、この対応表を広げればOK。
+  const MOUTH_FRAME_TO_VOWEL = {
+    open: 'a',
+    small: 'i',
+    round: 'u'
+  };
+
+  const VOWEL_BEARD_FIX_CONFIG = {
+    a: { enabled: false, patches: [] },
+    i: { enabled: false, patches: [] },
+    u: {
+      enabled: true,
+      patches: [
+        {
+          left: '55.2%',
+          top: '43.7%',
+          width: '8.4%',
+          height: '4.9%',
+          rotate: '-10deg',
+          background: 'radial-gradient(ellipse at 44% 54%, rgba(195,166,151,.83) 0%, rgba(191,161,146,.76) 38%, rgba(187,157,142,.44) 68%, rgba(187,157,142,0) 100%)',
+          blur: '1.2px',
+          borderRadius: '999px'
+        }
+      ]
+    },
+    e: { enabled: false, patches: [] },
+    o: { enabled: false, patches: [] }
   };
 
   // éçºä¸­ã¯ãã¼ã¸ãåèª­ã¿è¾¼ã¿ãããã³ã«ææ°ç»åãåããããããã
@@ -142,89 +176,94 @@
     eyeLayer.style.opacity = '1';
   }
 
+  function ensureBeardFixLayer() {
+    if (!portraitStage || beardFixLayer) return beardFixLayer;
 
-  // 位置確認専用。補正や肌色塗りは一切行わない。
-  // 元画像と同じ 1024×1536 の透明目印画像を作り、同じ object-fit で表示する。
-  function createPositionGuideImage() {
-    if (!portraitStage || positionGuideImage) return;
-
-    const canvas = document.createElement('canvas');
-    canvas.width = 1024;
-    canvas.height = 1536;
-    const context = canvas.getContext('2d');
-    if (!context) return;
-
-    // 右上の髭の「確認候補」。確定位置ではなく、杏里が実機で位置を確認するための印。
-    context.save();
-    context.translate(459, 377);
-    context.rotate(-0.38);
-    context.beginPath();
-    context.ellipse(0, 0, 36, 23, 0, 0, Math.PI * 2);
-    context.fillStyle = 'rgba(255, 100, 145, 0.20)';
-    context.fill();
-    context.lineWidth = 8;
-    context.strokeStyle = 'rgba(255,255,255,0.97)';
-    context.stroke();
-    context.setLineDash([10, 7]);
-    context.lineWidth = 4;
-    context.strokeStyle = '#E52967';
-    context.stroke();
-    context.setLineDash([]);
-    context.beginPath();
-    context.moveTo(-8, 0); context.lineTo(8, 0);
-    context.moveTo(0, -8); context.lineTo(0, 8);
-    context.lineWidth = 3;
-    context.strokeStyle = '#FFFFFF';
-    context.stroke();
-    context.restore();
-
-    positionGuideImage = document.createElement('img');
-    positionGuideImage.className = 'beard-position-guide';
-    positionGuideImage.alt = '';
-    positionGuideImage.setAttribute('aria-hidden', 'true');
-    positionGuideImage.src = canvas.toDataURL('image/png');
-    portraitStage.appendChild(positionGuideImage);
+    beardFixLayer = document.createElement('div');
+    beardFixLayer.className = 'beard-fix-layer';
+    beardFixLayer.setAttribute('aria-hidden', 'true');
+    portraitStage.appendChild(beardFixLayer);
+    return beardFixLayer;
   }
 
-  function updatePositionGuide() {
-    if (!portraitStage) return;
-    const roundVisible = Boolean(
-      activeAssets && mouthLayer &&
-      mouthLayer.style.opacity === '1' &&
-      mouthLayer.getAttribute('src') === activeAssets.mouthRound
-    );
-    portraitStage.classList.toggle('show-beard-position-guide', positionGuideEnabled && roundVisible);
+  function updateBeardFixButton() {
+    if (!beardFixBtn) return;
+    beardFixBtn.classList.toggle('active', beardFixExperimentOn);
+    beardFixBtn.textContent = beardFixExperimentOn ? JP.beardFixOn : JP.beardFixOff;
   }
 
-  function createPositionGuideButton() {
+  function createBeardFixButton() {
     const controls = document.querySelector('.mini-controls');
-    if (!controls || positionGuideButton) return;
-    createPositionGuideImage();
-    positionGuideButton = document.createElement('button');
-    positionGuideButton.type = 'button';
-    positionGuideButton.className = 'mini-btn';
-    positionGuideButton.textContent = '位置確認 OFF';
-    positionGuideButton.addEventListener('click', () => {
-      positionGuideEnabled = !positionGuideEnabled;
-      positionGuideButton.classList.toggle('active', positionGuideEnabled);
-      positionGuideButton.textContent = positionGuideEnabled ? '位置確認 ON' : '位置確認 OFF';
-      updatePositionGuide();
+    if (!controls || beardFixBtn) return;
+
+    beardFixBtn = document.createElement('button');
+    beardFixBtn.type = 'button';
+    beardFixBtn.className = 'mini-btn';
+    beardFixBtn.id = 'beardFixBtn';
+    beardFixBtn.addEventListener('click', () => {
+      beardFixExperimentOn = !beardFixExperimentOn;
+      updateBeardFixButton();
+      applyCurrentBeardFix();
     });
-    controls.appendChild(positionGuideButton);
+
+    controls.appendChild(beardFixBtn);
+    updateBeardFixButton();
+  }
+
+  function clearBeardFix() {
+    if (!beardFixLayer) return;
+    beardFixLayer.innerHTML = '';
+    beardFixLayer.style.opacity = '0';
+  }
+
+  function applyCurrentBeardFix() {
+    const layer = ensureBeardFixLayer();
+    if (!layer) return;
+
+    layer.innerHTML = '';
+    const config = VOWEL_BEARD_FIX_CONFIG[currentMouthVowel];
+
+    if (!beardFixExperimentOn || !config?.enabled || !Array.isArray(config.patches) || !config.patches.length) {
+      layer.style.opacity = '0';
+      return;
+    }
+
+    for (const patch of config.patches) {
+      const patchEl = document.createElement('span');
+      patchEl.className = 'beard-fix-patch';
+      patchEl.style.left = patch.left;
+      patchEl.style.top = patch.top;
+      patchEl.style.width = patch.width;
+      patchEl.style.height = patch.height;
+      patchEl.style.transform = `rotate(${patch.rotate || '0deg'})`;
+      patchEl.style.background = patch.background;
+      patchEl.style.filter = `blur(${patch.blur || '0px'})`;
+      patchEl.style.borderRadius = patch.borderRadius || '999px';
+      layer.appendChild(patchEl);
+    }
+
+    layer.style.opacity = '1';
+  }
+
+  function setCurrentMouthVowel(vowel) {
+    currentMouthVowel = vowel || '';
+    applyCurrentBeardFix();
   }
 
   function hideMouth() {
     if (!mouthLayer) return;
     mouthLayer.style.opacity = '0';
     mouthLayer.removeAttribute('src');
-    updatePositionGuide();
+    setCurrentMouthVowel('');
+    clearBeardFix();
   }
 
-  function showMouth(src) {
+  function showMouth(src, frameKey = '') {
     if (!mouthLayer || !src) return;
     mouthLayer.src = src;
     mouthLayer.style.opacity = '1';
-    updatePositionGuide();
+    const vowel = MOUTH_FRAME_TO_VOWEL[frameKey] || '';
+    setCurrentMouthVowel(vowel);
   }
 
   function updateLipButton() {
@@ -252,9 +291,9 @@
     if (!activeAssets) return;
 
     const frames = [
-      { available: mouthAvailability.small, src: activeAssets.mouthSmall },
-      { available: mouthAvailability.open, src: activeAssets.mouthOpen },
-      { available: mouthAvailability.round, src: activeAssets.mouthRound }
+      { key: 'small', available: mouthAvailability.small, src: activeAssets.mouthSmall },
+      { key: 'open', available: mouthAvailability.open, src: activeAssets.mouthOpen },
+      { key: 'round', available: mouthAvailability.round, src: activeAssets.mouthRound }
     ].filter((frame) => frame.available);
 
     if (!frames.length) {
@@ -274,7 +313,7 @@
 
       // å° â å¤§ â ãã»ãï¼å­å¨ããç´ æã ãé çªã«ç¢ºèªï¼
       for (const frame of frames) {
-        showMouth(frame.src);
+        showMouth(frame.src, frame.key);
         await sleep(900);
         if (!mouthPracticeOn || token !== mouthPracticeToken) break;
       }
@@ -627,7 +666,8 @@
     });
   }
 
-  createPositionGuideButton();
+  createBeardFixButton();
+  ensureBeardFixLayer();
 
   function showBubble(who, text) {
     if (!bubble) return;
